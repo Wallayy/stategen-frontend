@@ -2,7 +2,6 @@
   "_metadata": {
     "description": "Complete biome data: coordinates + enemies + dungeons",
     "sources": {
-      "coordinates": "User-provided beacon positions via biome_editor.html",
       "enemies": "Scraped from RealmEye wiki"
     },
     "map_bounds": {
@@ -24,8 +23,8 @@
     "beacon_type": "Shores Beacon",
     "beacon_positions": [
       [
-        100,
-        100
+        546,
+        1099
       ],
       [
         599,
@@ -1738,8 +1737,8 @@
     "beacon_type": "Abyssal Beacon",
     "beacon_positions": [
       [
-        472,
-        1004
+        379,
+        948
       ],
       [
         1070,
