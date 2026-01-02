@@ -2,7 +2,7 @@
  * API Configuration
  * Update API_BASE to your Railway URL after deployment
  */
-const CONFIG = {
+var CONFIG = {
     // Production:  Railway API URL
     API_BASE: 'https://stategenui-production.up.railway.app',
 
