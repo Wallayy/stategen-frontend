@@ -1,0 +1,2143 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XInjector State Visualizer - Reverse Tool</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter", system-ui, sans-serif;
+            background: #0f0f0f;
+            color: #d4d4d4;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-weight: 400;
+            font-size: 13px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        /* Header */
+        header {
+            background: #0f0f0f;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1f1f1f;
+        }
+
+        header h1 {
+            font-size: 14px;
+            font-weight: 500;
+            color: #fafafa;
+        }
+
+        .header-controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        /* Main content */
+        .main-content {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 320px;
+            background: #1a1a1a;
+            border-right: 1px solid #2a2a2a;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .sidebar-section {
+            padding: 20px;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .sidebar-section h2 {
+            font-size: 13px;
+            font-weight: 500;
+            color: #f0f0f0;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* File upload area */
+        .file-upload-area {
+            border: 2px dashed #3a3a3a;
+            border-radius: 8px;
+            padding: 30px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: #1f1f1f;
+        }
+
+        .file-upload-area:hover {
+            border-color: #4a9eff;
+            background: #252525;
+        }
+
+        .file-upload-area i {
+            font-size: 32px;
+            color: #4a9eff;
+            margin-bottom: 12px;
+        }
+
+        .file-upload-area p {
+            color: #aaa;
+            margin-bottom: 8px;
+        }
+
+        .file-upload-area .file-name {
+            color: #4a9eff;
+            font-weight: 500;
+            margin-top: 8px;
+            word-break: break-all;
+        }
+
+        /* Stats panel */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .stat-item {
+            background: #252525;
+            padding: 12px;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 20px;
+            font-weight: 600;
+            color: #4a9eff;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Node list */
+        .node-list {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .node-item {
+            background: #252525;
+            margin: 8px;
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 3px solid #4a9eff;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .node-item:hover {
+            background: #2a2a2a;
+            transform: translateX(2px);
+        }
+
+        .node-item.active {
+            background: #2a2a2a;
+            border-left-color: #ff6b6b;
+        }
+
+        .node-name {
+            font-weight: 500;
+            color: #f0f0f0;
+            margin-bottom: 4px;
+        }
+
+        .node-type {
+            font-size: 11px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Visualization area */
+        .visualization-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .visualization-header {
+            padding: 16px 24px;
+            border-bottom: 1px solid #2a2a2a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .visualization-header h2 {
+            font-size: 13px;
+            font-weight: 500;
+            color: #f0f0f0;
+        }
+
+        .visualization-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .visualization-canvas {
+            flex: 1;
+            background: #1a1a1a;
+            position: relative;
+            overflow: hidden;
+            cursor: grab;
+        }
+
+        .visualization-canvas:active {
+            cursor: grabbing;
+        }
+
+        /* Graph visualization */
+        .graph-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform-origin: 0 0;
+        }
+
+        .node {
+            position: absolute;
+            background: #252525;
+            border: 2px solid #4a9eff;
+            border-radius: 8px;
+            padding: 12px;
+            min-width: 150px;
+            cursor: move;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.2s;
+        }
+
+        .node:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .node.selected {
+            border-color: #ff6b6b;
+            background: #2a2a2a;
+        }
+
+        .node-start {
+            border-color: #4caf50;
+        }
+
+        .node-end {
+            border-color: #ff9800;
+        }
+
+        .node-condition {
+            border-color: #9c27b0;
+        }
+
+        .node-action {
+            border-color: #2196f3;
+        }
+
+        .node-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #3a3a3a;
+        }
+
+        .node-title {
+            font-weight: 500;
+            color: #f0f0f0;
+            font-size: 12px;
+        }
+
+        .node-id {
+            font-size: 10px;
+            color: #888;
+            background: #1a1a1a;
+            padding: 2px 6px;
+            border-radius: 10px;
+        }
+
+        .node-content {
+            font-size: 11px;
+            color: #aaa;
+            line-height: 1.4;
+        }
+
+        .node-property {
+            margin: 4px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .node-property-label {
+            color: #888;
+        }
+
+        .node-property-value {
+            color: #4a9eff;
+            font-weight: 500;
+            max-width: 100px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* Links */
+        .link {
+            position: absolute;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .link-line {
+            stroke: #4a9eff;
+            stroke-width: 2;
+            fill: none;
+            marker-end: url(#arrowhead);
+        }
+
+        .link-line.selected {
+            stroke: #ff6b6b;
+            stroke-width: 3;
+        }
+
+        /* JSON viewer */
+        .json-viewer {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 400px;
+            background: #1a1a1a;
+            border-left: 1px solid #2a2a2a;
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+        }
+
+        .json-viewer.active {
+            display: flex;
+        }
+
+        .json-viewer-header {
+            padding: 16px;
+            border-bottom: 1px solid #2a2a2a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .json-viewer-header h3 {
+            font-size: 13px;
+            font-weight: 500;
+            color: #f0f0f0;
+        }
+
+        .json-viewer-content {
+            flex: 1;
+            overflow: auto;
+            padding: 16px;
+            font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+            font-size: 12px;
+            line-height: 1.5;
+            white-space: pre;
+        }
+
+        /* Buttons */
+        .btn {
+            background: #2a2a2a;
+            border: 1px solid #3a3a3a;
+            color: #d4d4d4;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn:hover {
+            background: #3a3a3a;
+            border-color: #4a4a4a;
+        }
+
+        .btn-primary {
+            background: #4a9eff;
+            border-color: #4a9eff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5aa8ff;
+            border-color: #5aa8ff;
+        }
+
+        .btn-danger {
+            background: #ff4757;
+            border-color: #ff4757;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #ff5a68;
+            border-color: #ff5a68;
+        }
+
+        .btn-success {
+            background: #4caf50;
+            border-color: #4caf50;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #5dbf61;
+            border-color: #5dbf61;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #2a2a2a;
+            background: #1a1a1a;
+        }
+
+        .tab {
+            padding: 12px 20px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            color: #888;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .tab:hover {
+            color: #d4d4d4;
+            background: #252525;
+        }
+
+        .tab.active {
+            color: #4a9eff;
+            border-bottom-color: #4a9eff;
+            background: #252525;
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: absolute;
+            background: rgba(26, 26, 26, 0.95);
+            border: 1px solid #3a3a3a;
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 12px;
+            color: #d4d4d4;
+            max-width: 300px;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            pointer-events: none;
+        }
+
+        /* Loading overlay */
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 15, 15, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            display: none;
+        }
+
+        .loading-overlay.active {
+            display: flex;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #3a3a3a;
+            border-top-color: #4a9eff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 16px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .sidebar {
+                width: 280px;
+            }
+
+            .json-viewer {
+                width: 350px;
+            }
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #3a3a3a;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4a4a4a;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>
+                <i class="fas fa-code-branch"></i> XInjector State
+                Visualizer
+            </h1>
+            <div class="header-controls">
+                <button class="btn" id="toggleJsonViewer">
+                    <i class="fas fa-code"></i> JSON Viewer
+                </button>
+                <button class="btn btn-primary" id="exportBtn" disabled>
+                    <i class="fas fa-download"></i> Export Modified
+                </button>
+                <button class="btn" onclick="window.location.href = 'index.html'">
+                    <i class="fas fa-home"></i> Back to Home
+                </button>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h2>Load State File</h2>
+                    <div class="file-upload-area" id="fileUploadArea">
+                        <i class="fas fa-file-upload"></i>
+                        <p>Drag & drop a JSON state file here</p>
+                        <p>or click to browse</p>
+                        <div class="file-name" id="fileName">
+                            No file selected
+                        </div>
+                    </div>
+                    <input type="file" id="fileInput" accept=".json" style="display: none" />
+                </div>
+
+                <div class="sidebar-section">
+                    <h2>Statistics</h2>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value" id="nodeCount">0</div>
+                            <div class="stat-label">Nodes</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="linkCount">0</div>
+                            <div class="stat-label">Links</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="startNodes">0</div>
+                            <div class="stat-label">Start Nodes</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="endNodes">0</div>
+                            <div class="stat-label">End Nodes</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section" style="flex: 1; display: flex; flex-direction: column">
+                    <h2>Nodes</h2>
+                    <div class="node-list" id="nodeList">
+                        <!-- Nodes will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visualization Area -->
+            <div class="visualization-area">
+                <div class="visualization-header">
+                    <h2>State Machine Visualization</h2>
+                    <div class="visualization-controls">
+                        <button class="btn" id="zoomInBtn">
+                            <i class="fas fa-search-plus"></i>
+                        </button>
+                        <button class="btn" id="zoomOutBtn">
+                            <i class="fas fa-search-minus"></i>
+                        </button>
+                        <button class="btn" id="centerViewBtn">
+                            <i class="fas fa-crosshairs"></i> Center
+                        </button>
+                        <button class="btn" id="layoutBtn">
+                            <i class="fas fa-project-diagram"></i> Auto
+                            Layout
+                        </button>
+                    </div>
+                </div>
+                <div class="visualization-canvas" id="visualizationCanvas">
+                    <!-- Zoom level indicator -->
+                    <div id="zoomIndicator" style="
+                                position: absolute;
+                                bottom: 16px;
+                                right: 16px;
+                                background: rgba(0, 0, 0, 0.7);
+                                color: #fff;
+                                padding: 6px 12px;
+                                border-radius: 4px;
+                                font-size: 12px;
+                                font-weight: 500;
+                                z-index: 100;
+                                pointer-events: none;
+                                user-select: none;
+                            ">
+                        100%
+                    </div>
+                    <!-- Controls hint -->
+                    <div id="controlsHint" style="
+                                position: absolute;
+                                bottom: 16px;
+                                left: 16px;
+                                background: rgba(0, 0, 0, 0.7);
+                                color: #888;
+                                padding: 6px 12px;
+                                border-radius: 4px;
+                                font-size: 11px;
+                                z-index: 100;
+                                pointer-events: none;
+                                user-select: none;
+                            ">
+                        Scroll to zoom • Drag to pan • +/- keys • 0 to reset
+                    </div>
+                    <div class="graph-container" id="graphContainer">
+                        <!-- Graph will be rendered here -->
+                        <svg id="linksLayer" style="
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    width: 10000px;
+                                    height: 10000px;
+                                    pointer-events: none;
+                                    overflow: visible;
+                                ">
+                            <defs>
+                                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5"
+                                    orient="auto">
+                                    <polygon points="0 0, 10 3.5, 0 7" fill="#4a9eff" />
+                                </marker>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JSON Viewer Panel -->
+            <div class="json-viewer" id="jsonViewer">
+                <div class="json-viewer-header">
+                    <h3>JSON Viewer</h3>
+                    <button class="btn" id="closeJsonViewer">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="json-viewer-content" id="jsonContent">
+                    <!-- JSON content will be displayed here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="spinner"></div>
+            <p>Processing file...</p>
+        </div>
+
+        <!-- Tooltip -->
+        <div class="tooltip" id="tooltip" style="display: none"></div>
+    </div>
+
+    <script>
+        // Global state
+        let currentState = null;
+        let selectedNode = null;
+        let selectedLink = null;
+        let nodes = [];
+        let links = [];
+        let zoomLevel = 1;
+        let isDragging = false;
+        let dragStart = { x: 0, y: 0 };
+        let graphOffset = { x: 0, y: 0 };
+
+        // Global DOM element references
+        let fileUploadArea, fileInput, fileName, loadingOverlay;
+        let nodeCountEl, linkCountEl, startNodesEl, endNodesEl;
+        let nodeList, graphContainer, linksLayer;
+        let toggleJsonViewerBtn, closeJsonViewerBtn, exportBtn;
+        let zoomInBtn, zoomOutBtn, centerViewBtn, layoutBtn;
+        let jsonViewer, jsonContent, tooltip;
+
+        function setupEventListeners() {
+            // Get DOM elements
+            fileUploadArea = document.getElementById("fileUploadArea");
+            fileInput = document.getElementById("fileInput");
+            fileName = document.getElementById("fileName");
+            loadingOverlay = document.getElementById("loadingOverlay");
+
+            if (!fileUploadArea || !fileInput) {
+                console.error("File upload elements not found");
+                return;
+            }
+
+            // Statistics elements
+            nodeCountEl = document.getElementById("nodeCount");
+            linkCountEl = document.getElementById("linkCount");
+            startNodesEl = document.getElementById("startNodes");
+            endNodesEl = document.getElementById("endNodes");
+
+            // List and container elements
+            nodeList = document.getElementById("nodeList");
+            graphContainer = document.getElementById("graphContainer");
+            linksLayer = document.getElementById("linksLayer");
+
+            // Button elements
+            toggleJsonViewerBtn =
+                document.getElementById("toggleJsonViewer");
+            closeJsonViewerBtn = document.getElementById("closeJsonViewer");
+            exportBtn = document.getElementById("exportBtn");
+            zoomInBtn = document.getElementById("zoomInBtn");
+            zoomOutBtn = document.getElementById("zoomOutBtn");
+            centerViewBtn = document.getElementById("centerViewBtn");
+            layoutBtn = document.getElementById("layoutBtn");
+
+            // Viewer elements
+            jsonViewer = document.getElementById("jsonViewer");
+            jsonContent = document.getElementById("jsonContent");
+            tooltip = document.getElementById("tooltip");
+
+            // File upload click handler
+            fileUploadArea.addEventListener("click", function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                fileInput.click();
+            });
+
+            // File input change handler
+            fileInput.addEventListener("change", function (e) {
+                if (e.target.files && e.target.files[0]) {
+                    handleFile(e.target.files[0]);
+                }
+                // Reset to allow selecting same file again
+                e.target.value = "";
+            });
+
+            // Drag and drop
+            fileUploadArea.addEventListener("dragover", (e) => {
+                e.preventDefault();
+                fileUploadArea.style.borderColor = "#4a9eff";
+                fileUploadArea.style.background = "#252525";
+            });
+
+            fileUploadArea.addEventListener("dragleave", () => {
+                fileUploadArea.style.borderColor = "#3a3a3a";
+                fileUploadArea.style.background = "#1f1f1f";
+            });
+
+            fileUploadArea.addEventListener("drop", (e) => {
+                e.preventDefault();
+                fileUploadArea.style.borderColor = "#3a3a3a";
+                fileUploadArea.style.background = "#1f1f1f";
+
+                if (e.dataTransfer.files.length) {
+                    handleFile(e.dataTransfer.files[0]);
+                }
+            });
+
+            // JSON viewer controls
+            if (toggleJsonViewerBtn) {
+                toggleJsonViewerBtn.addEventListener("click", () => {
+                    jsonViewer.classList.toggle("active");
+                });
+            }
+
+            if (closeJsonViewerBtn) {
+                closeJsonViewerBtn.addEventListener("click", () => {
+                    jsonViewer.classList.remove("active");
+                });
+            }
+
+            // Export button
+            if (exportBtn) {
+                exportBtn.addEventListener("click", exportModifiedState);
+            }
+
+            // Zoom controls - zoom toward center of viewport
+            if (zoomInBtn) {
+                zoomInBtn.addEventListener("click", () => {
+                    zoomTowardCenter(1.2);
+                });
+            }
+
+            if (zoomOutBtn) {
+                zoomOutBtn.addEventListener("click", () => {
+                    zoomTowardCenter(1 / 1.2);
+                });
+            }
+
+            if (centerViewBtn) {
+                centerViewBtn.addEventListener("click", centerView);
+            }
+
+            if (layoutBtn) {
+                layoutBtn.addEventListener("click", autoLayout);
+            }
+
+            // Graph container interactions - attach to visualization canvas for better UX
+            if (graphContainer) {
+                const visualizationCanvas = graphContainer.parentElement;
+
+                // Wheel zoom on the canvas
+                visualizationCanvas.addEventListener("wheel", handleZoom, {
+                    passive: false,
+                });
+
+                // Mouse drag on the canvas
+                visualizationCanvas.addEventListener(
+                    "mousedown",
+                    startDrag,
+                );
+            }
+
+            document.addEventListener("mousemove", handleDrag);
+            document.addEventListener("mouseup", stopDrag);
+
+            // Keyboard shortcuts for zoom
+            document.addEventListener("keydown", handleKeyboardZoom);
+        }
+
+        function handleFile(file) {
+            if (!file.name.toLowerCase().endsWith(".json")) {
+                alert("Please select a JSON file (.json extension)");
+                return;
+            }
+
+            // Update file name display
+            if (fileName) {
+                fileName.textContent = file.name;
+            }
+
+            // Show loading overlay
+            if (loadingOverlay) {
+                loadingOverlay.classList.add("active");
+            }
+
+            // Read file
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                try {
+                    const jsonData = JSON.parse(e.target.result);
+                    processStateFile(jsonData);
+                } catch (error) {
+                    alert("Error parsing JSON: " + error.message);
+                    if (loadingOverlay) {
+                        loadingOverlay.classList.remove("active");
+                    }
+                }
+            };
+
+            reader.onerror = function () {
+                alert("Error reading file");
+                if (loadingOverlay) {
+                    loadingOverlay.classList.remove("active");
+                }
+            };
+
+            reader.readAsText(file);
+        }
+
+        function processStateFile(stateData) {
+            currentState = stateData;
+
+            // Extract nodes and links
+            nodes = stateData.nodes || [];
+            links = stateData.links || [];
+
+            // Assign consistent index-based IDs (matching dag_editor approach)
+            // This ensures unique IDs even when multiple nodes have same nodeType
+            nodes.forEach((node, index) => {
+                // Use index-based ID for internal referencing (like dag_editor)
+                node._nodeIndex = index;
+                node._internalId = `node${index}`;
+
+                // Keep displayId for UI labels only
+                node.displayId = node.name || node.nodeName || node.nodeType || `Node ${index}`;
+            });
+
+            // Update statistics
+            updateStatistics();
+
+            // Render node list
+            renderNodeList();
+
+            // Render graph
+            renderGraph();
+
+            // Update JSON viewer
+            updateJsonViewer();
+
+            // Enable export button
+            if (exportBtn) {
+                exportBtn.disabled = false;
+            }
+
+            // Hide loading overlay
+            if (loadingOverlay) {
+                loadingOverlay.classList.remove("active");
+            }
+
+            // Center the view on the loaded graph
+            setTimeout(centerView, 100);
+        }
+
+        function updateStatistics() {
+            const startNodes = nodes.filter(
+                (n) =>
+                    n.type === "start" ||
+                    n.is_start ||
+                    n.nodeType === "Start",
+            ).length;
+            const endNodes = nodes.filter(
+                (n) => n.type === "end" || n.is_end || n.nodeType === "End",
+            ).length;
+
+            // Count different node types
+            const nodeTypes = {};
+            nodes.forEach((node) => {
+                const type = node.nodeType || node.type || "unknown";
+                nodeTypes[type] = (nodeTypes[type] || 0) + 1;
+            });
+
+            if (nodeCountEl) nodeCountEl.textContent = nodes.length;
+            if (linkCountEl) linkCountEl.textContent = links.length;
+            if (startNodesEl) startNodesEl.textContent = startNodes;
+            if (endNodesEl) endNodesEl.textContent = endNodes;
+        }
+
+        function renderNodeList() {
+            if (!nodeList) return;
+            nodeList.innerHTML = "";
+
+            nodes.forEach((node, index) => {
+                const nodeItem = document.createElement("div");
+                nodeItem.className = "node-item";
+                // Use consistent internal ID (index-based)
+                nodeItem.dataset.nodeId = node._internalId;
+
+                const nodeName = document.createElement("div");
+                nodeName.className = "node-name";
+                nodeName.textContent = node.displayId;
+
+                const nodeType = document.createElement("div");
+                nodeType.className = "node-type";
+                nodeType.textContent = node.nodeType || node.type || "unknown";
+
+                nodeItem.appendChild(nodeName);
+                nodeItem.appendChild(nodeType);
+
+                nodeItem.addEventListener("click", () => {
+                    selectNode(node._internalId);
+                });
+
+                nodeList.appendChild(nodeItem);
+            });
+
+            console.log(`Rendered ${nodes.length} nodes in node list`);
+        }
+
+        function renderGraph() {
+            // Clear existing graph
+            graphContainer.innerHTML = "";
+            graphContainer.appendChild(linksLayer);
+
+            // Reset links layer
+            linksLayer.innerHTML = `
+                <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                        <polygon points="0 0, 10 3.5, 0 7" fill="#4a9eff"/>
+                    </marker>
+                </defs>
+            `;
+
+            // Create nodes with initial positions
+            nodes.forEach((node, index) => {
+                const nodeEl = createNodeElement(node, index);
+                graphContainer.appendChild(nodeEl);
+            });
+
+            // Create links
+            links.forEach((link, index) => {
+                createLinkElement(link, index);
+            });
+
+            // Only auto layout if nodes don't have positions
+            const nodesWithPositions = nodes.filter((node) => {
+                return (
+                    (node.position &&
+                        node.position.x !== undefined &&
+                        node.position.y !== undefined) ||
+                    (node.metadata && node.metadata.position) ||
+                    (node.x !== undefined && node.y !== undefined)
+                );
+            });
+
+            if (nodesWithPositions.length === 0) {
+                console.log(
+                    "No nodes have positions, applying auto layout",
+                );
+                autoLayout();
+            } else {
+                console.log(
+                    `${nodesWithPositions.length}/${nodes.length} nodes have positions, skipping auto layout`,
+                );
+                // Update link positions based on existing node positions
+                updateLinkPositions();
+                centerView();
+            }
+        }
+
+        function createNodeElement(node, index) {
+            const nodeEl = document.createElement("div");
+            nodeEl.className = "node";
+            // Use consistent internal ID (index-based, matching dag_editor)
+            nodeEl.dataset.nodeId = node._internalId;
+
+            // Add type class based on node type
+            let nodeTypeClass = "action";
+            if (node.nodeType) {
+                nodeTypeClass = node.nodeType
+                    .toLowerCase()
+                    .replace(/[^a-z0-9]/g, "-");
+            } else if (node.type) {
+                nodeTypeClass = node.type;
+            }
+
+            // Add common type classes for known node types
+            if (
+                node.nodeType === "Start" ||
+                node.type === "start" ||
+                node.is_start
+            ) {
+                nodeEl.classList.add("node-start");
+            } else if (
+                node.nodeType === "End" ||
+                node.type === "end" ||
+                node.is_end
+            ) {
+                nodeEl.classList.add("node-end");
+            } else if (
+                node.nodeType === "Condition" ||
+                node.type === "condition"
+            ) {
+                nodeEl.classList.add("node-condition");
+            } else {
+                nodeEl.classList.add(`node-${nodeTypeClass}`);
+            }
+
+            // Set initial position - use existing position from JSON if available
+            let x, y;
+
+            // Check for position in various possible locations
+            if (
+                node.position &&
+                node.position.x !== undefined &&
+                node.position.y !== undefined
+            ) {
+                // Position in node.position object
+                x = node.position.x;
+                y = node.position.y;
+                console.log(
+                    `Using existing position for node ${node.id || index}: (${x}, ${y})`,
+                );
+            } else if (node.metadata && node.metadata.position) {
+                // Position in node.metadata.position
+                x = node.metadata.position.x;
+                y = node.metadata.position.y;
+                console.log(
+                    `Using metadata position for node ${node.id || index}: (${x}, ${y})`,
+                );
+            } else if (node.x !== undefined && node.y !== undefined) {
+                // Position as direct x, y properties
+                x = node.x;
+                y = node.y;
+                console.log(
+                    `Using direct x,y for node ${node.id || index}: (${x}, ${y})`,
+                );
+            } else {
+                // No position found, use grid layout
+                x = (index % 5) * 200 + 50;
+                y = Math.floor(index / 5) * 150 + 50;
+                console.log(
+                    `No position found for node ${node.id || index}, using grid: (${x}, ${y})`,
+                );
+            }
+
+            nodeEl.style.left = `${x}px`;
+            nodeEl.style.top = `${y}px`;
+
+            // Node header
+            const header = document.createElement("div");
+            header.className = "node-header";
+
+            const title = document.createElement("div");
+            title.className = "node-title";
+            title.textContent = node.displayId;
+
+            const idBadge = document.createElement("div");
+            idBadge.className = "node-id";
+            idBadge.textContent = node._internalId;
+
+            header.appendChild(title);
+            header.appendChild(idBadge);
+
+            // Node content
+            const content = document.createElement("div");
+            content.className = "node-content";
+
+            // Add properties based on node type
+            const properties = getNodeProperties(node);
+            properties.forEach((prop) => {
+                const propEl = document.createElement("div");
+                propEl.className = "node-property";
+
+                const label = document.createElement("span");
+                label.className = "node-property-label";
+                label.textContent = prop.label + ": ";
+
+                const value = document.createElement("span");
+                value.className = "node-property-value";
+                value.textContent = prop.value;
+
+                propEl.appendChild(label);
+                propEl.appendChild(value);
+                content.appendChild(propEl);
+            });
+
+            nodeEl.appendChild(header);
+            nodeEl.appendChild(content);
+
+            // Add event listeners
+            nodeEl.addEventListener("mousedown", startNodeDrag);
+            nodeEl.addEventListener("click", (e) => {
+                e.stopPropagation();
+                selectNode(node._internalId);
+            });
+
+            nodeEl.addEventListener("mouseenter", (e) => {
+                showTooltip(e, getNodeTooltipContent(node));
+            });
+
+            nodeEl.addEventListener("mouseleave", () => {
+                hideTooltip();
+            });
+
+            return nodeEl;
+        }
+
+        function getNodeProperties(node) {
+            const properties = [];
+
+            // XInjector-specific properties (most common first)
+            if (node.mapName)
+                properties.push({ label: "Map", value: node.mapName });
+            if (node.waitTime !== undefined)
+                properties.push({ label: "Wait", value: `${node.waitTime}ms` });
+            if (node.point)
+                properties.push({ label: "Point", value: `(${node.point.x}, ${node.point.y})` });
+            if (node.enemyID !== undefined)
+                properties.push({ label: "Enemy ID", value: node.enemyID });
+            if (node.enemyList && node.enemyList.length > 0)
+                properties.push({ label: "Enemies", value: node.enemyList.join(", ") });
+            if (node.portalID !== undefined)
+                properties.push({ label: "Portal ID", value: node.portalID });
+            if (node.beaconDistance !== undefined)
+                properties.push({ label: "Beacon Dist", value: node.beaconDistance });
+            if (node.nodeName)
+                properties.push({ label: "Name", value: node.nodeName });
+
+            // Common properties
+            if (node.type)
+                properties.push({ label: "Type", value: node.type });
+            if (node.description)
+                properties.push({
+                    label: "Description",
+                    value: node.description,
+                });
+
+            // Condition-specific properties
+            if (node.condition) {
+                if (typeof node.condition === "object") {
+                    properties.push({
+                        label: "Condition",
+                        value:
+                            JSON.stringify(node.condition).substring(
+                                0,
+                                30,
+                            ) + "...",
+                    });
+                } else {
+                    properties.push({
+                        label: "Condition",
+                        value: String(node.condition),
+                    });
+                }
+            }
+
+            // Action-specific properties
+            if (node.action)
+                properties.push({ label: "Action", value: node.action });
+            if (node.target)
+                properties.push({ label: "Target", value: node.target });
+            if (node.value !== undefined)
+                properties.push({
+                    label: "Value",
+                    value: String(node.value),
+                });
+
+            // XInjector specific properties
+            if (node.mapName)
+                properties.push({ label: "Map Name", value: node.mapName });
+            if (node.waitTime !== undefined)
+                properties.push({
+                    label: "Wait Time",
+                    value: String(node.waitTime),
+                });
+            if (node.x !== undefined && node.y !== undefined)
+                properties.push({
+                    label: "Position",
+                    value: `(${node.x}, ${node.y})`,
+                });
+            if (node.position)
+                properties.push({
+                    label: "Position",
+                    value: `(${node.position.x}, ${node.position.y})`,
+                });
+
+            // Pin information
+            if (node.inPins && node.inPins.length > 0) {
+                properties.push({
+                    label: "Input Pins",
+                    value: String(node.inPins.length),
+                });
+            }
+            if (node.outPins && node.outPins.length > 0) {
+                properties.push({
+                    label: "Output Pins",
+                    value: String(node.outPins.length),
+                });
+            }
+
+            // State machine properties
+            if (node.is_start)
+                properties.push({ label: "Start", value: "Yes" });
+            if (node.is_end)
+                properties.push({ label: "End", value: "Yes" });
+
+            return properties;
+        }
+
+        function getNodeTooltipContent(node) {
+            let content = `<strong>${node.nodeName || node.name || node.nodeType || "Unnamed Node"}</strong><br>`;
+            content += `Type: ${node.nodeType || node.type || "unknown"}<br>`;
+            content += `Index: ${node._internalId || "N/A"}<br>`;
+
+            // XInjector-specific properties
+            if (node.mapName) {
+                content += `Map: ${node.mapName}<br>`;
+            }
+            if (node.waitTime !== undefined) {
+                content += `Wait: ${node.waitTime}ms<br>`;
+            }
+            if (node.point) {
+                content += `Point: (${node.point.x}, ${node.point.y})<br>`;
+            }
+            if (node.enemyID !== undefined) {
+                content += `Enemy ID: ${node.enemyID}<br>`;
+            }
+            if (node.enemyList && node.enemyList.length > 0) {
+                content += `Enemies: ${node.enemyList.slice(0, 3).join(", ")}${node.enemyList.length > 3 ? "..." : ""}<br>`;
+            }
+            if (node.portalID !== undefined) {
+                content += `Portal ID: ${node.portalID}<br>`;
+            }
+            if (node.beaconDistance !== undefined) {
+                content += `Beacon Distance: ${node.beaconDistance}<br>`;
+            }
+
+            // Pin info
+            const inCount = node.inPins ? node.inPins.length : 0;
+            const outCount = node.outPins ? node.outPins.length : 0;
+            if (inCount > 0 || outCount > 0) {
+                content += `Pins: ${inCount} in, ${outCount} out<br>`;
+            }
+
+            if (node.description) {
+                content += `Description: ${node.description}<br>`;
+            }
+
+            return content;
+        }
+
+        function createLinkElement(link, index) {
+            const svgNS = "http://www.w3.org/2000/svg";
+            const line = document.createElementNS(svgNS, "line");
+            line.className.baseVal = "link-line";
+            line.dataset.linkId = index;
+
+            // Set initial positions (will be updated when nodes are positioned)
+            line.setAttribute("x1", "0");
+            line.setAttribute("y1", "0");
+            line.setAttribute("x2", "100");
+            line.setAttribute("y2", "100");
+            line.setAttribute("marker-end", "url(#arrowhead)");
+
+            line.addEventListener("click", (e) => {
+                e.stopPropagation();
+                selectLink(index);
+            });
+
+            linksLayer.appendChild(line);
+            return line;
+        }
+
+        function updateLinkPositions() {
+            // Build comprehensive pin-to-node mapping FIRST
+            // Use _internalId (index-based) for consistent DOM element lookup
+            const pinToNode = {};
+
+            nodes.forEach((node, idx) => {
+                // Use the internal ID that matches the DOM element's data-node-id
+                const nodeId = node._internalId;
+
+                // Map ALL input pins to their node
+                if (node.inPins) {
+                    node.inPins.forEach((pin) => {
+                        pinToNode[String(pin.id)] = { node, nodeId };
+                    });
+                }
+                // Map ALL output pins to their node
+                if (node.outPins) {
+                    node.outPins.forEach((pin) => {
+                        pinToNode[String(pin.id)] = { node, nodeId };
+                    });
+                }
+            });
+
+            const linkElements = linksLayer.querySelectorAll(".link-line");
+
+            linkElements.forEach((linkEl, index) => {
+                const link = links[index];
+                if (!link) return;
+
+                // Handle different link formats
+                let sourcePinId, targetPinId;
+
+                if (
+                    link.leftPinID !== undefined &&
+                    link.rightPinID !== undefined
+                ) {
+                    // XInjector format: leftPinID = downstream INPUT pin, rightPinID = upstream OUTPUT pin
+                    // Arrow should go from upstream (right) to downstream (left)
+                    targetPinId = String(link.leftPinID); // Downstream INPUT pin
+                    sourcePinId = String(link.rightPinID); // Upstream OUTPUT pin
+                } else if (
+                    link.source !== undefined &&
+                    link.target !== undefined
+                ) {
+                    // Standard format: source -> target
+                    sourcePinId = String(link.source);
+                    targetPinId = String(link.target);
+                } else if (
+                    link.from !== undefined &&
+                    link.to !== undefined
+                ) {
+                    // Alternative format: from -> to
+                    sourcePinId = String(link.from);
+                    targetPinId = String(link.to);
+                } else {
+                    return; // Unknown format
+                }
+
+                // Lookup nodes using the pre-built mapping
+                const sourceInfo = pinToNode[sourcePinId];
+                const targetInfo = pinToNode[targetPinId];
+
+                if (!sourceInfo || !targetInfo) {
+                    // Fallback: try direct node ID matching using _internalId
+                    const sourceNode = nodes.find(
+                        (n) => String(n.id) === sourcePinId,
+                    );
+                    const targetNode = nodes.find(
+                        (n) => String(n.id) === targetPinId,
+                    );
+
+                    if (!sourceNode || !targetNode) return;
+
+                    // Use _internalId for DOM lookup
+                    const sourceEl = document.querySelector(
+                        `.node[data-node-id="${sourceNode._internalId}"]`,
+                    );
+                    const targetEl = document.querySelector(
+                        `.node[data-node-id="${targetNode._internalId}"]`,
+                    );
+
+                    if (sourceEl && targetEl) {
+                        drawLinkBetweenElements(
+                            linkEl,
+                            sourceEl,
+                            targetEl,
+                        );
+                    }
+                    return;
+                }
+
+                // Get DOM elements using the nodeIds from the mapping
+                const sourceEl = document.querySelector(
+                    `.node[data-node-id="${sourceInfo.nodeId}"]`,
+                );
+                const targetEl = document.querySelector(
+                    `.node[data-node-id="${targetInfo.nodeId}"]`,
+                );
+
+                if (!sourceEl || !targetEl) return;
+
+                drawLinkBetweenElements(linkEl, sourceEl, targetEl);
+            });
+        }
+
+        function drawLinkBetweenElements(linkEl, sourceEl, targetEl) {
+            // Use node style positions directly (in graph coordinates)
+            // This works because the SVG is inside the same transformed container
+            const sourceX = parseFloat(sourceEl.style.left) || 0;
+            const sourceY = parseFloat(sourceEl.style.top) || 0;
+            const sourceWidth = sourceEl.offsetWidth || 120;
+            const sourceHeight = sourceEl.offsetHeight || 80;
+
+            const targetX = parseFloat(targetEl.style.left) || 0;
+            const targetY = parseFloat(targetEl.style.top) || 0;
+            const targetWidth = targetEl.offsetWidth || 120;
+            const targetHeight = targetEl.offsetHeight || 80;
+
+            // Calculate center points of each node
+            const sourceCenterX = sourceX + sourceWidth / 2;
+            const sourceCenterY = sourceY + sourceHeight / 2;
+            const targetCenterX = targetX + targetWidth / 2;
+            const targetCenterY = targetY + targetHeight / 2;
+
+            // Determine connection points based on relative positions
+            let x1, y1, x2, y2;
+
+            const dx = targetCenterX - sourceCenterX;
+            const dy = targetCenterY - sourceCenterY;
+
+            // Determine if horizontal or vertical connection is more appropriate
+            if (Math.abs(dx) > Math.abs(dy)) {
+                // Horizontal connection (left/right)
+                if (dx > 0) {
+                    // Target is to the right of source
+                    x1 = sourceX + sourceWidth; // Right edge of source
+                    x2 = targetX; // Left edge of target
+                } else {
+                    // Target is to the left of source
+                    x1 = sourceX; // Left edge of source
+                    x2 = targetX + targetWidth; // Right edge of target
+                }
+                y1 = sourceCenterY;
+                y2 = targetCenterY;
+            } else {
+                // Vertical connection (top/bottom)
+                if (dy > 0) {
+                    // Target is below source
+                    y1 = sourceY + sourceHeight; // Bottom edge of source
+                    y2 = targetY; // Top edge of target
+                } else {
+                    // Target is above source
+                    y1 = sourceY; // Top edge of source
+                    y2 = targetY + targetHeight; // Bottom edge of target
+                }
+                x1 = sourceCenterX;
+                x2 = targetCenterX;
+            }
+
+            linkEl.setAttribute("x1", x1);
+            linkEl.setAttribute("y1", y1);
+            linkEl.setAttribute("x2", x2);
+            linkEl.setAttribute("y2", y2);
+        }
+
+        function selectNode(nodeId) {
+            // Deselect previous node
+            if (selectedNode !== null) {
+                const prevNodeEl = document.querySelector(
+                    `.node[data-node-id="${selectedNode}"]`,
+                );
+                if (prevNodeEl) prevNodeEl.classList.remove("selected");
+
+                const prevNodeItem = document.querySelector(
+                    `.node-item[data-node-id="${selectedNode}"]`,
+                );
+                if (prevNodeItem) prevNodeItem.classList.remove("active");
+            }
+
+            // Select new node
+            selectedNode = nodeId;
+            const nodeEl = document.querySelector(
+                `.node[data-node-id="${nodeId}"]`,
+            );
+            const nodeItem = document.querySelector(
+                `.node-item[data-node-id="${nodeId}"]`,
+            );
+
+            if (nodeEl) nodeEl.classList.add("selected");
+            if (nodeItem) nodeItem.classList.add("active");
+
+            // Update JSON viewer with node details
+            // Use _internalId for consistent lookup
+            const node = nodes.find(
+                (n) => n._internalId === nodeId,
+            );
+            if (node) {
+                updateJsonViewer(node);
+            }
+        }
+
+        function selectLink(linkId) {
+            // Deselect previous link
+            if (selectedLink !== null) {
+                const prevLinkEl = linksLayer.querySelector(
+                    `.link-line[data-link-id="${selectedLink}"]`,
+                );
+                if (prevLinkEl) prevLinkEl.classList.remove("selected");
+            }
+
+            // Select new link
+            selectedLink = linkId;
+            const linkEl = linksLayer.querySelector(
+                `.link-line[data-link-id="${linkId}"]`,
+            );
+            if (linkEl) linkEl.classList.add("selected");
+
+            // Update JSON viewer with link details
+            const link = links[linkId];
+            if (link) {
+                updateJsonViewer(link);
+            }
+        }
+
+        function startNodeDrag(e) {
+            e.stopPropagation();
+            e.preventDefault();
+            const nodeEl = e.currentTarget;
+            const nodeId = nodeEl.dataset.nodeId;
+
+            const startX = e.clientX;
+            const startY = e.clientY;
+            const startLeft = parseInt(nodeEl.style.left) || 0;
+            const startTop = parseInt(nodeEl.style.top) || 0;
+
+            // Store current zoom level at drag start
+            const dragZoomLevel = zoomLevel;
+
+            function onMouseMove(e) {
+                // Adjust movement by zoom level so node follows cursor correctly
+                const dx = (e.clientX - startX) / dragZoomLevel;
+                const dy = (e.clientY - startY) / dragZoomLevel;
+
+                nodeEl.style.left = `${startLeft + dx}px`;
+                nodeEl.style.top = `${startTop + dy}px`;
+
+                updateLinkPositions();
+            }
+
+            function onMouseUp() {
+                document.removeEventListener("mousemove", onMouseMove);
+                document.removeEventListener("mouseup", onMouseUp);
+            }
+
+            document.addEventListener("mousemove", onMouseMove);
+            document.addEventListener("mouseup", onMouseUp);
+        }
+
+        function handleZoom(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            // Get the visualization canvas (parent of graph container)
+            const canvas = graphContainer.parentElement;
+            const rect = canvas.getBoundingClientRect();
+
+            // Mouse position relative to the canvas
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+
+            // Calculate zoom delta
+            const delta = e.deltaY > 0 ? 0.9 : 1.1;
+
+            // Zoom toward the mouse position
+            zoomTowardPoint(mouseX, mouseY, delta);
+        }
+
+        function zoomTowardPoint(pointX, pointY, zoomDelta) {
+            // Point position in graph coordinates (before zoom)
+            const graphPointX = (pointX - graphOffset.x) / zoomLevel;
+            const graphPointY = (pointY - graphOffset.y) / zoomLevel;
+
+            // Calculate new zoom level
+            const newZoomLevel = Math.max(
+                0.1,
+                Math.min(5, zoomLevel * zoomDelta),
+            );
+
+            // Adjust offset so the point stays in place
+            graphOffset.x = pointX - graphPointX * newZoomLevel;
+            graphOffset.y = pointY - graphPointY * newZoomLevel;
+
+            zoomLevel = newZoomLevel;
+            updateGraphTransform();
+        }
+
+        function zoomTowardCenter(zoomDelta) {
+            // Get the visualization canvas center
+            const canvas = graphContainer.parentElement;
+            const centerX = canvas.clientWidth / 2;
+            const centerY = canvas.clientHeight / 2;
+
+            zoomTowardPoint(centerX, centerY, zoomDelta);
+        }
+
+        function handleKeyboardZoom(e) {
+            // Only handle if not typing in an input field
+            if (
+                e.target.tagName === "INPUT" ||
+                e.target.tagName === "TEXTAREA"
+            ) {
+                return;
+            }
+
+            switch (e.key) {
+                case "+":
+                case "=":
+                    e.preventDefault();
+                    zoomTowardCenter(1.2);
+                    break;
+                case "-":
+                case "_":
+                    e.preventDefault();
+                    zoomTowardCenter(1 / 1.2);
+                    break;
+                case "0":
+                    e.preventDefault();
+                    // Reset zoom to 100% and center
+                    zoomLevel = 1;
+                    centerView();
+                    break;
+                case "f":
+                case "F":
+                    e.preventDefault();
+                    // Fit all nodes in view
+                    centerView();
+                    break;
+            }
+        }
+
+        function startDrag(e) {
+            // Don't start canvas drag if clicking on a node
+            if (e.target.closest(".node")) return;
+
+            isDragging = true;
+            dragStart.x = e.clientX - graphOffset.x;
+            dragStart.y = e.clientY - graphOffset.y;
+
+            // Update cursor on the canvas
+            const canvas = graphContainer.parentElement;
+            canvas.style.cursor = "grabbing";
+        }
+
+        function handleDrag(e) {
+            if (!isDragging) return;
+
+            graphOffset.x = e.clientX - dragStart.x;
+            graphOffset.y = e.clientY - dragStart.y;
+            updateGraphTransform();
+        }
+
+        function stopDrag() {
+            if (!isDragging) return;
+
+            isDragging = false;
+
+            // Reset cursor on the canvas
+            const canvas = graphContainer.parentElement;
+            if (canvas) {
+                canvas.style.cursor = "grab";
+            }
+        }
+
+        function updateGraphTransform() {
+            graphContainer.style.transform = `translate(${graphOffset.x}px, ${graphOffset.y}px) scale(${zoomLevel})`;
+
+            // Update zoom indicator
+            const zoomIndicator = document.getElementById("zoomIndicator");
+            if (zoomIndicator) {
+                zoomIndicator.textContent = `${Math.round(zoomLevel * 100)}%`;
+            }
+        }
+
+        function centerView() {
+            // Calculate bounds of all nodes using their actual positions (not transformed)
+            let minX = Infinity,
+                maxX = -Infinity;
+            let minY = Infinity,
+                maxY = -Infinity;
+
+            const nodeElements = graphContainer.querySelectorAll(".node");
+
+            if (nodeElements.length === 0) return;
+
+            nodeElements.forEach((nodeEl) => {
+                // Get the node's position from its style (these are the actual graph coordinates)
+                const x = parseFloat(nodeEl.style.left) || 0;
+                const y = parseFloat(nodeEl.style.top) || 0;
+                const width = nodeEl.offsetWidth || 120;
+                const height = nodeEl.offsetHeight || 80;
+
+                minX = Math.min(minX, x);
+                maxX = Math.max(maxX, x + width);
+                minY = Math.min(minY, y);
+                maxY = Math.max(maxY, y + height);
+            });
+
+            // Calculate the center of all nodes in graph coordinates
+            const graphCenterX = (minX + maxX) / 2;
+            const graphCenterY = (minY + maxY) / 2;
+
+            // Get the canvas (parent of graph container) dimensions
+            const canvas = graphContainer.parentElement;
+            const canvasWidth = canvas.clientWidth;
+            const canvasHeight = canvas.clientHeight;
+
+            // Calculate zoom level to fit all nodes with some padding
+            const graphWidth = maxX - minX + 100; // Add padding
+            const graphHeight = maxY - minY + 100;
+            const fitZoomX = canvasWidth / graphWidth;
+            const fitZoomY = canvasHeight / graphHeight;
+            const fitZoom = Math.min(fitZoomX, fitZoomY, 1.5); // Cap at 1.5x zoom
+
+            // Set zoom level to fit, but don't zoom in too much
+            zoomLevel = Math.max(0.3, Math.min(fitZoom, 1.0));
+
+            // Calculate offset to center the graph in the canvas
+            graphOffset.x = canvasWidth / 2 - graphCenterX * zoomLevel;
+            graphOffset.y = canvasHeight / 2 - graphCenterY * zoomLevel;
+
+            updateGraphTransform();
+        }
+
+        function autoLayout() {
+            console.log("=== AUTO LAYOUT STARTED ===");
+            console.log("Nodes:", nodes.length, "Links:", links.length);
+
+            // Step 1: Build pin-to-node mapping (matching dag_editor approach)
+            const pinToNodeId = {};
+            nodes.forEach((node) => {
+                if (node.inPins) {
+                    node.inPins.forEach((pin) => {
+                        pinToNodeId[String(pin.id)] = node._internalId;
+                    });
+                }
+                if (node.outPins) {
+                    node.outPins.forEach((pin) => {
+                        pinToNodeId[String(pin.id)] = node._internalId;
+                    });
+                }
+            });
+
+            // Step 2: Build adjacency using _internalId
+            const adjacency = {};
+            const reverseAdjacency = {};
+
+            // Initialize adjacency lists for all nodes
+            nodes.forEach((node) => {
+                adjacency[node._internalId] = [];
+                reverseAdjacency[node._internalId] = [];
+            });
+
+            // Build adjacency from links using pin mapping
+            links.forEach((link) => {
+                let sourcePinId, targetPinId;
+
+                if (
+                    link.leftPinID !== undefined &&
+                    link.rightPinID !== undefined
+                ) {
+                    // XInjector format: rightPinID (output) -> leftPinID (input)
+                    sourcePinId = String(link.rightPinID);
+                    targetPinId = String(link.leftPinID);
+                } else if (
+                    link.source !== undefined &&
+                    link.target !== undefined
+                ) {
+                    sourcePinId = String(link.source);
+                    targetPinId = String(link.target);
+                } else if (
+                    link.from !== undefined &&
+                    link.to !== undefined
+                ) {
+                    sourcePinId = String(link.from);
+                    targetPinId = String(link.to);
+                } else {
+                    return;
+                }
+
+                // Convert pin IDs to node internal IDs
+                const sourceNodeId = pinToNodeId[sourcePinId];
+                const targetNodeId = pinToNodeId[targetPinId];
+
+                if (sourceNodeId && targetNodeId && sourceNodeId !== targetNodeId) {
+                    adjacency[sourceNodeId].push(targetNodeId);
+                    reverseAdjacency[targetNodeId].push(sourceNodeId);
+                }
+            });
+
+            // Step 3: Find start nodes (no incoming edges or marked as start)
+            const startNodesList = nodes.filter((node) => {
+                const isStartNode =
+                    node.nodeType === "Start" ||
+                    node.type === "Start" ||
+                    node.is_start === true;
+
+                return isStartNode || reverseAdjacency[node._internalId].length === 0;
+            });
+
+            console.log("Start nodes found:", startNodesList.length);
+
+            // Step 4: Assign levels using BFS
+            const nodeLevels = {};
+            const visited = new Set();
+            const queue = [];
+
+            // Initialize BFS from start nodes
+            startNodesList.forEach((startNode) => {
+                if (!visited.has(startNode._internalId)) {
+                    nodeLevels[startNode._internalId] = 0;
+                    visited.add(startNode._internalId);
+                    queue.push({ id: startNode._internalId, level: 0 });
+                }
+            });
+
+            // Add unvisited nodes (disconnected components)
+            nodes.forEach((node) => {
+                if (!visited.has(node._internalId)) {
+                    nodeLevels[node._internalId] = 0;
+                    visited.add(node._internalId);
+                    queue.push({ id: node._internalId, level: 0 });
+                }
+            });
+
+            // BFS to assign levels
+            while (queue.length > 0) {
+                const current = queue.shift();
+                const currentId = current.id;
+                const currentLevel = current.level;
+
+                if (adjacency[currentId]) {
+                    adjacency[currentId].forEach((neighborId) => {
+                        const newLevel = currentLevel + 1;
+                        if (!nodeLevels[neighborId] || nodeLevels[neighborId] < newLevel) {
+                            nodeLevels[neighborId] = newLevel;
+                        }
+                        if (!visited.has(neighborId)) {
+                            visited.add(neighborId);
+                            queue.push({ id: neighborId, level: newLevel });
+                        }
+                    });
+                }
+            }
+
+            // Step 5: Group nodes by level
+            const nodesByLevel = {};
+            let maxLevel = 0;
+
+            nodes.forEach((node) => {
+                const level = nodeLevels[node._internalId] || 0;
+                maxLevel = Math.max(maxLevel, level);
+
+                if (!nodesByLevel[level]) {
+                    nodesByLevel[level] = [];
+                }
+                nodesByLevel[level].push(node);
+            });
+
+            console.log("Max level:", maxLevel);
+
+            // Step 6: Position nodes hierarchically
+            const levelWidth = 300;
+            const nodeHeight = 120;
+            const startY = 50;
+
+            Object.keys(nodesByLevel).forEach((level) => {
+                const levelNodes = nodesByLevel[level];
+                const levelInt = parseInt(level);
+                const x = 50 + levelInt * levelWidth;
+
+                const totalHeight = levelNodes.length * nodeHeight;
+                const startYLevel = startY + (800 - totalHeight) / 2;
+
+                levelNodes.forEach((node, index) => {
+                    const y = startYLevel + index * nodeHeight;
+
+                    // Apply position to DOM element using _internalId
+                    const nodeEl = document.querySelector(
+                        `.node[data-node-id="${node._internalId}"]`,
+                    );
+                    if (nodeEl) {
+                        nodeEl.style.left = `${x}px`;
+                        nodeEl.style.top = `${y}px`;
+                    }
+                });
+            });
+
+            // Special handling for Map Change nodes - make them more prominent
+            nodes.forEach((node) => {
+                const nodeType = node.nodeType || node.type || "unknown";
+
+                if (
+                    nodeType.toLowerCase().includes("map") ||
+                    nodeType.toLowerCase().includes("change")
+                ) {
+                    const nodeEl = document.querySelector(
+                        `.node[data-node-id="${node._internalId}"]`,
+                    );
+                    if (nodeEl) {
+                        // Make map change nodes larger and with different color
+                        nodeEl.style.width = "140px";
+                        nodeEl.style.height = "100px";
+                        nodeEl.style.background =
+                            "linear-gradient(135deg, #2d5a27 0%, #3a7a32 100%)";
+                        nodeEl.style.borderColor = "#4caf50";
+                        nodeEl.style.boxShadow =
+                            "0 4px 12px rgba(76, 175, 80, 0.3)";
+                    }
+                }
+            });
+
+            // Update link positions after layout
+            updateLinkPositions();
+        }
+
+        function updateJsonViewer(data = null) {
+            let content = "";
+
+            if (data) {
+                // Show specific node/link data
+                content = JSON.stringify(data, null, 2);
+            } else {
+                // Show full state data
+                content = JSON.stringify(currentState, null, 2);
+            }
+
+            // Syntax highlighting (basic)
+            content = content.replace(
+                /("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g,
+                function (match) {
+                    let cls = "number";
+                    if (/^"/.test(match)) {
+                        if (/:$/.test(match)) {
+                            cls = "key";
+                        } else {
+                            cls = "string";
+                        }
+                    } else if (/true|false/.test(match)) {
+                        cls = "boolean";
+                    } else if (/null/.test(match)) {
+                        cls = "null";
+                    }
+                    return '<span class="' + cls + '">' + match + "</span>";
+                },
+            );
+
+            jsonContent.innerHTML = content;
+
+            // Add basic styling for syntax highlighting
+            if (!document.querySelector("#json-highlight-style")) {
+                const style = document.createElement("style");
+                style.id = "json-highlight-style";
+                style.textContent = `
+                .json-viewer-content .string { color: #4caf50; }
+                .json-viewer-content .number { color: #2196f3; }
+                .json-viewer-content .boolean { color: #ff9800; }
+                .json-viewer-content .null { color: #9c27b0; }
+                .json-viewer-content .key { color: #e91e63; }
+            `;
+                document.head.appendChild(style);
+            }
+        }
+
+        function exportModifiedState() {
+            if (!currentState) return;
+
+            // Create modified state with current node positions
+            const modifiedState = JSON.parse(JSON.stringify(currentState));
+
+            // Update node positions in the state
+            const nodeElements = graphContainer.querySelectorAll(".node");
+            nodeElements.forEach((nodeEl) => {
+                const internalId = nodeEl.dataset.nodeId;
+                // Extract index from internal ID (format: "node0", "node1", etc.)
+                const indexMatch = internalId.match(/^node(\d+)$/);
+                if (!indexMatch) return;
+
+                const nodeIndex = parseInt(indexMatch[1], 10);
+                const node = modifiedState.nodes[nodeIndex];
+
+                if (node) {
+                    // Update position directly (matching XInjector format)
+                    node.position = {
+                        x: parseInt(nodeEl.style.left) || 0,
+                        y: parseInt(nodeEl.style.top) || 0,
+                    };
+                }
+            });
+
+            // Create download
+            const dataStr = JSON.stringify(modifiedState, null, 2);
+            const dataUri =
+                "data:application/json;charset=utf-8," +
+                encodeURIComponent(dataStr);
+
+            const exportFileDefaultName = `state_visualized_${Date.now()}.json`;
+
+            const linkElement = document.createElement("a");
+            linkElement.setAttribute("href", dataUri);
+            linkElement.setAttribute("download", exportFileDefaultName);
+            linkElement.click();
+        }
+
+        function showTooltip(event, content) {
+            tooltip.innerHTML = content;
+            tooltip.style.display = "block";
+
+            const x = event.clientX + 10;
+            const y = event.clientY + 10;
+
+            tooltip.style.left = `${x}px`;
+            tooltip.style.top = `${y}px`;
+        }
+
+        function hideTooltip() {
+            tooltip.style.display = "none";
+        }
+
+        // Initialize on DOMContentLoaded
+        document.addEventListener("DOMContentLoaded", function () {
+            setupEventListeners();
+
+            // Check for testfile query param (from test_visualizer.html)
+            const urlParams = new URLSearchParams(window.location.search);
+            const testFile = urlParams.get("testfile");
+            if (testFile) {
+                loadTestFile(testFile);
+            }
+        });
+
+        // Load test file from exports directory
+        async function loadTestFile(filename) {
+            try {
+                // Show loading state
+                if (loadingOverlay) {
+                    loadingOverlay.classList.add("active");
+                }
+
+                // Fetch from exports directory via server
+                const response = await fetch(`/exports/${filename}`);
+                if (!response.ok) {
+                    throw new Error(`Failed to load ${filename}: ${response.statusText}`);
+                }
+
+                const stateData = await response.json();
+                console.log(`Loaded test file: ${filename}`, stateData);
+
+                // Process the loaded state
+                processStateFile(stateData);
+
+            } catch (error) {
+                console.error("Error loading test file:", error);
+                alert(`Failed to load test file: ${error.message}\n\nPlease use the file upload instead.`);
+
+                if (loadingOverlay) {
+                    loadingOverlay.classList.remove("active");
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
