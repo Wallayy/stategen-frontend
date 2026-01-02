@@ -1068,7 +1068,8 @@
     <div id="toast" class="toast"></div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="map_config.js"></script>
+    <script src="static/js/config.js"></script>
+    <script src="static/js/map_config.js"></script>
     <script>
         const TIER_COLORS = {
             'Rookie': '#27ae60',
@@ -1138,7 +1139,7 @@
 
         async function loadLootIndex() {
             try {
-                const response = await fetch('/api/loot-data?v=' + Date.now());
+                const response = await fetch(CONFIG.DATA_BASE + '/loot_index.json?v=' + Date.now());
                 const data = await response.json();
                 state.lootIndex = data;
             } catch (e) {
@@ -1149,7 +1150,7 @@
 
         async function loadBiomeWhites() {
             try {
-                const response = await fetch('/api/biome-whites?v=' + Date.now());
+                const response = await fetch(CONFIG.DATA_BASE + '/biome_whites.json?v=' + Date.now());
                 const data = await response.json();
                 // Convert list to map for easy lookup
                 state.biomeWhites = {};
@@ -1170,7 +1171,7 @@
 
         async function loadBiomeData() {
             try {
-                const response = await fetch('/api/biomes-complete?v=' + Date.now());
+                const response = await fetch(CONFIG.DATA_BASE + '/biomes_complete.json?v=' + Date.now());
                 const data = await response.json();
                 for (const [key, value] of Object.entries(data)) {
                     if (!key.startsWith('_')) {
@@ -1184,13 +1185,13 @@
 
         async function loadDungeons() {
             try {
-                const response = await fetch('/api/dungeons?v=' + Date.now());
+                const response = await fetch(CONFIG.DATA_BASE + '/dungeons_index.json?v=' + Date.now());
                 const data = await response.json();
                 // Handle wrapped {dungeons: ...} or raw {...} for robustness
                 state.dungeons = data.dungeons || data;
 
                 // Initialize entity search check
-                const entityRes = await fetch('/api/entities/search?q=test&limit=1');
+                const entityRes = await fetch(CONFIG.API_BASE + '/api/entities/search?q=test&limit=1');
                 const entityData = await entityRes.json();
                 if (!entityData.error) {
                     document.getElementById('entity-count').textContent = 'Ready';
@@ -1921,7 +1922,7 @@
 
                 state.searchTimeout = setTimeout(async () => {
                     try {
-                        const res = await fetch(`/api/entities/search?q=${encodeURIComponent(query)}&limit=15`);
+                        const res = await fetch(CONFIG.API_BASE + `/api/entities/search?q=${encodeURIComponent(query)}&limit=15`);
                         const data = await res.json();
                         if (data.results && data.results.length > 0) {
                             resultsDiv.innerHTML = data.results.map(e => `
@@ -2510,7 +2511,7 @@
             if (errors.length > 0) { alert(errors.join('\n')); return; }
 
             try {
-                const response = await fetch('/api/generate-state', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(config) });
+                const response = await fetch(CONFIG.API_BASE + '/api/generate-state', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(config) });
                 const result = await response.json();
                 if (result.error) { alert(result.error); return; }
                 document.getElementById('modal-title').textContent = `${result.node_count} nodes, ${result.link_count} links`;
@@ -2546,9 +2547,9 @@
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
 
-            // Also save to server exports folder as backup
+            // Also save to server exports folder as backup (optional, may fail on static hosting)
             try {
-                const res = await fetch('/api/save-state', {
+                const res = await fetch(CONFIG.API_BASE + '/api/save-state', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ filename, content: JSON.parse(content) })
