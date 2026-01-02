@@ -3,11 +3,11 @@
  * Update API_BASE to your Railway URL after deployment
  */
 const CONFIG = {
-    // Production: Your Railway API URL
-    // API_BASE: 'https://your-app.up.railway.app',
+    // Production:  Railway API URL
+    API_BASE: 'https://stategenui-production.up.railway.app/',
 
     // Development: Local server
-    API_BASE: 'http://localhost:8080',
+    //API_BASE: 'http://localhost:8080',
 
     // Static data paths (served from GitHub Pages)
     DATA_BASE: '/data',
