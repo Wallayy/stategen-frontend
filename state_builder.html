@@ -686,13 +686,13 @@
         // Helper to generate sprite filename from encounter name
         function getEncounterSpriteUrl(encounterId, name) {
             const safeName = name.replace(/'/g, '').replace(/ /g, '_').toLowerCase();
-            return `/data/sprites/encounters/${encounterId}_${safeName}.png`;
+            return API_BASE + `/data/sprites/encounters/${encounterId}_${safeName}.png`;
         }
 
         // Try multiple IDs for sprite loading - returns data attributes for onerror fallback
         function getEncounterSpriteWithFallback(allIds, name) {
             const safeName = name.replace(/'/g, '').replace(/ /g, '_').toLowerCase();
-            const primaryUrl = `/data/sprites/encounters/${allIds[0]}_${safeName}.png`;
+            const primaryUrl = API_BASE + `/data/sprites/encounters/${allIds[0]}_${safeName}.png`;
             const fallbackIds = allIds.slice(1).join(',');
             return {
                 url: primaryUrl,
@@ -709,7 +709,7 @@
                 const ids = fallbackIds.split(',');
                 const nextId = ids.shift();
                 img.dataset.fallbackIds = ids.join(',');
-                img.src = `/data/sprites/encounters/${nextId}_${safeName}.png`;
+                img.src = API_BASE + `/data/sprites/encounters/${nextId}_${safeName}.png`;
             } else {
                 // No more IDs to try, hide the image
                 img.style.display = 'none';
@@ -718,7 +718,7 @@
 
         function getItemSpriteUrl(itemId, name) {
             const safeName = name.replace(/'/g, '').replace(/ /g, '_').toLowerCase();
-            return `/data/sprites/items/${itemId}_${safeName}.png`;
+            return API_BASE + `/data/sprites/items/${itemId}_${safeName}.png`;
         }
 
         // New Realm Encounters UI (sidebar-right) - Design D Premium Cards
