@@ -1488,7 +1488,7 @@
             const { width, height } = CONFIG.imageDimensions;
             const bounds = [[MAP_OFFSET_Y, MAP_OFFSET_X], [height + MAP_OFFSET_Y, width + MAP_OFFSET_X]];
 
-            state.map = L.map('map', { crs: L.CRS.Simple, minZoom: -2, maxZoom: 3, zoomSnap: 0.25 });
+            state.map = L.map('map', { crs: L.CRS.Simple, minZoom: -2, maxZoom: 3, zoomSnap: 0.25, zoomControl: false, attributionControl: false });
             L.imageOverlay(CONFIG.mapImagePath, bounds).addTo(state.map);
             state.map.fitBounds(bounds);
             state.map.on('mousemove', onMouseMove);
