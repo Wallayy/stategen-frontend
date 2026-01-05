@@ -12,5 +12,7 @@ Thumbs.db
 *.tmp
 *.bak
 data/entity_conflicts.json
-.gitignore
+
+# Node
+node_modules/
 

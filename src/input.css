@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom component styles */
+.empty-state {
+    padding: 1rem;
+    text-align: center;
+    color: #404040;
+    font-size: 12px;
+}
+
+.dungeon-item {
+    padding: 0.625rem 0.75rem;
+    background: #171717;
+    border: 1px solid #262626;
+    border-radius: 0.25rem;
+    margin-bottom: 0.375rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.dungeon-item:hover {
+    background: #1f1f1f;
+    border-color: #3b82f6;
+}
+
+.dungeon-item.selected {
+    border-color: #3b82f6;
+    background: rgba(59, 130, 246, 0.1);
+}
+
+.dungeon-name {
+    font-size: 12px;
+    color: #d4d4d4;
+}
+
+.entity-result {
+    padding: 0.625rem 0.75rem;
+    cursor: pointer;
+    transition: background 0.15s ease;
+    font-size: 12px;
+    color: #d4d4d4;
+    border-bottom: 1px solid #262626;
+}
+
+.entity-result:hover {
+    background: #1f1f1f;
+}
+
+.entity-result:last-child {
+    border-bottom: none;
+}
+
+.image-pixelated {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+/* Route point styling */
+.route-point {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.5rem;
+    background: #171717;
+    border: 1px solid #262626;
+    border-radius: 0.25rem;
+    font-size: 11px;
+    color: #737373;
+    margin-bottom: 0.25rem;
+    font-family: 'SF Mono', monospace;
+}
+
+.point-num {
+    color: #3b82f6;
+    font-weight: 600;
+    min-width: 1rem;
+}
+
+.point-coords {
+    flex: 1;
+    color: #d4d4d4;
+}
+
+.remove-point {
+    color: #ef4444;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 0 0.25rem;
+}
+
+.remove-point:hover {
+    color: #dc2626;
+}
