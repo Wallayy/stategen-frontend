@@ -1,0 +1,322 @@
+{
+  "_metadata": {
+    "description": "Encounter white bag drops mapping",
+    "total_encounters": 49
+  },
+  "encounters": {
+    "34559": [
+      {
+        "name": "Barnacle Basher",
+        "id": 17561
+      }
+    ],
+    "3425": [
+      {
+        "name": "Barnacle Basher",
+        "id": 17561
+      }
+    ],
+    "51061": [
+      {
+        "name": "Dirk of Cronus",
+        "id": 3082
+      }
+    ],
+    "3417": [
+      {
+        "name": "Dirk of Cronus",
+        "id": 3082
+      }
+    ],
+    "34605": [
+      {
+        "name": "Ray Katana",
+        "id": 2325
+      }
+    ],
+    "51032": [
+      {
+        "name": "Orb of Conflict",
+        "id": 3083
+      }
+    ],
+    "34510": [
+      {
+        "name": "Helm of the Juggernaut",
+        "id": 3080
+      }
+    ],
+    "34537": [
+      {
+        "name": "Kageboshi",
+        "id": 6205
+      }
+    ],
+    "3414": [
+      {
+        "name": "Orb of Conflict",
+        "id": 3083
+      }
+    ],
+    "22128": [
+      {
+        "name": "Deadly Keg",
+        "id": 1531
+      },
+      {
+        "name": "Greaterhosen",
+        "id": 15717
+      },
+      {
+        "name": "Mighty Stein",
+        "id": 15718
+      }
+    ],
+    "51072": [
+      {
+        "name": "Helm of the Juggernaut",
+        "id": 3080
+      }
+    ],
+    "51031": [
+      {
+        "name": "Quiver of Thunder",
+        "id": 3079
+      }
+    ],
+    "3639": [
+      {
+        "name": "Trap of the Vile Spirit",
+        "id": 2880
+      }
+    ],
+    "3423": [
+      {
+        "name": "Seal of Blasphemous Prayer",
+        "id": 3078
+      }
+    ],
+    "34584": [
+      {
+        "name": "Seal of Blasphemous Prayer",
+        "id": 3078
+      }
+    ],
+    "34489": [
+      {
+        "name": "Seal of Blasphemous Prayer",
+        "id": 3078
+      }
+    ],
+    "34460": [
+      {
+        "name": "Trap of the Vile Spirit",
+        "id": 2880
+      }
+    ],
+    "34550": [
+      {
+        "name": "Hama Yumi",
+        "id": 55382
+      }
+    ],
+    "3412": [
+      {
+        "name": "Helm of the Juggernaut",
+        "id": 3080
+      }
+    ],
+    "24005": [
+      {
+        "name": "Hama Yumi",
+        "id": 55382
+      }
+    ],
+    "21987": [
+      {
+        "name": "Ray Katana",
+        "id": 2325
+      }
+    ],
+    "20800": [
+      {
+        "name": "Token of Happiness",
+        "id": 20764
+      },
+      {
+        "name": "Token of Warmth",
+        "id": 20765
+      }
+    ],
+    "51078": [
+      {
+        "name": "Blue Beehemoth Quiver",
+        "id": 5345
+      },
+      {
+        "name": "Red Beehemoth Quiver",
+        "id": 5344
+      },
+      {
+        "name": "Yellow Beehemoth Quiver",
+        "id": 5343
+      }
+    ],
+    "14601": [
+      {
+        "name": "Kogbold Multitool",
+        "id": 3985
+      }
+    ],
+    "34581": [
+      {
+        "name": "Cloak of Bloody Surprises",
+        "id": 599
+      }
+    ],
+    "22146": [
+      {
+        "name": "Cloak of Bloody Surprises",
+        "id": 599
+      }
+    ],
+    "16990": [
+      {
+        "name": "Cloak of Bloody Surprises",
+        "id": 599
+      }
+    ],
+    "34493": [
+      {
+        "name": "Shield of Ogmur",
+        "id": 3087
+      }
+    ],
+    "51075": [
+      {
+        "name": "Kogbold Multitool",
+        "id": 3985
+      }
+    ],
+    "21996": [
+      {
+        "name": "Shield of Ogmur",
+        "id": 3087
+      }
+    ],
+    "22149": [
+      {
+        "name": "Hama Yumi",
+        "id": 55382
+      }
+    ],
+    "22150": [
+      {
+        "name": "Kageboshi",
+        "id": 6205
+      }
+    ],
+    "34538": [
+      {
+        "name": "Barnacle Basher",
+        "id": 17561
+      }
+    ],
+    "21934": [
+      {
+        "name": "Quiver of Thunder",
+        "id": 3079
+      }
+    ],
+    "20475": [
+      {
+        "name": "Shield of Ogmur",
+        "id": 3087
+      }
+    ],
+    "34456": [
+      {
+        "name": "Crystallised Fang's Venom",
+        "id": 1200
+      }
+    ],
+    "34558": [
+      {
+        "name": "Crystallised Fang's Venom",
+        "id": 1200
+      }
+    ],
+    "25865": [
+      {
+        "name": "Crystallised Fang's Venom",
+        "id": 1200
+      }
+    ],
+    "16935": [
+      {
+        "name": "Crystallised Fang's Venom",
+        "id": 1200
+      }
+    ],
+    "44337": [
+      {
+        "name": "Jailer's Scythe",
+        "id": 23794
+      }
+    ],
+    "34565": [
+      {
+        "name": "Tablet of the King's Avatar",
+        "id": 2881
+      }
+    ],
+    "21959": [
+      {
+        "name": "Tablet of the King's Avatar",
+        "id": 2881
+      }
+    ],
+    "20799": [
+      {
+        "name": "Tablet of the King's Avatar",
+        "id": 2881
+      }
+    ],
+    "20744": [
+      {
+        "name": "Tablet of the King's Avatar",
+        "id": 2881
+      }
+    ],
+    "4326": [
+      {
+        "name": "Blue Beehemoth Quiver",
+        "id": 5345
+      }
+    ],
+    "4325": [
+      {
+        "name": "Red Beehemoth Quiver",
+        "id": 5344
+      }
+    ],
+    "4324": [
+      {
+        "name": "Yellow Beehemoth Quiver",
+        "id": 5343
+      }
+    ],
+    "45521": [
+      {
+        "name": "Ray Katana",
+        "id": 2325
+      }
+    ],
+    "21983": [
+      {
+        "name": "Ray Katana",
+        "id": 2325
+      }
+    ]
+  }
+}

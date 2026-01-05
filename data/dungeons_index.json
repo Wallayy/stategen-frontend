@@ -150,7 +150,14 @@
         "guaranteed": true
       }
     ],
-    "portal_id": 1815
+    "portal_id": 1815,
+    "bosses": [
+      {
+        "name": "Dreadstump the Pirate King",
+        "id": 2343,
+        "type": "boss"
+      }
+    ]
   },
   "forest-maze": {
     "name": "Forest Maze",
@@ -255,7 +262,14 @@
         "guaranteed": false
       }
     ],
-    "portal_id": 24372
+    "portal_id": 24372,
+    "bosses": [
+      {
+        "name": "Mama Megamoth",
+        "id": 24162,
+        "type": "boss"
+      }
+    ]
   },
   "spider-den": {
     "name": "Spider Den",
@@ -263,13 +277,17 @@
     "wiki_url": "https://www.realmeye.com/wiki/spider-den",
     "difficulty": "2",
     "recommended_level": "",
-    "boss": null,
+    "boss": {
+      "name": "Arachna the Spider Queen",
+      "id": 2358,
+      "wiki_url": "/wiki/arachna-the-spider-queen"
+    },
     "enemies": [
       {
         "name": "Arachna Element",
         "wiki_url": "/wiki/arachna-element",
         "category": "enemy",
-        "id": 28733
+        "id": 28715
       },
       {
         "name": "Black Den Spider",
@@ -356,7 +374,14 @@
         "guaranteed": false
       }
     ],
-    "portal_id": 1817
+    "portal_id": 1817,
+    "bosses": [
+      {
+        "name": "Arachna the Spider Queen",
+        "id": 2358,
+        "type": "boss"
+      }
+    ]
   },
   "snake-pit": {
     "name": "Snake Pit",
@@ -501,7 +526,14 @@
         "guaranteed": false
       }
     ],
-    "portal_id": 1816
+    "portal_id": 1816,
+    "bosses": [
+      {
+        "name": "Stheno the Snake Queen",
+        "id": 2327,
+        "type": "boss"
+      }
+    ]
   },
   "forbidden-jungle": {
     "name": "Forbidden Jungle",
@@ -509,7 +541,11 @@
     "wiki_url": "https://www.realmeye.com/wiki/forbidden-jungle",
     "difficulty": "2",
     "recommended_level": "",
-    "boss": null,
+    "boss": {
+      "name": "Mixcoatl the Masked God",
+      "id": 3523,
+      "wiki_url": "/wiki/mixcoatl-the-masked-god"
+    },
     "enemies": [
       {
         "name": "Basilisk",
@@ -590,7 +626,14 @@
         "guaranteed": true
       }
     ],
-    "portal_id": 1843
+    "portal_id": 1843,
+    "bosses": [
+      {
+        "name": "Mixcoatl the Masked God",
+        "id": 3523,
+        "type": "boss"
+      }
+    ]
   },
   "the-hive": {
     "name": "The Hive",
@@ -598,24 +641,29 @@
     "wiki_url": "https://www.realmeye.com/wiki/the-hive",
     "difficulty": "2",
     "recommended_level": "",
-    "boss": null,
+    "boss": {
+      "name": "Queen Bee",
+      "id": 297,
+      "wiki_url": "/wiki/queen-bee"
+    },
     "enemies": [
       {
         "name": "Fat Bee",
         "wiki_url": "/wiki/fat-bee",
         "category": "enemy",
-        "id": 3396
+        "id": 295
       },
       {
         "name": "Fat Angry Bee",
         "wiki_url": "/wiki/fat-angry-bee",
         "category": "enemy",
-        "id": 3397
+        "id": 296
       },
       {
         "name": "Mini Hive",
         "wiki_url": "/wiki/mini-hive",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 4238
       },
       {
         "name": "Small Bee",
@@ -626,7 +674,8 @@
       {
         "name": "Maggot Egg",
         "wiki_url": "/wiki/maggot-egg-hive",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 4244
       },
       {
         "name": "Maggot",
@@ -637,7 +686,8 @@
       {
         "name": "Honey",
         "wiki_url": "/wiki/honey",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 4149
       }
     ],
     "white_bag_drops": [],
@@ -658,7 +708,14 @@
         "guaranteed": true
       }
     ],
-    "portal_id": 285
+    "portal_id": 285,
+    "bosses": [
+      {
+        "name": "Queen Bee",
+        "id": 297,
+        "type": "boss"
+      }
+    ]
   },
   "sprite-world": {
     "name": "Sprite World",
@@ -742,7 +799,7 @@
         "name": "Craig the Intern",
         "wiki_url": "/wiki/craig-the-intern",
         "category": "enemy",
-        "id": 50648
+        "id": 15668
       }
     ],
     "white_bag_drops": [],
@@ -775,7 +832,14 @@
         "guaranteed": true
       }
     ],
-    "portal_id": 1804
+    "portal_id": 1804,
+    "bosses": [
+      {
+        "name": "Limon the Sprite Goddess",
+        "id": 3334,
+        "type": "boss"
+      }
+    ]
   },
   "undead-lair": {
     "name": "Undead Lair",
@@ -786,7 +850,7 @@
     "boss": {
       "name": "Septavius the Ghost God",
       "wiki_url": "/wiki/septavius-the-ghost-god",
-      "id": 13124
+      "id": 3472
     },
     "enemies": [
       {
@@ -823,7 +887,7 @@
         "name": "Lair Blast Trap",
         "wiki_url": "/wiki/lair-blast-trap",
         "category": "enemy",
-        "id": 13926
+        "id": 3491
       },
       {
         "name": "Lair Blue Spectre",
@@ -847,7 +911,7 @@
         "name": "Lair Burst Trap",
         "wiki_url": "/wiki/lair-burst-trap",
         "category": "enemy",
-        "id": 13924
+        "id": 3490
       },
       {
         "name": "Lair Construct Giant",
@@ -985,7 +1049,7 @@
         "name": "Lair Skeleton",
         "wiki_url": "/wiki/lair-skeleton",
         "category": "enemy",
-        "id": 29444
+        "id": 3473
       },
       {
         "name": "Lair Vampire King",
@@ -1009,7 +1073,7 @@
         "name": "Living Skeleton",
         "wiki_url": "/wiki/living-skeleton",
         "category": "enemy",
-        "id": 30628
+        "id": 30625
       },
       {
         "name": "Lair Spectral Skeleton",
@@ -1060,7 +1124,14 @@
         "guaranteed": false
       }
     ],
-    "portal_id": 1818
+    "portal_id": 1818,
+    "bosses": [
+      {
+        "name": "Septavius the Ghost God",
+        "id": 3472,
+        "type": "boss"
+      }
+    ]
   },
   "abyss-of-demons": {
     "name": "Abyss of Demons",
@@ -1071,7 +1142,7 @@
     "boss": {
       "name": "Archdemon Malphas",
       "wiki_url": "/wiki/archdemon-malphas",
-      "id": 13178
+      "id": 2314
     },
     "enemies": [
       {
@@ -1166,7 +1237,7 @@
       "Pet Skins",
       "Tarot Card Pack"
     ],
-    "description": "TheAbyss of Demonsis a medium-level dungeon that is a staple source ofPotions of Vitalityfor many players. It is also the drop location of the untieredDemon Blade,Berserker’s Breastplate,Volcanic Sheathand the entireMagmatic Mystic ST Set. Additionally it is also a location where theTarot Card Packc",
+    "description": "TheAbyss of Demonsis a medium-level dungeon that is a staple source ofPotions of Vitalityfor many players. It is also the drop location of the untieredDemon Blade,Berserker\u2019s Breastplate,Volcanic Sheathand the entireMagmatic Mystic ST Set. Additionally it is also a location where theTarot Card Packc",
     "drops_from": "",
     "portal_dropped_by": [
       {
@@ -1200,7 +1271,14 @@
         "guaranteed": false
       }
     ],
-    "portal_id": 1819
+    "portal_id": 1819,
+    "bosses": [
+      {
+        "name": "Archdemon Malphas",
+        "id": 2314,
+        "type": "boss"
+      }
+    ]
   },
   "manor-of-the-immortals": {
     "name": "Manor of the Immortals",
@@ -1211,7 +1289,7 @@
     "boss": {
       "name": "Lord Ruthven",
       "wiki_url": "/wiki/lord-ruthven",
-      "id": 43740
+      "id": 5920
     },
     "enemies": [
       {
@@ -1224,13 +1302,13 @@
         "name": "Coffin Creature",
         "wiki_url": "/wiki/coffin-creature",
         "category": "enemy",
-        "id": 13162
+        "id": 5922
       },
       {
         "name": "Hellhound",
         "wiki_url": "/wiki/hellhound",
         "category": "enemy",
-        "id": 29475
+        "id": 5931
       },
       {
         "name": "Helmet Head",
@@ -1241,7 +1319,8 @@
       {
         "name": "Lesser Bald\nVampire",
         "wiki_url": "/wiki/lesser-bald-vampire",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 43983
       },
       {
         "name": "Lil Feratu",
@@ -1253,7 +1332,7 @@
         "name": "Nosferatu",
         "wiki_url": "/wiki/nosferatu",
         "category": "enemy",
-        "id": 29457
+        "id": 5928
       },
       {
         "name": "Rock Bomb",
@@ -1271,7 +1350,7 @@
         "name": "Vampire Bat Swarmer",
         "wiki_url": "/wiki/vampire-bat-swarmer",
         "category": "enemy",
-        "id": 29237
+        "id": 5924
       },
       {
         "name": "Coffin",
@@ -1324,7 +1403,14 @@
         "guaranteed": false
       }
     ],
-    "portal_id": 1849
+    "portal_id": 1849,
+    "bosses": [
+      {
+        "name": "Lord Ruthven",
+        "id": 5920,
+        "type": "boss"
+      }
+    ]
   },
   "puppet-master-s-theatre": {
     "name": "Puppet Master's Theatre",
@@ -1334,8 +1420,8 @@
     "recommended_level": "",
     "boss": {
       "name": "The Puppet Master",
-      "wiki_url": "/wiki/the-puppet-master",
-      "id": 29793
+      "id": 29747,
+      "wiki_url": "/wiki/the-puppet-master"
     },
     "enemies": [
       {
@@ -1360,7 +1446,7 @@
         "name": "Priest Puppet",
         "wiki_url": "/wiki/priest-puppet",
         "category": "enemy",
-        "id": 29760
+        "id": 29751
       },
       {
         "name": "Warrior Puppet",
@@ -1396,7 +1482,7 @@
         "name": "Huntress Puppet",
         "wiki_url": "/wiki/huntress-puppet",
         "category": "enemy",
-        "id": 29859
+        "id": 29721
       },
       {
         "name": "Mystic Puppet",
@@ -1408,12 +1494,13 @@
         "name": "Trickster Puppet",
         "wiki_url": "/wiki/trickster-puppet",
         "category": "enemy",
-        "id": 29860
+        "id": 29784
       },
       {
         "name": "Trickster Puppet Decoy",
         "wiki_url": "/wiki/trickster-puppet-decoy",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 410
       },
       {
         "name": "Sorcerer Puppet",
@@ -1473,7 +1560,7 @@
         "name": "Guardian Element",
         "wiki_url": "/wiki/guardian-element",
         "category": "treasure_room_boss",
-        "id": 45987
+        "id": 5962
       }
     ],
     "white_bag_drops": [
@@ -1492,9 +1579,16 @@
       "Potion of Attack",
       "Tarot Card Pack"
     ],
-    "description": "ThePuppet Master’s Theatreis a medium leveldungeonthat is a source ofPotions of Attack, thePrism of Dancing Swords, theHarlequin Armor, theMarionette Ravager, the entireCourt Magician Sorcerer ST Set, it is also another location where theTarot Card Packcan be found to get a chance to obtain any of t",
+    "description": "ThePuppet Master\u2019s Theatreis a medium leveldungeonthat is a source ofPotions of Attack, thePrism of Dancing Swords, theHarlequin Armor, theMarionette Ravager, the entireCourt Magician Sorcerer ST Set, it is also another location where theTarot Card Packcan be found to get a chance to obtain any of t",
     "drops_from": "",
-    "portal_id": 9043
+    "portal_id": 9043,
+    "bosses": [
+      {
+        "name": "The Puppet Master",
+        "id": 29747,
+        "type": "boss"
+      }
+    ]
   },
   "toxic-sewers": {
     "name": "Toxic Sewers",
@@ -1505,7 +1599,7 @@
     "boss": {
       "name": "Gulpord the Slime God",
       "wiki_url": "/wiki/gulpord-the-slime-god",
-      "id": 46419
+      "id": 3863
     },
     "enemies": [
       {
@@ -1565,7 +1659,8 @@
       {
         "name": "Sewer Dummy",
         "wiki_url": "/wiki/sewer-dummy",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 6149
       },
       {
         "name": "Sewer Rat",
@@ -1637,7 +1732,14 @@
         "guaranteed": false
       }
     ],
-    "portal_id": 574
+    "portal_id": 574,
+    "bosses": [
+      {
+        "name": "Gulpord the Slime God",
+        "id": 3863,
+        "type": "boss"
+      }
+    ]
   },
   "mad-lab": {
     "name": "Mad Lab",
@@ -1645,7 +1747,11 @@
     "wiki_url": "https://www.realmeye.com/wiki/mad-lab",
     "difficulty": "4",
     "recommended_level": "",
-    "boss": null,
+    "boss": {
+      "name": "Dr Terrible",
+      "id": 2422,
+      "wiki_url": "/wiki/dr-terrible"
+    },
     "enemies": [
       {
         "name": "Crusher Abomination",
@@ -1663,19 +1769,19 @@
         "name": "Escaped Experiment",
         "wiki_url": "/wiki/escaped-experiment",
         "category": "enemy",
-        "id": 29449
+        "id": 2433
       },
       {
         "name": "Mini Bot",
         "wiki_url": "/wiki/mini-bot",
         "category": "enemy",
-        "id": 7717
+        "id": 2425
       },
       {
         "name": "Rampage Cyborg",
         "wiki_url": "/wiki/rampage-cyborg",
         "category": "enemy",
-        "id": 7716
+        "id": 2432
       },
       {
         "name": "Tesla Coil",
@@ -1714,7 +1820,14 @@
         "guaranteed": false
       }
     ],
-    "portal_id": 2192
+    "portal_id": 2192,
+    "bosses": [
+      {
+        "name": "Dr Terrible",
+        "id": 2422,
+        "type": "boss"
+      }
+    ]
   },
   "magic-woods": {
     "name": "Magic Woods",
@@ -1722,8 +1835,193 @@
     "wiki_url": "https://www.realmeye.com/wiki/magic-woods",
     "difficulty": "3",
     "recommended_level": "",
-    "boss": null,
-    "enemies": [],
+    "boss": {
+      "name": "Fountain Spirit",
+      "wiki_url": "/wiki/fountain-spirit",
+      "id": 2096
+    },
+    "enemies": [
+      {
+        "name": "Gharr",
+        "wiki_url": "/wiki/gharr",
+        "category": "enemy",
+        "id": 2128
+      },
+      {
+        "name": "Tiar",
+        "wiki_url": "/wiki/tiar",
+        "category": "enemy",
+        "id": 2129
+      },
+      {
+        "name": "Itani",
+        "wiki_url": "/wiki/itani",
+        "category": "enemy",
+        "id": 2130
+      },
+      {
+        "name": "Iatho",
+        "wiki_url": "/wiki/iatho",
+        "category": "enemy",
+        "id": 2131
+      },
+      {
+        "name": "SayIt",
+        "wiki_url": "/wiki/sayit",
+        "category": "enemy",
+        "id": 2132
+      },
+      {
+        "name": "Eendi",
+        "wiki_url": "/wiki/eendi",
+        "category": "enemy",
+        "id": 2133
+      },
+      {
+        "name": "Ril",
+        "wiki_url": "/wiki/ril",
+        "category": "enemy",
+        "id": 2134
+      },
+      {
+        "name": "Laen",
+        "wiki_url": "/wiki/laen",
+        "category": "enemy",
+        "id": 2135
+      },
+      {
+        "name": "Oeti",
+        "wiki_url": "/wiki/oeti",
+        "category": "enemy",
+        "id": 2136
+      },
+      {
+        "name": "Zhair",
+        "wiki_url": "/wiki/zhair",
+        "category": "enemy",
+        "id": 2140
+      },
+      {
+        "name": "Rilr",
+        "wiki_url": "/wiki/rilr",
+        "category": "enemy",
+        "id": 2141
+      },
+      {
+        "name": "Queq",
+        "wiki_url": "/wiki/queq",
+        "category": "enemy",
+        "id": 2142
+      },
+      {
+        "name": "Orothi",
+        "wiki_url": "/wiki/orothi",
+        "category": "enemy",
+        "id": 2146
+      },
+      {
+        "name": "Risrr",
+        "wiki_url": "/wiki/risrr",
+        "category": "enemy",
+        "id": 2147
+      },
+      {
+        "name": "Rayr",
+        "wiki_url": "/wiki/rayr",
+        "category": "enemy",
+        "id": 2148
+      },
+      {
+        "name": "Uoro",
+        "wiki_url": "/wiki/uoro",
+        "category": "enemy",
+        "id": 2149
+      },
+      {
+        "name": "Ehoni",
+        "wiki_url": "/wiki/ehoni",
+        "category": "enemy",
+        "id": 2150
+      },
+      {
+        "name": "Darq",
+        "wiki_url": "/wiki/darq",
+        "category": "enemy",
+        "id": 2151
+      },
+      {
+        "name": "Drac",
+        "wiki_url": "/wiki/drac",
+        "category": "enemy",
+        "id": 2152
+      },
+      {
+        "name": "Odaru",
+        "wiki_url": "/wiki/odaru",
+        "category": "enemy",
+        "id": 2153
+      },
+      {
+        "name": "Idrae",
+        "wiki_url": "/wiki/idrae",
+        "category": "enemy",
+        "id": 2154
+      },
+      {
+        "name": "Seus",
+        "wiki_url": "/wiki/seus",
+        "category": "enemy",
+        "id": 2161
+      },
+      {
+        "name": "Yimi",
+        "wiki_url": "/wiki/yimi",
+        "category": "enemy",
+        "id": 2162
+      },
+      {
+        "name": "Serl",
+        "wiki_url": "/wiki/serl",
+        "category": "enemy",
+        "id": 2164
+      },
+      {
+        "name": "Scheev",
+        "wiki_url": "/wiki/scheev",
+        "category": "enemy",
+        "id": 2165
+      },
+      {
+        "name": "Oshyu",
+        "wiki_url": "/wiki/oshyu",
+        "category": "enemy",
+        "id": 2166
+      },
+      {
+        "name": "Sek",
+        "wiki_url": "/wiki/sek",
+        "category": "enemy",
+        "id": 2167
+      },
+      {
+        "name": "Iawa",
+        "wiki_url": "/wiki/iawa",
+        "category": "enemy",
+        "id": 2168
+      },
+      {
+        "name": "Lorz",
+        "wiki_url": "/wiki/lorz",
+        "category": "enemy",
+        "id": 2170
+      },
+      {
+        "name": "Eati",
+        "wiki_url": "/wiki/eati",
+        "category": "enemy",
+        "id": 2171
+      }
+    ],
     "white_bag_drops": [
       "Bergenia Bow",
       "Lifebringing Lotus",
@@ -1928,7 +2226,7 @@
         "name": "Calamity Crab",
         "wiki_url": "/wiki/calamity-crab",
         "category": "miniboss",
-        "id": 47387
+        "id": 30444
       },
       {
         "name": "Commotion Crab",
@@ -1940,7 +2238,7 @@
         "name": "Bilgewater's Booty",
         "wiki_url": "/wiki/bilgewater-s-booty",
         "category": "treasure_room_boss",
-        "id": 622
+        "id": 620
       }
     ],
     "white_bag_drops": [],
@@ -1979,7 +2277,14 @@
         "guaranteed": false
       }
     ],
-    "portal_id": 1885
+    "portal_id": 1885,
+    "bosses": [
+      {
+        "name": "Jon Bilgewater the Pirate King",
+        "id": 2352,
+        "type": "boss"
+      }
+    ]
   },
   "woodland-labyrinth": {
     "name": "Woodland Labyrinth",
@@ -1987,7 +2292,11 @@
     "wiki_url": "https://www.realmeye.com/wiki/woodland-labyrinth",
     "difficulty": "6",
     "recommended_level": "",
-    "boss": null,
+    "boss": {
+      "name": "Murderous Megamoth",
+      "id": 28795,
+      "wiki_url": "/wiki/murderous-megamoth"
+    },
     "enemies": [
       {
         "name": "Forest Goblin Bruiser",
@@ -2054,12 +2363,6 @@
         "wiki_url": "/wiki/woodland-weakness-turret",
         "category": "enemy",
         "id": 28746
-      },
-      {
-        "name": "Swarm Tree",
-        "wiki_url": "/wiki/swarm-tree",
-        "category": "treasure_room_boss",
-        "id": 16889
       }
     ],
     "white_bag_drops": [],
@@ -2098,7 +2401,29 @@
         "guaranteed": false
       }
     ],
-    "portal_id": 1884
+    "portal_id": 1884,
+    "bosses": [
+      {
+        "name": "Murderous Megamoth",
+        "id": 28795,
+        "type": "boss"
+      },
+      {
+        "name": "Mammoth Megamoth",
+        "id": 28781,
+        "type": "miniboss"
+      },
+      {
+        "name": "Megamoth Larva",
+        "id": 28780,
+        "type": "miniboss"
+      },
+      {
+        "name": "Swarm Tree",
+        "id": 16889,
+        "type": "miniboss"
+      }
+    ]
   },
   "the-crawling-depths": {
     "name": "The Crawling Depths",
@@ -2108,8 +2433,8 @@
     "recommended_level": "",
     "boss": {
       "name": "Son of Arachna",
-      "wiki_url": "/wiki/son-of-arachna",
-      "id": 28714
+      "id": 28714,
+      "wiki_url": "/wiki/son-of-arachna"
     },
     "enemies": [
       {
@@ -2181,13 +2506,34 @@
       {
         "name": "Epic Arachna Element",
         "wiki_url": "/wiki/epic-arachna-element",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 2337
       },
       {
         "name": "Glowing Egg",
         "wiki_url": "/wiki/glowing-egg",
         "category": "treasure_room_boss",
-        "id": 49214
+        "id": 626
+      },
+      {
+        "name": "Silver Son of Arachna Giant Egg Sac",
+        "id": 28797,
+        "category": "enemy"
+      },
+      {
+        "name": "Red Son of Arachna Giant Egg Sac",
+        "id": 28798,
+        "category": "enemy"
+      },
+      {
+        "name": "Blue Son of Arachna Giant Egg Sac",
+        "id": 28799,
+        "category": "enemy"
+      },
+      {
+        "name": "Green Son of Arachna Giant Egg Sac",
+        "id": 28810,
+        "category": "enemy"
       }
     ],
     "white_bag_drops": [],
@@ -2220,7 +2566,14 @@
         "guaranteed": false
       }
     ],
-    "portal_id": 1838
+    "portal_id": 1838,
+    "bosses": [
+      {
+        "name": "Son of Arachna",
+        "id": 28714,
+        "type": "boss"
+      }
+    ]
   },
   "candyland-hunting-grounds": {
     "name": "Candyland Hunting Grounds",
@@ -2231,14 +2584,16 @@
     "boss": null,
     "enemies": [
       {
-        "name": "Wishing Troll",
+        "name": "Wishing\u00a0Troll",
         "wiki_url": "/wiki/wishing-troll",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 24119
       },
       {
-        "name": "Big Creampuff",
+        "name": "Big\u00a0Creampuff",
         "wiki_url": "/wiki/big-creampuff",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 24117
       },
       {
         "name": "Rototo",
@@ -2253,19 +2608,22 @@
         "id": 24128
       },
       {
-        "name": "Beefy Fairy",
+        "name": "Beefy\u00a0Fairy",
         "wiki_url": "/wiki/beefy-fairy",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 24121
       },
       {
-        "name": "Gumball Machine",
+        "name": "Gumball\u00a0Machine",
         "wiki_url": "/wiki/gumball-machine",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 24130
       },
       {
-        "name": "Spilled Icecream",
+        "name": "Spilled\u00a0Icecream",
         "wiki_url": "/wiki/spilled-icecream",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 24118
       },
       {
         "name": "Hard Candy",
@@ -2286,7 +2644,34 @@
         "guaranteed": true
       }
     ],
-    "portal_id": 1866
+    "portal_id": 1866,
+    "bosses": [
+      {
+        "name": "Cupcake",
+        "id": 24129,
+        "type": "boss"
+      },
+      {
+        "name": "Gigacorn",
+        "id": 24132,
+        "type": "boss"
+      },
+      {
+        "name": "Swoll Fairy",
+        "id": 24133,
+        "type": "boss"
+      },
+      {
+        "name": "Desire Troll",
+        "id": 24134,
+        "type": "boss"
+      },
+      {
+        "name": "Spoiled Creampuff",
+        "id": 24135,
+        "type": "boss"
+      }
+    ]
   },
   "ocean-trench": {
     "name": "Ocean Trench",
@@ -2427,7 +2812,14 @@
         "guaranteed": false
       }
     ],
-    "portal_id": 1840
+    "portal_id": 1840,
+    "bosses": [
+      {
+        "name": "Thessal the Mermaid Goddess",
+        "id": 13200,
+        "type": "boss"
+      }
+    ]
   },
   "ice-cave": {
     "name": "Ice Cave",
@@ -2438,7 +2830,7 @@
     "boss": {
       "name": "Esben the Unwilling",
       "wiki_url": "/wiki/esben-the-unwilling",
-      "id": 13222
+      "id": 1887
     },
     "enemies": [
       {
@@ -2481,24 +2873,31 @@
         "name": "Creepy Weird Dark Spirit Mirror Image Monster",
         "wiki_url": "/wiki/creepy-weird-dark-spirit-mirror-image-monster-original",
         "category": "enemy",
-        "id": 40211
+        "id": 40193
       },
       {
         "name": "Cursed Grave",
         "wiki_url": "/wiki/cursed-grave",
         "category": "enemy",
-        "id": 13226
+        "id": 1888
       },
       {
         "name": "Icy Whirlwind",
         "wiki_url": "/wiki/icy-whirlwind",
         "category": "enemy",
-        "id": 13227
+        "id": 1893
       }
     ],
     "white_bag_drops": [],
     "other_notable_drops": [],
-    "description": "TheIce Cavewas a high-level dungeon that droppedPotions of Mana, the entireNordic Knight ST Set, and theEsben Necromancer UT Set."
+    "description": "TheIce Cavewas a high-level dungeon that droppedPotions of Mana, the entireNordic Knight ST Set, and theEsben Necromancer UT Set.",
+    "bosses": [
+      {
+        "name": "Esben the Unwilling",
+        "id": 1887,
+        "type": "boss"
+      }
+    ]
   },
   "tomb-of-the-ancients": {
     "name": "Tomb of the Ancients",
@@ -2566,7 +2965,7 @@
         "name": "Canopic Jar",
         "wiki_url": "/wiki/canopic-jar",
         "category": "enemy",
-        "id": 3376
+        "id": 3373
       },
       {
         "name": "Red Swarm Masters",
@@ -2620,19 +3019,19 @@
         "name": "Pyramid Artifact",
         "wiki_url": "/wiki/pyramid-artifact",
         "category": "enemy",
-        "id": 3364
+        "id": 3362
       },
       {
         "name": "Sphinx Artifact",
         "wiki_url": "/wiki/sphinx-artifact",
         "category": "enemy",
-        "id": 3358
+        "id": 3356
       },
       {
         "name": "Nile Artifact",
         "wiki_url": "/wiki/nile-artifact",
         "category": "enemy",
-        "id": 3361
+        "id": 3359
       },
       {
         "name": "Treasure Sarcophagus",
@@ -2707,7 +3106,24 @@
         "guaranteed": false
       }
     ],
-    "portal_id": 1844
+    "portal_id": 1844,
+    "bosses": [
+      {
+        "name": "Bes",
+        "id": 3368,
+        "type": "boss"
+      },
+      {
+        "name": "Nut",
+        "id": 3366,
+        "type": "boss"
+      },
+      {
+        "name": "Geb",
+        "id": 3367,
+        "type": "boss"
+      }
+    ]
   },
   "lair-of-draconis": {
     "name": "Lair of Draconis",
@@ -2715,7 +3131,11 @@
     "wiki_url": "https://www.realmeye.com/wiki/lair-of-draconis",
     "difficulty": "6",
     "recommended_level": "",
-    "boss": null,
+    "boss": {
+      "name": "Ivory Wyvern",
+      "id": 45449,
+      "wiki_url": "/wiki/ivory-wyvern"
+    },
     "enemies": [],
     "white_bag_drops": [
       "Marks",
@@ -2766,9 +3186,14 @@
     "portal_dropped_by": [
       {
         "name": "Rock Dragon",
-        "id": 45526,
+        "id": 21983,
         "biome": "abandoned_city",
-        "guaranteed": true
+        "guaranteed": true,
+        "ids": [
+          45521,
+          21983,
+          21987
+        ]
       },
       {
         "name": "Hunter Dragonfly",
@@ -2789,7 +3214,44 @@
         "guaranteed": false
       }
     ],
-    "portal_id": 45591
+    "portal_id": 45591,
+    "bosses": [
+      {
+        "name": "Ivory Wyvern",
+        "id": 45449,
+        "type": "boss"
+      },
+      {
+        "name": "Feargus the Obsidian Dragon",
+        "id": 45428,
+        "type": "miniboss"
+      },
+      {
+        "name": "Nikao the Azure Dragon",
+        "id": 45429,
+        "type": "miniboss"
+      },
+      {
+        "name": "Limoz the Viridian Dragon",
+        "id": 45667,
+        "type": "miniboss"
+      },
+      {
+        "name": "Pyyr the Crimson Dragon",
+        "id": 45430,
+        "type": "miniboss"
+      },
+      {
+        "name": "Rock Dragon",
+        "id": 21983,
+        "type": "miniboss",
+        "ids": [
+          45521,
+          21983,
+          21987
+        ]
+      }
+    ]
   },
   "mountain-temple": {
     "name": "Mountain Temple",
@@ -2800,14 +3262,14 @@
     "boss": {
       "name": "Daichi the Fallen",
       "wiki_url": "/wiki/daichi-the-fallen",
-      "id": 43681
+      "id": 13236
     },
     "enemies": [
       {
         "name": "Corrupted Caster",
         "wiki_url": "/wiki/corrupted-caster",
         "category": "enemy",
-        "id": 43684
+        "id": 13239
       },
       {
         "name": "Mini Corrupted Armor",
@@ -2825,25 +3287,25 @@
         "name": "Corrupted Spearman",
         "wiki_url": "/wiki/corrupted-spearman",
         "category": "enemy",
-        "id": 43682
+        "id": 13237
       },
       {
         "name": "Corrupted Bowman",
         "wiki_url": "/wiki/corrupted-bowman",
         "category": "enemy",
-        "id": 43683
+        "id": 13238
       },
       {
         "name": "Corrupted Monk",
         "wiki_url": "/wiki/corrupted-monk",
         "category": "enemy",
-        "id": 43745
+        "id": 13240
       },
       {
         "name": "Corrupted Spawn",
         "wiki_url": "/wiki/corrupted-spawn",
         "category": "enemy",
-        "id": 43689
+        "id": 13241
       },
       {
         "name": "Old Chest",
@@ -2901,7 +3363,14 @@
         "guaranteed": false
       }
     ],
-    "portal_id": 311
+    "portal_id": 311,
+    "bosses": [
+      {
+        "name": "Daichi the Fallen",
+        "id": 13236,
+        "type": "boss"
+      }
+    ]
   },
   "the-shatters": {
     "name": "The Shatters",
@@ -2909,7 +3378,11 @@
     "wiki_url": "https://www.realmeye.com/wiki/the-shatters",
     "difficulty": "10",
     "recommended_level": "",
-    "boss": null,
+    "boss": {
+      "name": "The Forgotten King",
+      "id": 29039,
+      "wiki_url": "/wiki/the-forgotten-king"
+    },
     "enemies": [],
     "white_bag_drops": [
       "Herbal Tincture",
@@ -2961,7 +3434,7 @@
       "Greater Potion of Vitality",
       "Pet Skins"
     ],
-    "description": "The Shattersis an extremely dangerous and lengthy dungeon, intended to be approximately the hardest dungeon in the game beforeOryx’s Sanctuary, although its difficulty is commonly viewed as surpassing the dungeon in question. This dungeon is one of theExaltationdungeons, boostingAttackfrom the secon",
+    "description": "The Shattersis an extremely dangerous and lengthy dungeon, intended to be approximately the hardest dungeon in the game beforeOryx\u2019s Sanctuary, although its difficulty is commonly viewed as surpassing the dungeon in question. This dungeon is one of theExaltationdungeons, boostingAttackfrom the secon",
     "drops_from": "",
     "portal_dropped_by": [
       {
@@ -2977,7 +3450,24 @@
         "guaranteed": true
       }
     ],
-    "portal_id": 29310
+    "portal_id": 29310,
+    "bosses": [
+      {
+        "name": "The Forgotten King",
+        "id": 29039,
+        "type": "boss"
+      },
+      {
+        "name": "Twilight Archmage",
+        "id": 29021,
+        "type": "miniboss"
+      },
+      {
+        "name": "The Bridge Sentinel",
+        "id": 29003,
+        "type": "miniboss"
+      }
+    ]
   },
   "lost-halls": {
     "name": "Lost Halls",
@@ -2985,31 +3475,35 @@
     "wiki_url": "https://www.realmeye.com/wiki/lost-halls",
     "difficulty": "8",
     "recommended_level": "",
-    "boss": null,
+    "boss": {
+      "name": "Void Entity",
+      "id": 45076,
+      "wiki_url": "/wiki/void-entity"
+    },
     "enemies": [
       {
         "name": "Spectral Sentry",
         "wiki_url": "/wiki/spectral-sentry-lost-halls",
         "category": "enemy",
-        "id": 45370
+        "id": 16820
       },
       {
         "name": "Treasure Pot",
         "wiki_url": "/wiki/treasure-pot-lost-halls",
         "category": "enemy",
-        "id": 45243
+        "id": 45237
       },
       {
         "name": "Evil Spirit",
         "wiki_url": "/wiki/evil-spirit",
         "category": "enemy",
-        "id": 45246
+        "id": 45244
       },
       {
         "name": "Marble Defender",
         "wiki_url": "/wiki/marble-defender",
         "category": "miniboss",
-        "id": 45371
+        "id": 45366
       },
       {
         "name": "Agonized Titan",
@@ -3048,7 +3542,24 @@
         "guaranteed": true
       }
     ],
-    "portal_id": 45092
+    "portal_id": 45092,
+    "bosses": [
+      {
+        "name": "Void Entity",
+        "id": 45076,
+        "type": "boss"
+      },
+      {
+        "name": "Marble Colossus",
+        "id": 45073,
+        "type": "boss"
+      },
+      {
+        "name": "Malus",
+        "id": 45231,
+        "type": "boss"
+      }
+    ]
   },
   "the-nest": {
     "name": "The Nest",
@@ -3065,17 +3576,20 @@
       {
         "name": "Adolesecent Blue Beehemoth",
         "wiki_url": "/wiki/adolescent-blue-beehemoth",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 4326
       },
       {
         "name": "Adolesecent Red Beehemoth",
         "wiki_url": "/wiki/adolescent-red-beehemoth",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 4325
       },
       {
         "name": "Adolesecent Yellow Beehemoth",
         "wiki_url": "/wiki/adolescent-yellow-beehemoth",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 4324
       },
       {
         "name": "Blue Killer Bee",
@@ -3111,29 +3625,31 @@
         "name": "Experimental Blue Soldier Bee 2.0",
         "wiki_url": "/wiki/experimental-blue-soldier-bee-2-0",
         "category": "enemy",
-        "id": 3888
+        "id": 2292
       },
       {
         "name": "Experimental Red Soldier Bee 2.0",
         "wiki_url": "/wiki/experimental-red-soldier-bee-2-0",
         "category": "enemy",
-        "id": 3887
+        "id": 2291
       },
       {
         "name": "Experimental Yellow Soldier Bee 2.0",
         "wiki_url": "/wiki/experimental-yellow-soldier-bee-2-0",
         "category": "enemy",
-        "id": 3886
+        "id": 2290
       },
       {
         "name": "Killer Bee Nest (Queen)",
         "wiki_url": "/wiki/killer-bee-nest-queen",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 4278
       },
       {
         "name": "Maggot Egg",
         "wiki_url": "/wiki/maggot-egg-nest",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 4244
       },
       {
         "name": "Mini Killer Bee Nest",
@@ -3187,7 +3703,7 @@
         "name": "The Beekeeper",
         "wiki_url": "/wiki/the-beekeeper",
         "category": "treasure_room_boss",
-        "id": 13895
+        "id": 6816
       }
     ],
     "white_bag_drops": [
@@ -3222,7 +3738,7 @@
       "Greater Potion of Dexterity",
       "Pet Skins"
     ],
-    "description": "The Nestis an extremely dangerous dungeon that is meant to be a much more difficult version ofThe Hive, and is the fourth “epic” dungeon released, afterDeadwater Docks,Woodland Labyrinth, andThe Crawling Depths, which were released in 2013. This dungeon is one of theExaltationdungeons, boostingDexte",
+    "description": "The Nestis an extremely dangerous dungeon that is meant to be a much more difficult version ofThe Hive, and is the fourth \u201cepic\u201d dungeon released, afterDeadwater Docks,Woodland Labyrinth, andThe Crawling Depths, which were released in 2013. This dungeon is one of theExaltationdungeons, boostingDexte",
     "drops_from": "",
     "portal_dropped_by": [
       {
@@ -3244,7 +3760,14 @@
         "guaranteed": true
       }
     ],
-    "portal_id": 4259
+    "portal_id": 4259,
+    "bosses": [
+      {
+        "name": "Killer Bee Queen",
+        "id": 4243,
+        "type": "boss"
+      }
+    ]
   },
   "fungal-cavern": {
     "name": "Fungal Cavern",
@@ -3252,25 +3775,29 @@
     "wiki_url": "https://www.realmeye.com/wiki/fungal-cavern",
     "difficulty": "8",
     "recommended_level": "",
-    "boss": null,
+    "boss": {
+      "name": "Crystal Worm Mother",
+      "id": 45712,
+      "wiki_url": "/wiki/crystal-worm-mother"
+    },
     "enemies": [
       {
         "name": "Mushroom Brawler",
         "wiki_url": "/wiki/mushroom-brawler",
         "category": "enemy",
-        "id": 46338
+        "id": 45737
       },
       {
         "name": "Mushroom Alchemist",
         "wiki_url": "/wiki/mushroom-alchemist",
         "category": "enemy",
-        "id": 46339
+        "id": 45738
       },
       {
         "name": "Mushroom Chieftain",
         "wiki_url": "/wiki/mushroom-chieftain",
         "category": "enemy",
-        "id": 46340
+        "id": 45724
       }
     ],
     "white_bag_drops": [],
@@ -3309,7 +3836,14 @@
         "guaranteed": true
       }
     ],
-    "portal_id": 45679
+    "portal_id": 45679,
+    "bosses": [
+      {
+        "name": "Crystal Worm Mother",
+        "id": 45712,
+        "type": "boss"
+      }
+    ]
   },
   "crystal-cavern": {
     "name": "Crystal Cavern",
@@ -3320,14 +3854,14 @@
     "boss": {
       "name": "Crystal Entity",
       "wiki_url": "/wiki/crystal-entity",
-      "id": 26092
+      "id": 40132
     },
     "enemies": [
       {
         "name": "Crystallised Boomer",
         "wiki_url": "/wiki/crystallised-boomer",
         "category": "enemy",
-        "id": 10075
+        "id": 10054
       },
       {
         "name": "Crystallised Crawler",
@@ -3358,7 +3892,14 @@
     "other_notable_drops": [],
     "description": "TheCrystal Cavernis an extremely dangerous dungeon that is the second part of the Abandoned Mineshaft, with theFungal Cavernbeing the first. This dungeon is one of theExaltationdungeons, boostingWisdom.",
     "drops_from": "",
-    "portal_id": 26094
+    "portal_id": 26094,
+    "bosses": [
+      {
+        "name": "Crystal Entity",
+        "id": 40132,
+        "type": "boss"
+      }
+    ]
   },
   "the-void": {
     "name": "The Void",
@@ -3369,7 +3910,7 @@
     "boss": {
       "name": "Void Entity",
       "wiki_url": "/wiki/void-entity",
-      "id": 45395
+      "id": 45078
     },
     "enemies": [],
     "white_bag_drops": [
@@ -3389,7 +3930,14 @@
     ],
     "description": "The Voidis an endgame dungeon that is a sub-area of theLost Hallsand consists entirely of a boss fight against theVoid Entity. This dungeon is one of theExaltationdungeons, boostingMana.",
     "drops_from": "Must useVial of Pure Darknessto open",
-    "portal_id": 45075
+    "portal_id": 45075,
+    "bosses": [
+      {
+        "name": "Void Entity",
+        "id": 45078,
+        "type": "boss"
+      }
+    ]
   },
   "oryx-sanctuary": {
     "name": "Oryx's Sanctuary",
@@ -3397,11 +3945,22 @@
     "wiki_url": "https://www.realmeye.com/wiki/oryx-sanctuary",
     "difficulty": "",
     "recommended_level": "",
-    "boss": null,
+    "boss": {
+      "name": "Oryx the Mad God 3",
+      "id": 45363,
+      "wiki_url": "/wiki/oryx-the-mad-god-3"
+    },
     "enemies": [],
     "white_bag_drops": [],
     "other_notable_drops": [],
-    "description": ""
+    "description": "",
+    "bosses": [
+      {
+        "name": "Oryx the Mad God 3",
+        "id": 45363,
+        "type": "boss"
+      }
+    ]
   },
   "battle-for-the-nexus": {
     "name": "Battle for the Nexus",
@@ -3430,11 +3989,22 @@
     "wiki_url": "https://www.realmeye.com/wiki/oryxs-chamber",
     "difficulty": "",
     "recommended_level": "",
-    "boss": null,
+    "boss": {
+      "name": "Oryx the Mad God 2",
+      "id": 2354,
+      "wiki_url": "/wiki/oryx-the-mad-god-2"
+    },
     "enemies": [],
     "white_bag_drops": [],
     "other_notable_drops": [],
-    "description": ""
+    "description": "",
+    "bosses": [
+      {
+        "name": "Oryx the Mad God 2",
+        "id": 2354,
+        "type": "boss"
+      }
+    ]
   },
   "wine-cellar": {
     "name": "Wine Cellar",
@@ -3444,7 +4014,8 @@
     "recommended_level": "",
     "boss": {
       "name": "Oryx the Mad God 2",
-      "wiki_url": "/wiki/oryx-the-mad-god-2"
+      "wiki_url": "/wiki/oryx-the-mad-god-2",
+      "id": 2354
     },
     "enemies": [
       {
@@ -3519,9 +4090,16 @@
       "Potion of Vitality",
       "Potion of Wisdom"
     ],
-    "description": "TheWine Cellaris a high-level dungeon that can be accessed after defeatingOryx the Mad GodinOryx’s Chamber. Upon Oryx’s defeat, he will drop a Locked Wine Cellar Portal, which can be unlocked with aWine Cellar Incantation(or “inc”), an item that drops from most dungeon bosses. The portal will unlock",
+    "description": "TheWine Cellaris a high-level dungeon that can be accessed after defeatingOryx the Mad GodinOryx\u2019s Chamber. Upon Oryx\u2019s defeat, he will drop a Locked Wine Cellar Portal, which can be unlocked with aWine Cellar Incantation(or \u201cinc\u201d), an item that drops from most dungeon bosses. The portal will unlock",
     "drops_from": "Locked portal is a guaranteed dropMust be opened with aWine Cellar Incantation",
-    "portal_id": 578
+    "portal_id": 578,
+    "bosses": [
+      {
+        "name": "Oryx the Mad God 2",
+        "id": 2354,
+        "type": "boss"
+      }
+    ]
   },
   "cave-of-a-thousand-treasures": {
     "name": "Cave of a Thousand Treasures",
@@ -3532,39 +4110,44 @@
     "boss": {
       "name": "Golden Oryx Effigy",
       "wiki_url": "/wiki/golden-oryx-effigy",
-      "id": 45849
+      "id": 24108
     },
     "enemies": [
       {
         "name": "Treasure Plunderer",
         "wiki_url": "/wiki/treasure-plunderer",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 24106
       },
       {
         "name": "Treasure Robber",
         "wiki_url": "/wiki/treasure-robber",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 24107
       },
       {
         "name": "Treasure Rat",
         "wiki_url": "/wiki/treasure-rat",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 24093
       },
       {
         "name": "Treasure Pot",
         "wiki_url": "/wiki/treasure-pot",
-        "id": 45243,
+        "id": 45237,
         "category": "enemy"
       },
       {
         "name": "Treasure Mimic",
         "wiki_url": "/wiki/treasure-mimic",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 43983
       },
       {
         "name": "Treasure Thief",
         "wiki_url": "/wiki/treasure-thief",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 7703
       },
       {
         "name": "Sunken Soul",
@@ -3587,7 +4170,7 @@
       {
         "name": "Djinn",
         "wiki_url": "/wiki/djinn",
-        "id": 21895,
+        "id": 2330,
         "category": "enemy"
       }
     ],
@@ -3625,7 +4208,14 @@
         "guaranteed": false
       }
     ],
-    "portal_id": 24110
+    "portal_id": 24110,
+    "bosses": [
+      {
+        "name": "Golden Oryx Effigy",
+        "id": 24108,
+        "type": "boss"
+      }
+    ]
   },
   "ancient-ruins": {
     "name": "Ancient Ruins",
@@ -3636,7 +4226,7 @@
     "boss": {
       "name": "Sandstone Titan",
       "wiki_url": "/wiki/sandstone-titan",
-      "id": 28873
+      "id": 28871
     },
     "enemies": [
       {
@@ -3648,13 +4238,13 @@
       {
         "name": "Cactus",
         "wiki_url": "/wiki/cactus",
-        "id": 9663,
+        "id": 9662,
         "category": "enemy"
       },
       {
         "name": "Desert Scorpion",
         "wiki_url": "/wiki/desert-scorpion",
-        "id": 13126,
+        "id": 9665,
         "category": "enemy"
       },
       {
@@ -3666,7 +4256,7 @@
       {
         "name": "Sand Elemental",
         "wiki_url": "/wiki/sand-elemental",
-        "id": 13125,
+        "id": 9664,
         "category": "enemy"
       },
       {
@@ -3696,7 +4286,8 @@
       {
         "name": "Quicksand",
         "wiki_url": "/wiki/quicksand",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 43983
       },
       {
         "name": "Dark Elf Queen",
@@ -3707,19 +4298,19 @@
       {
         "name": "Hunter Centaur",
         "wiki_url": "/wiki/hunter-centaur",
-        "id": 21882,
+        "id": 15653,
         "category": "enemy"
       },
       {
         "name": "Minotaur",
         "wiki_url": "/wiki/minotaur",
-        "id": 21847,
+        "id": 1606,
         "category": "enemy"
       },
       {
         "name": "Flayer God",
         "wiki_url": "/wiki/flayer-god",
-        "id": 21850,
+        "id": 1609,
         "category": "enemy"
       },
       {
@@ -3744,12 +4335,6 @@
         "name": "Nameless Gladiator",
         "wiki_url": "/wiki/nameless-gladiator",
         "id": 49633,
-        "category": "enemy"
-      },
-      {
-        "name": "Sandstone Titan",
-        "wiki_url": "/wiki/sandstone-titan",
-        "id": 28873,
         "category": "enemy"
       },
       {
@@ -3829,7 +4414,14 @@
         "guaranteed": false
       }
     ],
-    "portal_id": 9657
+    "portal_id": 9657,
+    "bosses": [
+      {
+        "name": "Sandstone Titan",
+        "id": 28871,
+        "type": "boss"
+      }
+    ]
   },
   "cursed-library": {
     "name": "Cursed Library",
@@ -3840,7 +4432,7 @@
     "boss": {
       "name": "Avalon the Archivist",
       "wiki_url": "/wiki/avalon-the-archivist",
-      "id": 43923
+      "id": 43975
     },
     "enemies": [
       {
@@ -3852,31 +4444,31 @@
       {
         "name": "Bookwyrm",
         "wiki_url": "/wiki/bookwyrm",
-        "id": 43877,
+        "id": 13197,
         "category": "enemy"
       },
       {
         "name": "Corruption Phantom Wisp Charger",
         "wiki_url": "/wiki/corruption-phantom-wisp-charger",
-        "id": 43930,
+        "id": 13190,
         "category": "enemy"
       },
       {
         "name": "Corruption Phantom Wisp Ravager",
         "wiki_url": "/wiki/corruption-phantom-wisp-ravager",
-        "id": 43933,
+        "id": 13193,
         "category": "enemy"
       },
       {
         "name": "Corruption Phantom Wisp Stalker",
         "wiki_url": "/wiki/corruption-phantom-wisp-stalker",
-        "id": 43931,
+        "id": 13191,
         "category": "enemy"
       },
       {
         "name": "Corruption Phantom Wisp Watcher",
         "wiki_url": "/wiki/corruption-phantom-wisp-watcher",
-        "id": 43932,
+        "id": 13192,
         "category": "enemy"
       },
       {
@@ -3900,13 +4492,13 @@
       {
         "name": "Hand of the Helpless",
         "wiki_url": "/wiki/hand-of-the-helpless",
-        "id": 43906,
+        "id": 13199,
         "category": "enemy"
       },
       {
         "name": "Headless Specter",
         "wiki_url": "/wiki/headless-specter",
-        "id": 43905,
+        "id": 13198,
         "category": "enemy"
       },
       {
@@ -3918,25 +4510,25 @@
       {
         "name": "Poltergeist",
         "wiki_url": "/wiki/poltergeist",
-        "id": 43875,
+        "id": 29815,
         "category": "enemy"
       },
       {
         "name": "Soulless Scholar",
         "wiki_url": "/wiki/soulless-scholar",
-        "id": 43907,
+        "id": 13195,
         "category": "enemy"
       },
       {
         "name": "Soulless Scribe",
         "wiki_url": "/wiki/soulless-scribe",
-        "id": 43878,
+        "id": 13194,
         "category": "enemy"
       },
       {
         "name": "Soulless Student",
         "wiki_url": "/wiki/soulless-student",
-        "id": 43908,
+        "id": 13196,
         "category": "enemy"
       },
       {
@@ -3966,7 +4558,7 @@
       {
         "name": "Beholder",
         "wiki_url": "/wiki/beholder",
-        "id": 21890,
+        "id": 1622,
         "category": "enemy"
       },
       {
@@ -3978,7 +4570,7 @@
       {
         "name": "Corruption Phantom",
         "wiki_url": "/wiki/corruption-phantom",
-        "id": 43924,
+        "id": 13189,
         "category": "enemy"
       }
     ],
@@ -4028,7 +4620,14 @@
         "guaranteed": false
       }
     ],
-    "portal_id": 43862
+    "portal_id": 43862,
+    "bosses": [
+      {
+        "name": "Avalon the Archivist",
+        "id": 43975,
+        "type": "boss"
+      }
+    ]
   },
   "haunted-cemetery": {
     "name": "Haunted Cemetery",
@@ -4097,22 +4696,16 @@
         "category": "enemy"
       },
       {
-        "name": "Troll Matriarch",
-        "wiki_url": "/wiki/troll-matriarch",
-        "id": 24351,
-        "category": "enemy"
-      },
-      {
         "name": "Ghost Bride",
         "wiki_url": "/wiki/ghost-bride",
         "id": 24327,
         "category": "enemy"
       },
       {
-        "name": "Troll’s Toadstool",
+        "name": "Troll\u2019s Toadstool",
         "wiki_url": "/wiki/troll-s-toadstool",
         "category": "enemy",
-        "id": 7088
+        "id": 43976
       },
       {
         "name": "Fate",
@@ -4141,7 +4734,7 @@
       {
         "name": "Ghost of Skuld",
         "wiki_url": "/wiki/ghost-of-skuld",
-        "id": 699470,
+        "id": 18369,
         "category": "enemy"
       },
       {
@@ -4219,7 +4812,7 @@
       {
         "name": "Zombie Hulk",
         "wiki_url": "/wiki/zombie-hulk",
-        "id": 29447,
+        "id": 24581,
         "category": "enemy"
       }
     ],
@@ -4249,7 +4842,14 @@
         "guaranteed": true
       }
     ],
-    "portal_id": 1867
+    "portal_id": 1867,
+    "bosses": [
+      {
+        "name": "Troll Matriarch",
+        "id": 24351,
+        "type": "boss"
+      }
+    ]
   },
   "the-machine": {
     "name": "The Machine",
@@ -4266,35 +4866,31 @@
       {
         "name": "The Servers",
         "wiki_url": "/wiki/the-servers",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 41373
       },
       {
         "name": "Exposed Code",
         "wiki_url": "/wiki/exposed-code",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 51091
       },
       {
         "name": "Rock Construct",
         "wiki_url": "/wiki/rock-construct",
-        "id": 2490,
+        "id": 2309,
         "category": "enemy"
       },
       {
         "name": "Wood Construct",
         "wiki_url": "/wiki/wood-construct",
-        "id": 2491,
+        "id": 2310,
         "category": "enemy"
       },
       {
         "name": "Steel Construct",
         "wiki_url": "/wiki/steel-construct",
-        "id": 2492,
-        "category": "enemy"
-      },
-      {
-        "name": "Null",
-        "wiki_url": "/wiki/null",
-        "id": 43989,
+        "id": 2311,
         "category": "enemy"
       }
     ],
@@ -4362,7 +4958,14 @@
         "guaranteed": false
       }
     ],
-    "portal_id": 43986
+    "portal_id": 43986,
+    "bosses": [
+      {
+        "name": "Null",
+        "id": 43989,
+        "type": "boss"
+      }
+    ]
   },
   "the-inner-workings": {
     "name": "The Inner Workings",
@@ -4373,13 +4976,20 @@
     "boss": {
       "name": "The Keyper",
       "wiki_url": "/wiki/the-keyper",
-      "id": 17974
+      "id": 19245
     },
     "enemies": [],
     "white_bag_drops": [],
     "other_notable_drops": [],
     "description": "",
-    "portal_id": 50432
+    "portal_id": 50432,
+    "bosses": [
+      {
+        "name": "The Keyper",
+        "id": 19245,
+        "type": "boss"
+      }
+    ]
   },
   "davy-jones-locker": {
     "name": "Davy Jones' Locker",
@@ -4390,13 +5000,20 @@
     "boss": {
       "name": "Davy Jones",
       "wiki_url": "/wiki/davy-jones",
-      "id": 13168
+      "id": 3634
     },
     "enemies": [],
     "white_bag_drops": [],
     "other_notable_drops": [],
     "description": "",
-    "portal_id": 1857
+    "portal_id": 1857,
+    "bosses": [
+      {
+        "name": "Davy Jones",
+        "id": 3634,
+        "type": "boss"
+      }
+    ]
   },
   "puppet-master-s-encore": {
     "name": "Puppet Master's Encore",
@@ -4413,7 +5030,14 @@
     "white_bag_drops": [],
     "other_notable_drops": [],
     "description": "",
-    "portal_id": 29798
+    "portal_id": 29798,
+    "bosses": [
+      {
+        "name": "Puppet Master's Encore",
+        "id": 29798,
+        "type": "boss"
+      }
+    ]
   },
   "cnidarian-reef": {
     "name": "Cnidarian Reef",
@@ -4448,13 +5072,7 @@
       {
         "name": "Royal Cnidarian",
         "wiki_url": "/wiki/royal-cnidarian",
-        "id": 2552,
-        "category": "miniboss"
-      },
-      {
-        "name": "Gold Cnidarian",
-        "wiki_url": "/wiki/gold-cnidarian",
-        "id": 2550,
+        "id": 2551,
         "category": "miniboss"
       },
       {
@@ -4504,7 +5122,14 @@
         "guaranteed": false
       }
     ],
-    "portal_id": 2554
+    "portal_id": 2554,
+    "bosses": [
+      {
+        "name": "Gold Cnidarian",
+        "id": 2550,
+        "type": "boss"
+      }
+    ]
   },
   "parasite-chambers": {
     "name": "Parasite Chambers",
@@ -4515,67 +5140,67 @@
     "boss": {
       "name": "Nightmare Colony",
       "wiki_url": "/wiki/nightmare-colony",
-      "id": 46003
+      "id": 3868
     },
     "enemies": [
       {
         "name": "Sword Wielding Host",
         "wiki_url": "/wiki/sword-wielding-host",
-        "id": 2394,
+        "id": 1958,
         "category": "enemy"
       },
       {
         "name": "Staff Wielding Host",
         "wiki_url": "/wiki/staff-wielding-host",
-        "id": 2398,
+        "id": 1957,
         "category": "enemy"
       },
       {
         "name": "Dagger Wielding Host",
         "wiki_url": "/wiki/dagger-wielding-host",
-        "id": 2397,
+        "id": 1961,
         "category": "enemy"
       },
       {
         "name": "Wand Wielding Host",
         "wiki_url": "/wiki/wand-wielding-host",
-        "id": 2395,
+        "id": 1960,
         "category": "enemy"
       },
       {
         "name": "Bow Wielding Host",
         "wiki_url": "/wiki/bow-wielding-host",
-        "id": 2396,
+        "id": 1962,
         "category": "enemy"
       },
       {
         "name": "Katana Wielding Host",
         "wiki_url": "/wiki/katana-wielding-host",
-        "id": 2399,
+        "id": 1959,
         "category": "enemy"
       },
       {
         "name": "Parasitic Stalker",
         "wiki_url": "/wiki/parasitic-stalker",
-        "id": 46011,
+        "id": 45988,
         "category": "enemy"
       },
       {
         "name": "Walking Horror",
         "wiki_url": "/wiki/walking-horror",
-        "id": 46007,
+        "id": 45989,
         "category": "enemy"
       },
       {
         "name": "Horror Maw",
         "wiki_url": "/wiki/horror-maw",
-        "id": 46008,
+        "id": 45999,
         "category": "enemy"
       },
       {
         "name": "Furious Lasher",
         "wiki_url": "/wiki/furious-lasher",
-        "id": 46009,
+        "id": 46000,
         "category": "enemy"
       },
       {
@@ -4587,7 +5212,7 @@
       {
         "name": "Parasitic Blob",
         "wiki_url": "/wiki/parasitic-blob",
-        "id": 29446,
+        "id": 1929,
         "category": "enemy"
       },
       {
@@ -4629,7 +5254,7 @@
       {
         "name": "Painling",
         "wiki_url": "/wiki/painling",
-        "id": 46010,
+        "id": 46001,
         "category": "enemy"
       },
       {
@@ -4667,12 +5292,6 @@
         "wiki_url": "/wiki/infested-chest",
         "id": 2078,
         "category": "treasure_room_boss"
-      },
-      {
-        "name": "Nightmare Colony",
-        "wiki_url": "/wiki/nightmare-colony",
-        "id": 46003,
-        "category": "enemy"
       }
     ],
     "white_bag_drops": [
@@ -4708,7 +5327,14 @@
         "guaranteed": true
       }
     ],
-    "portal_id": 1944
+    "portal_id": 1944,
+    "bosses": [
+      {
+        "name": "Nightmare Colony",
+        "id": 3868,
+        "type": "boss"
+      }
+    ]
   },
   "the-tavern": {
     "name": "The Tavern",
@@ -4719,13 +5345,13 @@
     "boss": {
       "name": "Bradley the Barkeep",
       "wiki_url": "/wiki/bradley-the-barkeep",
-      "id": 17747
+      "id": 17745
     },
     "enemies": [
       {
         "name": "Beer God",
         "wiki_url": "/wiki/beer-god",
-        "id": 24101,
+        "id": 22128,
         "category": "enemy"
       },
       {
@@ -4743,19 +5369,19 @@
       {
         "name": "Demon Brute Brawler",
         "wiki_url": "/wiki/demon-brute-brawler",
-        "id": 17758,
+        "id": 17757,
         "category": "enemy"
       },
       {
         "name": "Demon Mage Brawler",
         "wiki_url": "/wiki/demon-mage-brawler",
-        "id": 17756,
+        "id": 17755,
         "category": "enemy"
       },
       {
         "name": "Pirate Brawler",
         "wiki_url": "/wiki/pirate-brawler",
-        "id": 17760,
+        "id": 17759,
         "category": "enemy"
       },
       {
@@ -4773,43 +5399,37 @@
       {
         "name": "Robot Brawler",
         "wiki_url": "/wiki/robot-brawler",
-        "id": 17773,
+        "id": 17768,
         "category": "enemy"
       },
       {
         "name": "Lightning Spike",
         "wiki_url": "/wiki/lightning-spike",
-        "id": 17775,
+        "id": 17774,
         "category": "enemy"
       },
       {
         "name": "Skeleton Brawler",
         "wiki_url": "/wiki/skeleton-brawler",
-        "id": 17767,
+        "id": 17763,
         "category": "enemy"
       },
       {
         "name": "Snake Brawler",
         "wiki_url": "/wiki/snake-brawler",
-        "id": 17752,
+        "id": 17750,
         "category": "enemy"
       },
       {
         "name": "Sprite Brawler",
         "wiki_url": "/wiki/sprite-brawler",
-        "id": 17754,
+        "id": 17753,
         "category": "enemy"
-      },
-      {
-        "name": "Bradley the Barkeep",
-        "wiki_url": "/wiki/bradley-the-barkeep",
-        "id": 17747,
-        "category": "miniboss"
       },
       {
         "name": "Beer Barrel",
         "wiki_url": "/wiki/beer-barrel",
-        "id": 17705,
+        "id": 8472,
         "category": "miniboss"
       }
     ],
@@ -4850,7 +5470,14 @@
         "guaranteed": true
       }
     ],
-    "portal_id": 17744
+    "portal_id": 17744,
+    "bosses": [
+      {
+        "name": "Bradley the Barkeep",
+        "id": 17745,
+        "type": "boss"
+      }
+    ]
   },
   "sulfurous-wetlands": {
     "name": "Sulfurous Wetlands",
@@ -4861,19 +5488,19 @@
     "boss": {
       "name": "Heart of the Wetlands",
       "wiki_url": "/wiki/heart-of-the-wetlands",
-      "id": 25598
+      "id": 13242
     },
     "enemies": [
       {
         "name": "Acidic Shambler",
         "wiki_url": "/wiki/acidic-shambler",
-        "id": 25523,
+        "id": 13244,
         "category": "enemy"
       },
       {
         "name": "Acidic Sludget",
         "wiki_url": "/wiki/acidic-sludget",
-        "id": 25448,
+        "id": 13245,
         "category": "enemy"
       },
       {
@@ -4885,13 +5512,13 @@
       {
         "name": "Bog Child",
         "wiki_url": "/wiki/bog-child",
-        "id": 25534,
+        "id": 13252,
         "category": "enemy"
       },
       {
         "name": "Bog Guardian",
         "wiki_url": "/wiki/bog-guardian",
-        "id": 32728,
+        "id": 13251,
         "category": "enemy"
       },
       {
@@ -4903,7 +5530,8 @@
       {
         "name": "Bramble Roots",
         "wiki_url": "/wiki/bramble-root",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 25502
       },
       {
         "name": "Cattail",
@@ -4914,13 +5542,14 @@
       {
         "name": "Cobalt Wretched Rose",
         "wiki_url": "/wiki/cobalt-wretched-rose",
-        "id": 26134,
+        "id": 13249,
         "category": "enemy"
       },
       {
         "name": "Cursed Fruit",
         "wiki_url": "/wiki/cursed-fruit",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 43377
       },
       {
         "name": "Gilded Fruit",
@@ -4931,7 +5560,7 @@
       {
         "name": "Mossy Chest",
         "wiki_url": "/wiki/mossy-chest",
-        "id": 26136,
+        "id": 26030,
         "category": "enemy"
       },
       {
@@ -4943,7 +5572,7 @@
       {
         "name": "Scarlet Wretched Rose",
         "wiki_url": "/wiki/scarlet-wretched-rose",
-        "id": 25588,
+        "id": 13248,
         "category": "enemy"
       },
       {
@@ -4967,13 +5596,13 @@
       {
         "name": "Thorned Drake",
         "wiki_url": "/wiki/thorned-drake",
-        "id": 26174,
+        "id": 13246,
         "category": "enemy"
       },
       {
         "name": "Thorned Drake Baby",
         "wiki_url": "/wiki/thorned-drake-baby",
-        "id": 26175,
+        "id": 13247,
         "category": "enemy"
       },
       {
@@ -4991,7 +5620,7 @@
       {
         "name": "Viridian Wretched Rose",
         "wiki_url": "/wiki/viridian-wretched-rose",
-        "id": 26135,
+        "id": 13250,
         "category": "enemy"
       },
       {
@@ -5009,7 +5638,8 @@
       {
         "name": "Acidic Swamp Water",
         "wiki_url": "/wiki/acidic-swamp-water",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 43983
       },
       {
         "name": "Sulfurous Mud",
@@ -5019,7 +5649,7 @@
       {
         "name": "Bulbous Perforator",
         "wiki_url": "/wiki/bulbous-perforator",
-        "id": 9822,
+        "id": 9821,
         "category": "enemy"
       },
       {
@@ -5031,7 +5661,7 @@
       {
         "name": "Elder Ent Ancient",
         "wiki_url": "/wiki/elder-ent-ancient",
-        "id": 51058,
+        "id": 22084,
         "category": "enemy"
       },
       {
@@ -5053,15 +5683,9 @@
         "category": "enemy"
       },
       {
-        "name": "Heart of the Wetlands",
-        "wiki_url": "/wiki/heart-of-the-wetlands",
-        "id": 25598,
-        "category": "enemy"
-      },
-      {
         "name": "Warped Ent Ancient",
         "wiki_url": "/wiki/warped-ent-ancient",
-        "id": 26156,
+        "id": 25594,
         "category": "treasure_room_boss"
       },
       {
@@ -5122,7 +5746,14 @@
         "guaranteed": false
       }
     ],
-    "portal_id": 25490
+    "portal_id": 25490,
+    "bosses": [
+      {
+        "name": "Heart of the Wetlands",
+        "id": 13242,
+        "type": "boss"
+      }
+    ]
   },
   "the-third-dimension": {
     "name": "The Third Dimension",
@@ -5151,7 +5782,8 @@
       {
         "name": "Cubic Frame (Enemy)",
         "wiki_url": "/wiki/cubic-frame-enemy",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 32738
       },
       {
         "name": "Cubic Core",
@@ -5204,7 +5836,7 @@
       {
         "name": "Ice Cube Blaster",
         "wiki_url": "/wiki/ice-cube-blaster-third-dimension",
-        "id": 22012,
+        "id": 16910,
         "category": "enemy"
       },
       {
@@ -5216,12 +5848,14 @@
       {
         "name": "Square Ether",
         "wiki_url": "/wiki/square-ether",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 32737
       },
       {
         "name": "Cronus Ether",
         "wiki_url": "/wiki/cronus-ether",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 41373
       },
       {
         "name": "Tundra Tribe Leader",
@@ -5244,7 +5878,7 @@
       {
         "name": "Assembled Giant",
         "wiki_url": "/wiki/assembled-giant",
-        "id": 34486,
+        "id": 34485,
         "category": "enemy"
       },
       {
@@ -5260,12 +5894,6 @@
         "category": "treasure_room_boss"
       },
       {
-        "name": "Shadow Cube Blaster",
-        "wiki_url": "/wiki/shadow-cube-blaster",
-        "id": 32741,
-        "category": "enemy"
-      },
-      {
         "name": "Shadow Cube Defender",
         "wiki_url": "/wiki/shadow-cube-defender",
         "id": 32740,
@@ -5274,7 +5902,7 @@
       {
         "name": "Tesseract Fragment",
         "wiki_url": "/wiki/tesseract-fragment",
-        "id": 21175,
+        "id": 21174,
         "category": "enemy"
       },
       {
@@ -5359,7 +5987,14 @@
         "guaranteed": false
       }
     ],
-    "portal_id": 19302
+    "portal_id": 19302,
+    "bosses": [
+      {
+        "name": "Shadow Cube Blaster",
+        "id": 32741,
+        "type": "boss"
+      }
+    ]
   },
   "lair-of-shaitan": {
     "name": "Lair of Shaitan",
@@ -5370,7 +6005,7 @@
     "boss": {
       "name": "Shaitan the Advisor",
       "wiki_url": "/wiki/shaitan-the-advisor",
-      "id": 29723
+      "id": 8395
     },
     "enemies": [
       {
@@ -5386,21 +6021,15 @@
         "category": "enemy"
       },
       {
-        "name": "Shaitan the Advisor",
-        "wiki_url": "/wiki/shaitan-the-advisor",
-        "id": 29723,
-        "category": "enemy"
-      },
-      {
         "name": "Creepy Small Heads",
         "wiki_url": "/wiki/creepy-small-heads",
-        "id": 29736,
+        "id": 28169,
         "category": "enemy"
       },
       {
         "name": "Creepy Small Hands",
         "wiki_url": "/wiki/creepy-small-hands",
-        "id": 29731,
+        "id": 28168,
         "category": "enemy"
       }
     ],
@@ -5434,7 +6063,14 @@
         "guaranteed": false
       }
     ],
-    "portal_id": 28057
+    "portal_id": 28057,
+    "bosses": [
+      {
+        "name": "Shaitan the Advisor",
+        "id": 8395,
+        "type": "boss"
+      }
+    ]
   },
   "secluded-thicket": {
     "name": "Secluded Thicket",
@@ -5461,15 +6097,9 @@
         "category": "enemy"
       },
       {
-        "name": "Tezcacoatl the Great Basilisk",
-        "wiki_url": "/wiki/tezcacoatl-the-great-basilisk",
-        "id": 13990,
-        "category": "miniboss"
-      },
-      {
         "name": "Adult Basilisk",
         "wiki_url": "/wiki/adult-basilisk",
-        "id": 13996,
+        "id": 13991,
         "category": "miniboss"
       },
       {
@@ -5598,7 +6228,14 @@
         "guaranteed": false
       }
     ],
-    "portal_id": 13983
+    "portal_id": 13983,
+    "bosses": [
+      {
+        "name": "Tezcacoatl the Great Basilisk",
+        "id": 13990,
+        "type": "boss"
+      }
+    ]
   },
   "high-tech-terror": {
     "name": "High Tech Terror",
@@ -5609,7 +6246,7 @@
     "boss": {
       "name": "F.E.R.A.L.",
       "wiki_url": "/wiki/f-e-r-a-l",
-      "id": 15752
+      "id": 2458
     },
     "enemies": [
       {
@@ -5633,7 +6270,7 @@
       {
         "name": "A.E.G.I.S.",
         "wiki_url": "/wiki/a-e-g-i-s",
-        "id": 15740,
+        "id": 15739,
         "category": "enemy"
       }
     ],
@@ -5665,7 +6302,14 @@
         "guaranteed": false
       }
     ],
-    "portal_id": 15730
+    "portal_id": 15730,
+    "bosses": [
+      {
+        "name": "F.E.R.A.L.",
+        "id": 2458,
+        "type": "boss"
+      }
+    ]
   },
   "ice-citadel": {
     "name": "Ice Citadel",
@@ -5724,18 +6368,19 @@
       {
         "name": "Glacierpede",
         "wiki_url": "/wiki/glacierpede",
-        "id": 40151,
+        "id": 40149,
         "category": "enemy"
       },
       {
         "name": "Larval Glacierpede",
         "wiki_url": "/wiki/larval-glacierpede",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 40149
       },
       {
         "name": "Creepy Weird Dark Spirit Mental Manifestation",
         "wiki_url": "/wiki/creepy-weird-dark-spirit-mental-manifestation",
-        "id": 40164,
+        "id": 40155,
         "category": "enemy"
       },
       {
@@ -5751,12 +6396,6 @@
         "category": "enemy"
       },
       {
-        "name": "Esben the Neurotic",
-        "wiki_url": "/wiki/esben-the-neurotic",
-        "id": 40166,
-        "category": "enemy"
-      },
-      {
         "name": "Munin",
         "wiki_url": "/wiki/munin",
         "id": 40177,
@@ -5765,7 +6404,7 @@
       {
         "name": "Creepy Weird Dark Spirit Mirror Image Monster",
         "wiki_url": "/wiki/creepy-weird-dark-spirit-mirror-image-monster",
-        "id": 40211,
+        "id": 40193,
         "category": "enemy"
       },
       {
@@ -5858,7 +6497,14 @@
         "guaranteed": false
       }
     ],
-    "portal_id": 40189
+    "portal_id": 40189,
+    "bosses": [
+      {
+        "name": "Esben the Neurotic",
+        "id": 40166,
+        "type": "boss"
+      }
+    ]
   },
   "moonlight-village": {
     "name": "Moonlight Village",
@@ -5875,7 +6521,8 @@
       {
         "name": "Village Girl Umi",
         "wiki_url": "/wiki/village-girl-umi",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 20601
       },
       {
         "name": "Sage Genji",
@@ -5896,15 +6543,9 @@
         "category": "miniboss"
       },
       {
-        "name": "Kitsune Umi",
-        "wiki_url": "/wiki/kitsune-umi",
-        "id": 20493,
-        "category": "miniboss"
-      },
-      {
         "name": "Ethereal Shrine",
         "wiki_url": "/wiki/ethereal-shrine",
-        "id": 22147,
+        "id": 20800,
         "category": "enemy"
       },
       {
@@ -5922,7 +6563,7 @@
       {
         "name": "Ethereal Fog",
         "wiki_url": "/wiki/ethereal-fog",
-        "id": 20596,
+        "id": 20491,
         "category": "enemy"
       },
       {
@@ -5995,7 +6636,14 @@
         "guaranteed": true
       }
     ],
-    "portal_id": 20447
+    "portal_id": 20447,
+    "bosses": [
+      {
+        "name": "Kitsune Umi",
+        "id": 20493,
+        "type": "boss"
+      }
+    ]
   },
   "beachzone": {
     "name": "Beachzone",
@@ -6014,12 +6662,6 @@
         "wiki_url": "/wiki/beach-bum",
         "id": 3669,
         "category": "enemy"
-      },
-      {
-        "name": "Masked Party God",
-        "wiki_url": "/wiki/masked-party-god",
-        "id": 3670,
-        "category": "miniboss"
       },
       {
         "name": "Mixcoatl the Masked God",
@@ -6042,7 +6684,14 @@
         "guaranteed": true
       }
     ],
-    "portal_id": 1858
+    "portal_id": 1858,
+    "bosses": [
+      {
+        "name": "Masked Party God",
+        "id": 3670,
+        "type": "boss"
+      }
+    ]
   },
   "cultist-hideout": {
     "name": "Cultist Hideout",
@@ -6053,13 +6702,20 @@
     "boss": {
       "name": "Malus",
       "wiki_url": "/wiki/malus",
-      "id": 45231
+      "id": 45215
     },
     "enemies": [],
     "white_bag_drops": [],
     "other_notable_drops": [],
     "description": "",
-    "portal_id": 19459
+    "portal_id": 19459,
+    "bosses": [
+      {
+        "name": "Malus",
+        "id": 45231,
+        "type": "boss"
+      }
+    ]
   },
   "spectral-penitentiary": {
     "name": "Spectral Penitentiary",
@@ -6136,7 +6792,8 @@
       {
         "name": "Soulwarden Murcian (NPC)",
         "wiki_url": "/wiki/soulwarden-murcian-npc",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 23681
       },
       {
         "name": "Elite Skeletal Guard",
@@ -6255,7 +6912,8 @@
       {
         "name": "Garden Gravestone",
         "wiki_url": "/wiki/garden-gravestone",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 24358
       },
       {
         "name": "Bard Agent",
@@ -6314,18 +6972,20 @@
       {
         "name": "Skull Pylon",
         "wiki_url": "/wiki/skull-pylon",
-        "id": 44353,
+        "id": 24458,
         "category": "enemy"
       },
       {
         "name": "Slime Dispenser",
         "wiki_url": "/wiki/slime-dispenser",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 23737
       },
       {
         "name": "Alchemy Cauldron",
         "wiki_url": "/wiki/alchemy-cauldron",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 23854
       },
       {
         "name": "Mysterious Zombie",
@@ -6336,7 +6996,7 @@
       {
         "name": "Ghost of Skuld",
         "wiki_url": "/wiki/ghost-of-skuld",
-        "id": 699470,
+        "id": 18369,
         "category": "enemy"
       },
       {
@@ -6348,25 +7008,25 @@
       {
         "name": "Skeletal Centipede",
         "wiki_url": "/wiki/skeletal-centipede",
-        "id": 34498,
+        "id": 34493,
         "category": "enemy"
       },
       {
         "name": "Archdemon Malphas",
         "wiki_url": "/wiki/archdemon-malphas",
-        "id": 13178,
+        "id": 2314,
         "category": "enemy"
       },
       {
         "name": "Septavius the Ghost God",
         "wiki_url": "/wiki/septavius-the-ghost-god",
-        "id": 13124,
+        "id": 3472,
         "category": "enemy"
       },
       {
         "name": "Crystal Prisoner",
         "wiki_url": "/wiki/crystal-prisoner",
-        "id": 2474,
+        "id": 2369,
         "category": "enemy"
       }
     ],
@@ -6399,7 +7059,14 @@
         "guaranteed": true
       }
     ],
-    "portal_id": 23691
+    "portal_id": 23691,
+    "bosses": [
+      {
+        "name": "Hollow Prisoner",
+        "id": 33246,
+        "type": "boss"
+      }
+    ]
   },
   "kogbold-steamworks": {
     "name": "Kogbold Steamworks",
@@ -6440,19 +7107,19 @@
       {
         "name": "Kogbold Drone",
         "wiki_url": "/wiki/kogbold-drone",
-        "id": 49390,
+        "id": 49389,
         "category": "enemy"
       },
       {
         "name": "Kogbold Worker",
         "wiki_url": "/wiki/kogbold-worker",
-        "id": 53711,
+        "id": 49287,
         "category": "enemy"
       },
       {
         "name": "Kogbold Battlesmith",
         "wiki_url": "/wiki/kogbold-battlesmith",
-        "id": 53710,
+        "id": 49290,
         "category": "enemy"
       },
       {
@@ -6464,19 +7131,19 @@
       {
         "name": "Kogbold Steamwalker",
         "wiki_url": "/wiki/kogbold-steamwalker",
-        "id": 50264,
+        "id": 49293,
         "category": "enemy"
       },
       {
         "name": "Steam Serpent",
         "wiki_url": "/wiki/steam-serpent",
-        "id": 53708,
+        "id": 49294,
         "category": "enemy"
       },
       {
         "name": "Kogbold Turret",
         "wiki_url": "/wiki/kogbold-turret",
-        "id": 49443,
+        "id": 49329,
         "category": "enemy"
       },
       {
@@ -6487,7 +7154,8 @@
       {
         "name": "Steam Turret",
         "wiki_url": "/wiki/steam-turret",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 49329
       },
       {
         "name": "Kogbold Laser",
@@ -6498,7 +7166,8 @@
       {
         "name": "Armor Broken",
         "wiki_url": "/wiki/status-effects#armor-broken",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 43983
       },
       {
         "name": "Boomerang Turret",
@@ -6509,17 +7178,19 @@
       {
         "name": "Crusher",
         "wiki_url": "/wiki/crusher",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 30616
       },
       {
         "name": "Conveyor",
         "wiki_url": "/wiki/conveyor",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 50347
       },
       {
         "name": "Steam Vent",
         "wiki_url": "/wiki/steam-vent",
-        "id": 9835,
+        "id": 9834,
         "category": "enemy"
       },
       {
@@ -6545,12 +7216,6 @@
         "wiki_url": "/wiki/mechanical-flame",
         "id": 50352,
         "category": "miniboss"
-      },
-      {
-        "name": "Factory Control Core",
-        "wiki_url": "/wiki/factory-control-core",
-        "id": 50391,
-        "category": "enemy"
       },
       {
         "name": "Shield Generator",
@@ -6597,7 +7262,14 @@
         "guaranteed": true
       }
     ],
-    "portal_id": 49433
+    "portal_id": 49433,
+    "bosses": [
+      {
+        "name": "Factory Control Core",
+        "id": 50391,
+        "type": "boss"
+      }
+    ]
   },
   "heroic-undead-lair": {
     "name": "Heroic Undead Lair",
@@ -6806,7 +7478,8 @@
       {
         "name": "Heroic Living Skeleton",
         "wiki_url": "/wiki/heroic-living-skeleton",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 1626
       },
       {
         "name": "Living Armor",
@@ -6871,7 +7544,8 @@
       {
         "name": "Lair Wraith",
         "wiki_url": "/wiki/lair-wraith",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 17899
       },
       {
         "name": "Heroic Lair Blast Trap",
@@ -6882,7 +7556,8 @@
       {
         "name": "Heroic Lair Boomerang Trap",
         "wiki_url": "/wiki/heroic-lair-boomerang-trap",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 1809
       },
       {
         "name": "Heroic Lair Burst Trap",
@@ -6893,7 +7568,8 @@
       {
         "name": "Heroic Lair Silence Trap",
         "wiki_url": "/wiki/heroic-lair-silence-trap",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 1809
       },
       {
         "name": "Lair Spiral Trap",
@@ -6924,12 +7600,6 @@
         "wiki_url": "/wiki/death-knight",
         "id": 44164,
         "category": "enemy"
-      },
-      {
-        "name": "Septavius, Master of the Undead",
-        "wiki_url": "/wiki/septavius-master-of-the-undead",
-        "id": 14694,
-        "category": "enemy"
       }
     ],
     "white_bag_drops": [
@@ -6959,7 +7629,14 @@
         "guaranteed": false
       }
     ],
-    "portal_id": 14690
+    "portal_id": 14690,
+    "bosses": [
+      {
+        "name": "Septavius, Master of the Undead",
+        "id": 14694,
+        "type": "boss"
+      }
+    ]
   },
   "infernal-abyss-of-demons": {
     "name": "Infernal Abyss of Demons",
@@ -6976,7 +7653,8 @@
       {
         "name": "Infernal Blacksmith of the Abyss",
         "wiki_url": "/wiki/infernal-blacksmith-of-the-abyss",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 46308
       },
       {
         "name": "Infernal Brute Berserker",
@@ -6987,22 +7665,26 @@
       {
         "name": "Infernal Brute of the Abyss",
         "wiki_url": "/wiki/infernal-brute-of-the-abyss",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 1649
       },
       {
         "name": "Infernal Brute Warrior of the Abyss",
         "wiki_url": "/wiki/infernal-brute-warrior-of-the-abyss",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 1650
       },
       {
         "name": "Infernal Demon Mage of the Abyss",
         "wiki_url": "/wiki/infernal-demon-mage-of-the-abyss",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 1648
       },
       {
         "name": "Infernal Demon of the Abyss",
         "wiki_url": "/wiki/infernal-demon-of-the-abyss",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 1646
       },
       {
         "name": "Infernal Demon Warrior",
@@ -7013,12 +7695,14 @@
       {
         "name": "Infernal Demon Warrior of the Abyss",
         "wiki_url": "/wiki/infernal-demon-warrior-of-the-abyss",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 1647
       },
       {
         "name": "Infernal Imp of the Abyss",
         "wiki_url": "/wiki/infernal-imp-of-the-abyss",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 1645
       },
       {
         "name": "Infernal Magus",
@@ -7041,7 +7725,7 @@
       {
         "name": "Infernal Malphas Protector",
         "wiki_url": "/wiki/infernal-malphas-protector",
-        "id": 14891,
+        "id": 14878,
         "category": "enemy"
       },
       {
@@ -7065,12 +7749,14 @@
       {
         "name": "Infernal White Demon of the Abyss",
         "wiki_url": "/wiki/infernal-white-demon-of-the-abyss",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 1651
       },
       {
         "name": "Abyss Lava",
         "wiki_url": "/wiki/abyss-lava",
-        "category": "enemy"
+        "category": "enemy",
+        "id": 14859
       },
       {
         "name": "Sunflower Sentinel",
@@ -7082,12 +7768,6 @@
         "name": "Infernal Ironsmith",
         "wiki_url": "/wiki/infernal-ironsmith",
         "id": 34476,
-        "category": "enemy"
-      },
-      {
-        "name": "Malphas, Gilded Forgemaster",
-        "wiki_url": "/wiki/malphas-gilded-forgemaster",
-        "id": 14718,
         "category": "enemy"
       },
       {
@@ -7114,7 +7794,14 @@
         "guaranteed": false
       }
     ],
-    "portal_id": 14861
+    "portal_id": 14861,
+    "bosses": [
+      {
+        "name": "Malphas, Gilded Forgemaster",
+        "id": 14718,
+        "type": "boss"
+      }
+    ]
   },
   "plagued-nest": {
     "name": "Plagued Nest",
@@ -7131,7 +7818,14 @@
     "white_bag_drops": [],
     "other_notable_drops": [],
     "description": "",
-    "portal_id": 17570
+    "portal_id": 17570,
+    "bosses": [
+      {
+        "name": "The Plague Doctor",
+        "id": 34489,
+        "type": "boss"
+      }
+    ]
   },
   "advanced-kogbold-steamworks": {
     "name": "Advanced Kogbold Steamworks",
@@ -7142,13 +7836,20 @@
     "boss": {
       "name": "Kogbold Battlesmith",
       "wiki_url": "/wiki/kogbold-battlesmith",
-      "id": 53710
+      "id": 49290
     },
     "enemies": [],
     "white_bag_drops": [],
     "other_notable_drops": [],
     "description": "",
-    "portal_id": 28822
+    "portal_id": 28822,
+    "bosses": [
+      {
+        "name": "Kogbold Battlesmith",
+        "id": 49290,
+        "type": "boss"
+      }
+    ]
   },
   "court-of-oryx": {
     "name": "Court of Oryx",
@@ -7159,13 +7860,20 @@
     "boss": {
       "name": "Oryx the Mad God",
       "wiki_url": "/wiki/oryx-the-mad-god",
-      "id": 45995
+      "id": 1756
     },
     "enemies": [],
     "white_bag_drops": [],
     "other_notable_drops": [],
     "description": "",
-    "portal_id": 8193
+    "portal_id": 8193,
+    "bosses": [
+      {
+        "name": "Oryx the Mad God",
+        "id": 1756,
+        "type": "boss"
+      }
+    ]
   },
   "oryx-s-castle": {
     "name": "Oryx's Castle",
@@ -7176,13 +7884,20 @@
     "boss": {
       "name": "Stone Guardian",
       "wiki_url": "/wiki/stone-guardian",
-      "id": 46391
+      "id": 8155
     },
     "enemies": [],
     "white_bag_drops": [],
     "other_notable_drops": [],
     "description": "",
-    "portal_id": 3465
+    "portal_id": 3465,
+    "bosses": [
+      {
+        "name": "Stone Guardian",
+        "id": 8155,
+        "type": "boss"
+      }
+    ]
   },
   "oryx-s-chamber": {
     "name": "Oryx's Chamber",
@@ -7191,32 +7906,46 @@
     "difficulty": "4.5",
     "drops_from": "Guaranteed drop",
     "boss": {
-      "name": "Oryx the Mad God",
-      "wiki_url": "/wiki/oryx-the-mad-god",
-      "id": 45995
+      "name": "Oryx the Mad God 2",
+      "id": 2354,
+      "wiki_url": "/wiki/oryx-the-mad-god-2"
     },
     "enemies": [],
     "white_bag_drops": [],
     "other_notable_drops": [],
     "description": "",
-    "portal_id": 3451
+    "portal_id": 3451,
+    "bosses": [
+      {
+        "name": "Oryx the Mad God 2",
+        "id": 2354,
+        "type": "boss"
+      }
+    ]
   },
   "oryx-s-sanctuary": {
     "name": "Oryx's Sanctuary",
     "slug": "oryx-s-sanctuary",
     "wiki_url": "https://www.realmeye.com/wiki/oryx-s-sanctuary",
     "difficulty": "9.5",
-    "drops_from": "Oryx the Mad God 2 is guaranteed to drop three monuments that must be activated with theOryx Runesfor the Oryx’s Sanctuary portal to appear.",
+    "drops_from": "Oryx the Mad God 2 is guaranteed to drop three monuments that must be activated with theOryx Runesfor the Oryx\u2019s Sanctuary portal to appear.",
     "boss": {
-      "name": "Oryx the Mad God",
-      "wiki_url": "/wiki/oryx-the-mad-god",
-      "id": 45995
+      "name": "Oryx the Mad God 3",
+      "id": 45363,
+      "wiki_url": "/wiki/oryx-the-mad-god-3"
     },
     "enemies": [],
     "white_bag_drops": [],
     "other_notable_drops": [],
     "description": "",
-    "portal_id": 6219
+    "portal_id": 6219,
+    "bosses": [
+      {
+        "name": "Oryx the Mad God 3",
+        "id": 45363,
+        "type": "boss"
+      }
+    ]
   },
   "malogia": {
     "name": "Malogia",
@@ -7233,7 +7962,14 @@
     "white_bag_drops": [],
     "other_notable_drops": [],
     "description": "",
-    "portal_id": 45752
+    "portal_id": 45752,
+    "bosses": [
+      {
+        "name": "Malogia",
+        "id": 45752,
+        "type": "boss"
+      }
+    ]
   },
   "untaris": {
     "name": "Untaris",
@@ -7250,7 +7986,14 @@
     "white_bag_drops": [],
     "other_notable_drops": [],
     "description": "",
-    "portal_id": 45751
+    "portal_id": 45751,
+    "bosses": [
+      {
+        "name": "Untaris",
+        "id": 45751,
+        "type": "boss"
+      }
+    ]
   },
   "katalund": {
     "name": "Katalund",
@@ -7267,7 +8010,14 @@
     "white_bag_drops": [],
     "other_notable_drops": [],
     "description": "",
-    "portal_id": 45774
+    "portal_id": 45774,
+    "bosses": [
+      {
+        "name": "Katalund",
+        "id": 45774,
+        "type": "boss"
+      }
+    ]
   },
   "forax": {
     "name": "Forax",
@@ -7284,7 +8034,14 @@
     "white_bag_drops": [],
     "other_notable_drops": [],
     "description": "",
-    "portal_id": 45771
+    "portal_id": 45771,
+    "bosses": [
+      {
+        "name": "Forax",
+        "id": 45771,
+        "type": "boss"
+      }
+    ]
   },
   "legacy-heroic-undead-lair": {
     "name": "Legacy Heroic Undead Lair",
@@ -7295,13 +8052,20 @@
     "boss": {
       "name": "Septavius the Ghost God",
       "wiki_url": "/wiki/septavius-the-ghost-god",
-      "id": 13124
+      "id": 3472
     },
     "enemies": [],
     "white_bag_drops": [],
     "other_notable_drops": [],
     "description": "",
-    "portal_id": 9323
+    "portal_id": 9323,
+    "bosses": [
+      {
+        "name": "Septavius the Ghost God",
+        "id": 3472,
+        "type": "boss"
+      }
+    ]
   },
   "legacy-heroic-abyss-of-demons": {
     "name": "Legacy Heroic Abyss of Demons",
@@ -7312,13 +8076,20 @@
     "boss": {
       "name": "Archdemon Malphas",
       "wiki_url": "/wiki/archdemon-malphas",
-      "id": 13178
+      "id": 2314
     },
     "enemies": [],
     "white_bag_drops": [],
     "other_notable_drops": [],
     "description": "",
-    "portal_id": 9324
+    "portal_id": 9324,
+    "bosses": [
+      {
+        "name": "Archdemon Malphas",
+        "id": 2314,
+        "type": "boss"
+      }
+    ]
   },
   "rainbow-road": {
     "name": "Rainbow Road",
@@ -7329,13 +8100,20 @@
     "boss": {
       "name": "Pot of Gold",
       "wiki_url": "/wiki/pot-of-gold",
-      "id": 23306
+      "id": 5709
     },
     "enemies": [],
     "white_bag_drops": [],
     "other_notable_drops": [],
     "description": "",
-    "portal_id": 5704
+    "portal_id": 5704,
+    "bosses": [
+      {
+        "name": "Pot of Gold",
+        "id": 5709,
+        "type": "boss"
+      }
+    ]
   },
   "santa-s-workshop": {
     "name": "Santa's Workshop",
@@ -7365,7 +8143,14 @@
     "white_bag_drops": [],
     "other_notable_drops": [],
     "description": "",
-    "portal_id": 32696
+    "portal_id": 32696,
+    "bosses": [
+      {
+        "name": "Frimar",
+        "id": 32694,
+        "type": "boss"
+      }
+    ]
   },
   "stromwell-s-rift-i": {
     "name": "Stromwell's Rift I",
@@ -7376,13 +8161,20 @@
     "boss": {
       "name": "Inspector Stromwell",
       "wiki_url": "/wiki/inspector-stromwell",
-      "id": 15812
+      "id": 13095
     },
     "enemies": [],
     "white_bag_drops": [],
     "other_notable_drops": [],
     "description": "",
-    "portal_id": 13089
+    "portal_id": 13089,
+    "bosses": [
+      {
+        "name": "Inspector Stromwell",
+        "id": 13095,
+        "type": "boss"
+      }
+    ]
   },
   "belladonna-s-garden": {
     "name": "Belladonna's Garden",
@@ -7399,7 +8191,14 @@
     "white_bag_drops": [],
     "other_notable_drops": [],
     "description": "",
-    "portal_id": 8849
+    "portal_id": 8849,
+    "bosses": [
+      {
+        "name": "Belladonna",
+        "id": 29580,
+        "type": "boss"
+      }
+    ]
   },
   "queen-bunny-chamber": {
     "name": "Queen Bunny Chamber",
@@ -7416,7 +8215,14 @@
     "white_bag_drops": [],
     "other_notable_drops": [],
     "description": "",
-    "portal_id": 1430
+    "portal_id": 1430,
+    "bosses": [
+      {
+        "name": "Queen Bunny Decay",
+        "id": 1505,
+        "type": "boss"
+      }
+    ]
   },
   "mad-god-mayhem": {
     "name": "Mad God Mayhem",
@@ -7427,13 +8233,20 @@
     "boss": {
       "name": "Oryx the Mad God",
       "wiki_url": "/wiki/oryx-the-mad-god",
-      "id": 45995
+      "id": 1756
     },
     "enemies": [],
     "white_bag_drops": [],
     "other_notable_drops": [],
     "description": "",
-    "portal_id": 3873
+    "portal_id": 3873,
+    "bosses": [
+      {
+        "name": "Oryx the Mad God",
+        "id": 1756,
+        "type": "boss"
+      }
+    ]
   },
   "white-snake-invasion-i": {
     "name": "White Snake Invasion I",
@@ -7444,13 +8257,20 @@
     "boss": {
       "name": "The White Snake",
       "wiki_url": "/wiki/the-white-snake",
-      "id": 59924
+      "id": 59922
     },
     "enemies": [],
     "white_bag_drops": [],
     "other_notable_drops": [],
     "description": "",
-    "portal_id": 59886
+    "portal_id": 59886,
+    "bosses": [
+      {
+        "name": "The White Snake",
+        "id": 59922,
+        "type": "boss"
+      }
+    ]
   },
   "the-trials-of-cronus": {
     "name": "The Trials of Cronus",
@@ -7467,7 +8287,14 @@
     "white_bag_drops": [],
     "other_notable_drops": [],
     "description": "",
-    "portal_id": 13100
+    "portal_id": 13100,
+    "bosses": [
+      {
+        "name": "Trials of Cronus Guild Chest",
+        "id": 13259,
+        "type": "boss"
+      }
+    ]
   },
   "hidden-interregnum": {
     "name": "Hidden Interregnum",
@@ -7484,7 +8311,14 @@
     "white_bag_drops": [],
     "other_notable_drops": [],
     "description": "",
-    "portal_id": 51922
+    "portal_id": 51922,
+    "bosses": [
+      {
+        "name": "Null",
+        "id": 43989,
+        "type": "boss"
+      }
+    ]
   },
   "white-snake-invasion-ii": {
     "name": "White Snake Invasion II",
@@ -7495,13 +8329,20 @@
     "boss": {
       "name": "The White Snake",
       "wiki_url": "/wiki/the-white-snake",
-      "id": 59924
+      "id": 59922
     },
     "enemies": [],
     "white_bag_drops": [],
     "other_notable_drops": [],
     "description": "",
-    "portal_id": 59887
+    "portal_id": 59887,
+    "bosses": [
+      {
+        "name": "The White Snake",
+        "id": 59922,
+        "type": "boss"
+      }
+    ]
   },
   "stromwell-s-rift-ii": {
     "name": "Stromwell's Rift II",
@@ -7512,13 +8353,20 @@
     "boss": {
       "name": "Inspector Stromwell",
       "wiki_url": "/wiki/inspector-stromwell",
-      "id": 15812
+      "id": 13095
     },
     "enemies": [],
     "white_bag_drops": [],
     "other_notable_drops": [],
     "description": "",
-    "portal_id": 13090
+    "portal_id": 13090,
+    "bosses": [
+      {
+        "name": "Inspector Stromwell",
+        "id": 13095,
+        "type": "boss"
+      }
+    ]
   },
   "oryxmania": {
     "name": "Oryxmania",
@@ -7541,13 +8389,20 @@
     "boss": {
       "name": "The White Snake",
       "wiki_url": "/wiki/the-white-snake",
-      "id": 59924
+      "id": 59922
     },
     "enemies": [],
     "white_bag_drops": [],
     "other_notable_drops": [],
     "description": "",
-    "portal_id": 59888
+    "portal_id": 59888,
+    "bosses": [
+      {
+        "name": "The White Snake",
+        "id": 59922,
+        "type": "boss"
+      }
+    ]
   },
   "stromwell-s-rift-iii": {
     "name": "Stromwell's Rift III",
@@ -7558,13 +8413,20 @@
     "boss": {
       "name": "Inspector Stromwell",
       "wiki_url": "/wiki/inspector-stromwell",
-      "id": 15812
+      "id": 13095
     },
     "enemies": [],
     "white_bag_drops": [],
     "other_notable_drops": [],
     "description": "",
-    "portal_id": 13091
+    "portal_id": 13091,
+    "bosses": [
+      {
+        "name": "Inspector Stromwell",
+        "id": 13095,
+        "type": "boss"
+      }
+    ]
   },
   "tutorial": {
     "name": "Tutorial",

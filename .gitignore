@@ -11,3 +11,6 @@ Thumbs.db
 # Temp files
 *.tmp
 *.bak
+data/entity_conflicts.json
+.gitignore
+

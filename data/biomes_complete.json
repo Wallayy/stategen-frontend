@@ -2,6 +2,7 @@
   "_metadata": {
     "description": "Complete biome data: coordinates + enemies + dungeons",
     "sources": {
+      "coordinates": "User-provided beacon positions via biome_editor.html",
       "enemies": "Scraped from RealmEye wiki"
     },
     "map_bounds": {
@@ -782,21 +783,32 @@
         "wiki_url": "/wiki/carp-emperor",
         "drops_dungeon": null,
         "guaranteed": false,
-        "id": 34559
+        "id": 34559,
+        "ids": [
+          34559,
+          34597
+        ]
       },
       {
         "name": "Hermit God",
         "wiki_url": "/wiki/hermit-god",
         "drops_dungeon": "Ocean Trench",
         "guaranteed": true,
-        "id": 3425
+        "id": 22023,
+        "ids": [
+          22023,
+          3425
+        ]
       },
       {
         "name": "World's Oyster",
         "wiki_url": "/wiki/world-s-oyster",
         "drops_dungeon": "Cnidarian Reef",
         "guaranteed": true,
-        "id": 0
+        "id": 34538,
+        "ids": [
+          34538
+        ]
       }
     ],
     "beacon_guardian": null,
@@ -926,21 +938,31 @@
         "wiki_url": "/wiki/astral-rift",
         "drops_dungeon": "The Third Dimension",
         "guaranteed": true,
-        "id": 51061
+        "id": 51061,
+        "ids": [
+          51061
+        ]
       },
       {
         "name": "Cube God",
         "wiki_url": "/wiki/cube-god",
         "drops_dungeon": "The Third Dimension",
         "guaranteed": true,
-        "id": 3417
+        "id": 22009,
+        "ids": [
+          22009,
+          3417
+        ]
       },
       {
         "name": "Daughter of Limon",
         "wiki_url": "/wiki/daughter-of-limon",
         "drops_dungeon": "Puppet Master's Encore",
         "guaranteed": true,
-        "id": 34605
+        "id": 34605,
+        "ids": [
+          34605
+        ]
       }
     ],
     "beacon_guardian": {
@@ -1069,28 +1091,41 @@
         "wiki_url": "/wiki/possessed-pumpkin",
         "drops_dungeon": "Woodland Labyrinth",
         "guaranteed": true,
-        "id": 51032
+        "id": 51032,
+        "ids": [
+          51032
+        ]
       },
       {
         "name": "Sigma Werewolf",
         "wiki_url": "/wiki/sigma-werewolf",
         "drops_dungeon": "The Tavern",
         "guaranteed": true,
-        "id": 34510
+        "id": 34510,
+        "ids": [
+          34510
+        ]
       },
       {
         "name": "Skull Knight",
         "wiki_url": "/wiki/skull-knight",
         "drops_dungeon": "Mountain Temple",
         "guaranteed": true,
-        "id": 34537
+        "id": 34537,
+        "ids": [
+          34537
+        ]
       },
       {
         "name": "Skull Shrine",
         "wiki_url": "/wiki/skull-shrine",
         "drops_dungeon": null,
         "guaranteed": false,
-        "id": 3414
+        "id": 22003,
+        "ids": [
+          22003,
+          3414
+        ]
       }
     ],
     "beacon_guardian": {
@@ -1200,35 +1235,52 @@
         "wiki_url": "/wiki/beer-god",
         "drops_dungeon": "The Tavern",
         "guaranteed": true,
-        "id": 22128
+        "id": 22128,
+        "ids": [
+          22128,
+          24101
+        ]
       },
       {
         "name": "Bilgewater's Galleon",
         "wiki_url": "/wiki/bilgewater-s-galleon",
         "drops_dungeon": "Deadwater Docks",
         "guaranteed": true,
-        "id": 0
+        "id": 20475,
+        "ids": [
+          20475
+        ]
       },
       {
         "name": "Crab Sovereign",
         "wiki_url": "/wiki/crab-sovereign",
         "drops_dungeon": "Deadwater Docks",
         "guaranteed": true,
-        "id": 51072
+        "id": 51072,
+        "ids": [
+          51072
+        ]
       },
       {
         "name": "Eye of the Storm",
         "wiki_url": "/wiki/eye-of-the-storm",
         "drops_dungeon": "Ocean Trench",
         "guaranteed": true,
-        "id": 51031
+        "id": 51031,
+        "ids": [
+          51031
+        ]
       },
       {
         "name": "Ghost Ship",
         "wiki_url": "/wiki/ghost-ship",
         "drops_dungeon": "Davy Jones' Locker",
         "guaranteed": true,
-        "id": 3639
+        "id": 22042,
+        "ids": [
+          22042,
+          3639
+        ]
       }
     ],
     "beacon_guardian": {
@@ -1344,28 +1396,41 @@
         "wiki_url": "/wiki/pentaract",
         "drops_dungeon": null,
         "guaranteed": false,
-        "id": 3423
+        "id": 22019,
+        "ids": [
+          22019,
+          3423
+        ]
       },
       {
         "name": "The Lich King",
         "wiki_url": "/wiki/the-lich-king",
         "drops_dungeon": "Tomb of the Ancients",
         "guaranteed": true,
-        "id": 34584
+        "id": 34584,
+        "ids": [
+          34584
+        ]
       },
       {
         "name": "The Plague Doctor",
         "wiki_url": "/wiki/the-plague-doctor",
         "drops_dungeon": "Sulfurous Wetlands",
         "guaranteed": true,
-        "id": 34489
+        "id": 34489,
+        "ids": [
+          34489
+        ]
       },
       {
         "name": "Well of Souls",
         "wiki_url": "/wiki/well-of-souls",
         "drops_dungeon": "Davy Jones' Locker",
         "guaranteed": true,
-        "id": 34460
+        "id": 34460,
+        "ids": [
+          34460
+        ]
       }
     ],
     "beacon_guardian": {
@@ -1500,7 +1565,11 @@
         "wiki_url": "/wiki/skull-shrine",
         "drops_dungeon": null,
         "guaranteed": false,
-        "id": 3414
+        "id": 22003,
+        "ids": [
+          22003,
+          3414
+        ]
       }
     ],
     "beacon_guardian": {
@@ -1662,49 +1731,75 @@
         "wiki_url": "/wiki/cube-god",
         "drops_dungeon": "The Third Dimension",
         "guaranteed": true,
-        "id": 3417
+        "id": 22009,
+        "ids": [
+          22009,
+          3417
+        ]
       },
       {
         "name": "Goblin Patriarch",
         "wiki_url": "/wiki/goblin-patriarch",
         "drops_dungeon": null,
         "guaranteed": false,
-        "id": 34550
+        "id": 34550,
+        "ids": [
+          34550
+        ]
       },
       {
         "name": "Grand Sphinx",
         "wiki_url": "/wiki/grand-sphinx",
         "drops_dungeon": "Tomb of the Ancients",
         "guaranteed": true,
-        "id": 3412
+        "id": 22000,
+        "ids": [
+          22000,
+          3412
+        ]
       },
       {
         "name": "Jade and Garnet Statues",
         "wiki_url": "/wiki/jade-and-garnet-statues",
         "drops_dungeon": "Mountain Temple",
         "guaranteed": true,
-        "id": 0
+        "id": 22149,
+        "ids": [
+          22149,
+          22150
+        ]
       },
       {
         "name": "Legion General",
         "wiki_url": "/wiki/legion-general",
         "drops_dungeon": "Tomb of the Ancients",
         "guaranteed": true,
-        "id": 24005
+        "id": 24005,
+        "ids": [
+          24005
+        ]
       },
       {
         "name": "Maze Minotaur",
         "wiki_url": "/wiki/maze-minotaur",
         "drops_dungeon": "Puppet Master's Encore",
         "guaranteed": true,
-        "id": 34565
+        "id": 34565,
+        "ids": [
+          34565
+        ]
       },
       {
         "name": "Rock Dragon",
         "wiki_url": "/wiki/rock-dragon",
         "drops_dungeon": "Lair of Draconis",
         "guaranteed": true,
-        "id": 21987
+        "id": 21983,
+        "ids": [
+          21983,
+          45521,
+          21987
+        ]
       }
     ],
     "beacon_guardian": {
@@ -1827,7 +1922,10 @@
         "wiki_url": "/wiki/adult-baneserpent",
         "drops_dungeon": "Fungal Cavern",
         "guaranteed": true,
-        "id": 34456
+        "id": 34456,
+        "ids": [
+          34456
+        ]
       }
     ],
     "beacon_guardian": null,
@@ -1938,28 +2036,41 @@
         "wiki_url": "/wiki/ancient-kaiju",
         "drops_dungeon": "Fungal Cavern",
         "guaranteed": true,
-        "id": 34558
+        "id": 34558,
+        "ids": [
+          34558
+        ]
       },
       {
         "name": "Crystal Worm Father",
         "wiki_url": "/wiki/crystal-worm-father",
         "drops_dungeon": "Fungal Cavern",
         "guaranteed": true,
-        "id": 25865
+        "id": 25865,
+        "ids": [
+          25865
+        ]
       },
       {
         "name": "Ethereal Shrine",
         "wiki_url": "/wiki/ethereal-shrine",
         "drops_dungeon": "Moonlight Village",
         "guaranteed": true,
-        "id": 20800
+        "id": 20800,
+        "ids": [
+          20800,
+          22147
+        ]
       },
       {
         "name": "Flying Behemoth",
         "wiki_url": "/wiki/flying-behemoth",
         "drops_dungeon": "The Shatters",
         "guaranteed": true,
-        "id": 20744
+        "id": 20744,
+        "ids": [
+          20744
+        ]
       }
     ],
     "beacon_guardian": {
@@ -2090,28 +2201,46 @@
         "wiki_url": "/wiki/corrupted-bramblethorn",
         "drops_dungeon": "The Nest",
         "guaranteed": true,
-        "id": 51078
+        "id": 51078,
+        "ids": [
+          51078
+        ]
       },
       {
         "name": "Killer Bee Nest",
         "wiki_url": "/wiki/killer-bee-nest-event-boss",
         "drops_dungeon": "The Nest",
         "guaranteed": true,
-        "id": 4278
+        "id": 4278,
+        "ids": [
+          4278,
+          4279,
+          4280,
+          17503
+        ]
       },
       {
         "name": "Ethereal Shrine",
         "wiki_url": "/wiki/ethereal-shrine",
         "drops_dungeon": "Moonlight Village",
         "guaranteed": true,
-        "id": 20800
+        "id": 20800,
+        "ids": [
+          20800,
+          22147
+        ]
       },
       {
         "name": "Kogbold Expedition Engine",
         "wiki_url": "/wiki/kogbold-expedition-engine",
         "drops_dungeon": "Kogbold Steamworks",
         "guaranteed": true,
-        "id": 14601
+        "id": 14601,
+        "ids": [
+          14601,
+          22109,
+          14727
+        ]
       }
     ],
     "beacon_guardian": {
@@ -2228,42 +2357,65 @@
         "wiki_url": "/wiki/avatar-of-the-forgotten-king",
         "drops_dungeon": "The Shatters",
         "guaranteed": true,
-        "id": 21959
+        "id": 21959,
+        "ids": [
+          21959,
+          29517
+        ]
       },
       {
         "name": "Bloodroot Heart",
         "wiki_url": "/wiki/bloodroot-heart",
         "drops_dungeon": "Lost Halls",
         "guaranteed": true,
-        "id": 34581
+        "id": 34581,
+        "ids": [
+          34581
+        ]
       },
       {
         "name": "Killer Bee Nest",
         "wiki_url": "/wiki/killer-bee-nest-event-boss",
         "drops_dungeon": "The Nest",
         "guaranteed": true,
-        "id": 4278
+        "id": 4278,
+        "ids": [
+          4278,
+          4279,
+          4280,
+          17503
+        ]
       },
       {
         "name": "Lost Sentry",
         "wiki_url": "/wiki/lost-sentry",
         "drops_dungeon": "Lost Halls",
         "guaranteed": true,
-        "id": 22146
+        "id": 22146,
+        "ids": [
+          22146,
+          45104
+        ]
       },
       {
         "name": "Ravenous Rot",
         "wiki_url": "/wiki/ravenous-rot",
         "drops_dungeon": "Lost Halls",
         "guaranteed": true,
-        "id": 16990
+        "id": 16990,
+        "ids": [
+          16990
+        ]
       },
       {
         "name": "Skeletal Centipede",
         "wiki_url": "/wiki/skeletal-centipede",
         "drops_dungeon": "Spectral Penitentiary",
         "guaranteed": true,
-        "id": 34493
+        "id": 34493,
+        "ids": [
+          34493
+        ]
       }
     ],
     "beacon_guardian": {
@@ -2388,49 +2540,74 @@
         "wiki_url": "/wiki/aerial-warship",
         "drops_dungeon": "Kogbold Steamworks",
         "guaranteed": true,
-        "id": 51075
+        "id": 51075,
+        "ids": [
+          51075
+        ]
       },
       {
         "name": "Beer God",
         "wiki_url": "/wiki/beer-god",
         "drops_dungeon": "The Tavern",
         "guaranteed": true,
-        "id": 22128
+        "id": 22128,
+        "ids": [
+          22128,
+          24101
+        ]
       },
       {
         "name": "Crystal Worm Father",
         "wiki_url": "/wiki/crystal-worm-father",
         "drops_dungeon": "Fungal Cavern",
         "guaranteed": true,
-        "id": 25865
+        "id": 25865,
+        "ids": [
+          25865
+        ]
       },
       {
         "name": "Kogbold Expedition Engine",
         "wiki_url": "/wiki/kogbold-expedition-engine",
         "drops_dungeon": "Kogbold Steamworks",
         "guaranteed": true,
-        "id": 14601
+        "id": 14601,
+        "ids": [
+          14601,
+          22109,
+          14727
+        ]
       },
       {
         "name": "Lord of the Lost Lands",
         "wiki_url": "/wiki/lord-of-the-lost-lands",
         "drops_dungeon": null,
         "guaranteed": false,
-        "id": 21996
+        "id": 21996,
+        "ids": [
+          21996
+        ]
       },
       {
         "name": "Lost Sentry",
         "wiki_url": "/wiki/lost-sentry",
         "drops_dungeon": "Lost Halls",
         "guaranteed": true,
-        "id": 22146
+        "id": 22146,
+        "ids": [
+          22146,
+          45104
+        ]
       },
       {
         "name": "Sentient Monolith",
         "wiki_url": "/wiki/sentient-monolith",
         "drops_dungeon": "Fungal Cavern",
         "guaranteed": true,
-        "id": 16935
+        "id": 16935,
+        "ids": [
+          16935
+        ]
       }
     ],
     "beacon_guardian": {
