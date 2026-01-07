@@ -1,0 +1,30 @@
+[
+    {
+        "id": "godlands_farmer",
+        "name": "Godlands Farmer",
+        "description": "Farms all gods in the mountains (Godlands).",
+        "icon": "mountain",
+        "biomeId": "mountains",
+        "enemyIds": [
+            1,
+            2,
+            3
+        ]
+    },
+    {
+        "id": "snake_pit_rush",
+        "name": "Snake Pit Rusher",
+        "description": "Finds Snake Pits in High Plains.",
+        "icon": "dungeon",
+        "biomeId": "high_plains",
+        "dungeon": "Snake Pit"
+    },
+    {
+        "id": "sprite_world_farm",
+        "name": "Sprite World Farmer",
+        "description": "Farms Sprite Worlds in Mid/High Forest.",
+        "icon": "tree",
+        "biomeId": "mid_forest",
+        "dungeon": "Sprite World"
+    }
+]

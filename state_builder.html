@@ -18,6 +18,7 @@
             color: #404040;
             font-size: 12px;
         }
+
         .dungeon-item {
             padding: 0.625rem 0.75rem;
             background: #171717;
@@ -27,18 +28,22 @@
             cursor: pointer;
             transition: all 0.15s ease;
         }
+
         .dungeon-item:hover {
             background: #1f1f1f;
             border-color: #3b82f6;
         }
+
         .dungeon-item.selected {
             border-color: #3b82f6;
             background: rgba(59, 130, 246, 0.1);
         }
+
         .dungeon-name {
             font-size: 12px;
             color: #d4d4d4;
         }
+
         .entity-result {
             padding: 0.625rem 0.75rem;
             cursor: pointer;
@@ -47,17 +52,21 @@
             color: #d4d4d4;
             border-bottom: 1px solid #262626;
         }
+
         .entity-result:hover {
             background: #1f1f1f;
         }
+
         .entity-result:last-child {
             border-bottom: none;
         }
+
         .image-pixelated {
             image-rendering: pixelated;
             image-rendering: -moz-crisp-edges;
             image-rendering: crisp-edges;
         }
+
         /* Route point styling */
         .route-point {
             display: flex;
@@ -72,21 +81,40 @@
             margin-bottom: 0.25rem;
             font-family: 'SF Mono', monospace;
         }
+
         .point-num {
             color: #3b82f6;
             font-weight: 600;
             min-width: 1rem;
         }
+
         .point-coords {
             flex: 1;
             color: #d4d4d4;
         }
+
         .remove-point {
             color: #ef4444;
             cursor: pointer;
             font-weight: bold;
             padding: 0 0.25rem;
         }
+
+        /* Green Selected State for Realm Encounters */
+        #all-encounters-list > div.selected {
+            border-color: #22c55e !important;
+            box-shadow: 0 0 0 1px #22c55e, 0 4px 12px rgba(34, 197, 94, 0.15) !important;
+            background-color: #1a2e1f !important;
+        }
+        #all-encounters-list > div.selected .w-2.h-2.rounded-full {
+            background-color: #22c55e !important;
+            opacity: 1 !important;
+        }
+        #all-encounters-list > div.selected:hover {
+            border-color: #16a34a !important;
+            box-shadow: 0 0 0 1px #16a34a, 0 4px 16px rgba(34, 197, 94, 0.25) !important;
+        }
+
         .remove-point:hover {
             color: #dc2626;
         }
@@ -113,136 +141,182 @@
         <div class="flex flex-1 overflow-hidden">
             <!-- Clean sidebar -->
             <aside
-                class="w-[340px] bg-app-bg p-6 overflow-y-auto border-r border-app-border shrink-0 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-app-border-light [&::-webkit-scrollbar-thumb]:rounded-sm">
-                <!-- Biome -->
-                <div class="mb-8">
-                    <div class="flex items-center justify-between mb-4 cursor-pointer" onclick="toggleSection(this)">
-                        <div class="text-[11px] font-medium text-app-muted uppercase tracking-[0.1em]">Biome</div>
-                        <span class="text-[10px] text-[#404040] transition-transform duration-150">▼</span>
+                class="w-[450px] min-w-[450px] max-w-[450px] bg-app-bg p-6 overflow-y-auto overflow-x-hidden border-r border-app-border shrink-0 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-app-border-light [&::-webkit-scrollbar-thumb]:rounded-sm">
+
+                <!-- Sidebar Tabs -->
+                <div class="flex gap-1 p-2 bg-[#0a0a0a] rounded-xl mb-6">
+                    <button onclick="switchSidebarTab('map')"
+                        class="sidebar-tab active flex-1 py-2.5 text-[12px] font-medium text-center rounded-lg text-white transition-all bg-[#262626] shadow-md"
+                        id="tab-btn-map">Map</button>
+                    <button onclick="switchSidebarTab('search')"
+                        class="sidebar-tab flex-1 py-2.5 text-[12px] font-medium text-center rounded-lg text-[#525252] hover:text-[#a3a3a3] hover:bg-[#1a1a1a] transition-all"
+                        id="tab-btn-search">Search</button>
+                    <button onclick="switchSidebarTab('templates')"
+                        class="sidebar-tab flex-1 py-2.5 text-[12px] font-medium text-center rounded-lg text-[#525252] hover:text-[#a3a3a3] hover:bg-[#1a1a1a] transition-all"
+                        id="tab-btn-templates">Templates</button>
+                </div>
+
+                <!-- Tab: Map (Default Flow) -->
+                <div id="tab-content-map">
+                    <!-- Biome -->
+                    <div class="mb-8">
+                        <div class="flex items-center justify-between mb-4 cursor-pointer"
+                            onclick="toggleSection(this)">
+                            <div class="text-[11px] font-medium text-app-muted uppercase tracking-[0.1em]">Biome</div>
+                            <span class="text-[10px] text-[#404040] transition-transform duration-150">▼</span>
+                        </div>
+                        <div class="transition-all duration-200 overflow-hidden">
+                            <div id="selected-biome-info"
+                                class="bg-transparent border border-dashed border-app-border-light text-app-muted text-xs text-center p-5 rounded-md">
+                                Click a beacon on the map
+                            </div>
+                        </div>
                     </div>
-                    <div class="transition-all duration-200 overflow-hidden">
-                        <div id="selected-biome-info"
-                            class="bg-transparent border border-dashed border-app-border-light text-app-muted text-xs text-center p-5 rounded-md">
-                            Click a beacon on the map
+
+                    <!-- Dungeons -->
+                    <div id="dungeon-section" class="mb-8" style="display: none;">
+                        <div class="flex items-center justify-between mb-4 cursor-pointer"
+                            onclick="toggleSection(this)">
+                            <div class="text-[11px] font-medium text-app-muted uppercase tracking-[0.1em]">Standard
+                                Dungeons
+                            </div>
+                            <span class="text-[10px] text-[#404040] transition-transform duration-150">▼</span>
+                        </div>
+                        <div class="transition-all duration-200 overflow-hidden">
+                            <div class="mb-3.5">
+                                <input type="text" id="dungeon-filter" placeholder="Filter..."
+                                    class="w-full py-2.5 px-3 bg-app-surface border border-app-border-light rounded text-app-text text-[13px] focus:outline-none focus:border-app-active placeholder:text-[#404040] transition-colors">
+                            </div>
+                            <div class="max-h-[200px] overflow-y-auto" id="dungeon-list"></div>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-app-border my-6"></div>
+
+                    <!-- Entities -->
+                    <div class="mb-8">
+                        <div class="flex items-center justify-between mb-4 cursor-pointer"
+                            onclick="toggleSection(this)">
+                            <div class="text-[11px] font-medium text-app-muted uppercase tracking-[0.1em]">Entities
+                            </div>
+                            <span class="text-[10px] text-[#404040] transition-transform duration-150">▼</span>
+                        </div>
+                        <div class="transition-all duration-200 overflow-hidden">
+                            <div class="mb-3.5 relative overflow-visible">
+                                <label
+                                    class="block text-[11px] font-medium text-app-muted mb-1.5 uppercase tracking-wider">Search</label>
+                                <input type="text" id="entity-search" placeholder="Search..."
+                                    class="w-full py-2.5 px-3 bg-app-surface border border-app-border-light rounded text-app-text text-[13px] focus:outline-none focus:border-app-active placeholder:text-[#404040] transition-colors">
+                                <div class="absolute top-full left-0 right-0 bg-app-surface border border-app-border-light rounded max-h-[300px] overflow-y-auto z-[9999] hidden mt-1 shadow-xl"
+                                    id="entity-results"></div>
+                            </div>
+
+                            <div class="mb-3.5">
+                                <label
+                                    class="block text-[11px] font-medium text-app-muted mb-1.5 uppercase tracking-wider">Events
+                                    (High Priority)</label>
+                                <div class="flex flex-wrap gap-1.5 min-h-[28px]" id="selected-events"></div>
+                            </div>
+
+                            <div class="mb-3.5">
+                                <label
+                                    class="block text-[11px] font-medium text-app-muted mb-1.5 uppercase tracking-wider">Portal</label>
+                                <div class="flex flex-wrap gap-1.5 min-h-[28px]" id="selected-portal"></div>
+                            </div>
+
+                            <div class="mb-3.5">
+                                <label
+                                    class="block text-[11px] font-medium text-app-muted mb-1.5 uppercase tracking-wider">Enemies</label>
+                                <div class="flex flex-wrap gap-1.5 min-h-[28px]" id="selected-enemies"></div>
+                            </div>
+
+                            <div class="mb-3.5">
+                                <label
+                                    class="block text-[11px] font-medium text-app-muted mb-1.5 uppercase tracking-wider">Beacon</label>
+                                <div class="flex flex-wrap gap-1.5 min-h-[28px]" id="selected-beacon"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-app-border my-6"></div>
+
+                    <!-- Route -->
+                    <div class="mb-8">
+                        <div class="flex items-center justify-between mb-4 cursor-pointer"
+                            onclick="toggleSection(this)">
+                            <div class="text-[11px] font-medium text-app-muted uppercase tracking-[0.1em]">Route</div>
+                            <span class="text-[10px] text-[#404040] transition-transform duration-150">▼</span>
+                        </div>
+                        <div class="transition-all duration-200 overflow-hidden">
+                            <div class="flex gap-1.5 mb-3.5">
+                                <div class="flex-1 py-2 bg-app-surface border border-app-border-light rounded text-app-muted cursor-pointer text-[11px] text-center transition-all hover:border-[#404040]"
+                                    id="mode-patrol" onclick="setMode('patrol')">Points</div>
+                                <div class="flex-1 py-2 bg-app-surface border border-app-border-light rounded text-app-muted cursor-pointer text-[11px] text-center transition-all hover:border-[#404040]"
+                                    id="mode-beacon" onclick="setMode('beacon')">Beacon</div>
+                                <div class="flex-1 py-2 bg-app-surface border border-app-border-light rounded text-app-muted cursor-pointer text-[11px] text-center transition-all hover:border-[#404040]"
+                                    id="mode-view" onclick="setMode('view')">View</div>
+                            </div>
+
+                            <div class="p-2.5 bg-app-surface border border-dashed border-app-border-light rounded font-mono text-xs mb-3.5 text-[#404040]"
+                                id="beacon-display">No beacon set</div>
+
+                            <div class="text-[11px] text-app-muted mb-2.5" id="route-stats">No points</div>
+                            <div class="max-h-[140px] overflow-y-auto mb-2.5" id="route-points"></div>
+
+                            <button
+                                class="w-full py-2.5 px-3.5 bg-app-surface text-app-text border border-app-border-light rounded cursor-pointer text-xs font-medium transition-all hover:bg-app-border-light disabled:opacity-40 disabled:cursor-not-allowed mb-2"
+                                id="optimize-btn" disabled onclick="optimizeRoute()">Optimize</button>
+                            <button
+                                class="w-full py-2.5 px-3.5 bg-app-surface text-app-text border border-app-border-light rounded cursor-pointer text-xs font-medium transition-all hover:bg-app-border-light disabled:opacity-40 disabled:cursor-not-allowed"
+                                id="clear-btn" disabled onclick="clearRoute()">Clear</button>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-app-border my-6"></div>
+
+                    <!-- Generate -->
+                    <div class="mb-8">
+                        <div class="flex items-center justify-between mb-4 cursor-pointer"
+                            onclick="toggleSection(this)">
+                            <div class="text-[11px] font-medium text-app-muted uppercase tracking-[0.1em]">Generate
+                            </div>
+                            <span class="text-[10px] text-[#404040] transition-transform duration-150">▼</span>
+                        </div>
+                        <div class="transition-all duration-200 overflow-hidden">
+                            <div class="mb-3.5">
+                                <label
+                                    class="block text-[11px] font-medium text-app-muted mb-1.5 uppercase tracking-wider">Name</label>
+                                <input type="text" id="state-name" value="my_farmer" placeholder="state_name"
+                                    class="w-full py-2.5 px-3 bg-app-surface border border-app-border-light rounded text-app-text text-[13px] focus:outline-none focus:border-app-active placeholder:text-[#404040] transition-colors">
+                            </div>
+
+                            <button
+                                class="w-full py-2.5 px-3.5 bg-app-active text-white border border-app-active rounded cursor-pointer text-xs font-medium transition-all hover:bg-app-active-hover mb-2"
+                                onclick="generateFullState()">Generate JSON</button>
+                        </div>
+                    </div>
+                </div> <!-- End tab-content-map -->
+
+                <!-- Tab: Search (Entity First) -->
+                <div id="tab-content-search" class="hidden">
+                    <div class="mb-4">
+                        <input type="text" placeholder="Search any entity..."
+                            class="w-full py-3 px-4 bg-app-surface border border-app-border-light rounded text-app-text text-sm focus:outline-none focus:border-app-active placeholder:text-[#404040]"
+                            oninput="performGlobalEntitySearch(this.value)">
+                    </div>
+                    <div id="global-search-results" class="flex flex-col gap-2">
+                        <div class="text-center text-app-muted text-xs mt-4">Type to search entities across all biomes
                         </div>
                     </div>
                 </div>
 
-                <!-- Dungeons -->
-                <div id="dungeon-section" class="mb-8" style="display: none;">
-                    <div class="flex items-center justify-between mb-4 cursor-pointer" onclick="toggleSection(this)">
-                        <div class="text-[11px] font-medium text-app-muted uppercase tracking-[0.1em]">Standard Dungeons
-                        </div>
-                        <span class="text-[10px] text-[#404040] transition-transform duration-150">▼</span>
-                    </div>
-                    <div class="transition-all duration-200 overflow-hidden">
-                        <div class="mb-3.5">
-                            <input type="text" id="dungeon-filter" placeholder="Filter..."
-                                class="w-full py-2.5 px-3 bg-app-surface border border-app-border-light rounded text-app-text text-[13px] focus:outline-none focus:border-app-active placeholder:text-[#404040] transition-colors">
-                        </div>
-                        <div class="max-h-[200px] overflow-y-auto" id="dungeon-list"></div>
+                <!-- Tab: Templates -->
+                <div id="tab-content-templates" class="hidden">
+                    <div id="templates-list" class="flex flex-col gap-3">
+                        <div class="text-center text-app-muted text-xs mt-4">Templates coming soon...</div>
                     </div>
                 </div>
 
-                <div class="border-t border-app-border my-6"></div>
-
-                <!-- Entities -->
-                <div class="mb-8">
-                    <div class="flex items-center justify-between mb-4 cursor-pointer" onclick="toggleSection(this)">
-                        <div class="text-[11px] font-medium text-app-muted uppercase tracking-[0.1em]">Entities</div>
-                        <span class="text-[10px] text-[#404040] transition-transform duration-150">▼</span>
-                    </div>
-                    <div class="transition-all duration-200 overflow-hidden">
-                        <div class="mb-3.5 relative overflow-visible">
-                            <label
-                                class="block text-[11px] font-medium text-app-muted mb-1.5 uppercase tracking-wider">Search</label>
-                            <input type="text" id="entity-search" placeholder="Search..."
-                                class="w-full py-2.5 px-3 bg-app-surface border border-app-border-light rounded text-app-text text-[13px] focus:outline-none focus:border-app-active placeholder:text-[#404040] transition-colors">
-                            <div class="absolute top-full left-0 right-0 bg-app-surface border border-app-border-light rounded max-h-[300px] overflow-y-auto z-[9999] hidden mt-1 shadow-xl"
-                                id="entity-results"></div>
-                        </div>
-
-                        <div class="mb-3.5">
-                            <label
-                                class="block text-[11px] font-medium text-app-muted mb-1.5 uppercase tracking-wider">Events
-                                (High Priority)</label>
-                            <div class="flex flex-wrap gap-1.5 min-h-[28px]" id="selected-events"></div>
-                        </div>
-
-                        <div class="mb-3.5">
-                            <label
-                                class="block text-[11px] font-medium text-app-muted mb-1.5 uppercase tracking-wider">Portal</label>
-                            <div class="flex flex-wrap gap-1.5 min-h-[28px]" id="selected-portal"></div>
-                        </div>
-
-                        <div class="mb-3.5">
-                            <label
-                                class="block text-[11px] font-medium text-app-muted mb-1.5 uppercase tracking-wider">Enemies</label>
-                            <div class="flex flex-wrap gap-1.5 min-h-[28px]" id="selected-enemies"></div>
-                        </div>
-
-                        <div class="mb-3.5">
-                            <label
-                                class="block text-[11px] font-medium text-app-muted mb-1.5 uppercase tracking-wider">Beacon</label>
-                            <div class="flex flex-wrap gap-1.5 min-h-[28px]" id="selected-beacon"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="border-t border-app-border my-6"></div>
-
-                <!-- Route -->
-                <div class="mb-8">
-                    <div class="flex items-center justify-between mb-4 cursor-pointer" onclick="toggleSection(this)">
-                        <div class="text-[11px] font-medium text-app-muted uppercase tracking-[0.1em]">Route</div>
-                        <span class="text-[10px] text-[#404040] transition-transform duration-150">▼</span>
-                    </div>
-                    <div class="transition-all duration-200 overflow-hidden">
-                        <div class="flex gap-1.5 mb-3.5">
-                            <div class="flex-1 py-2 bg-app-surface border border-app-border-light rounded text-app-muted cursor-pointer text-[11px] text-center transition-all hover:border-[#404040]"
-                                id="mode-patrol" onclick="setMode('patrol')">Points</div>
-                            <div class="flex-1 py-2 bg-app-surface border border-app-border-light rounded text-app-muted cursor-pointer text-[11px] text-center transition-all hover:border-[#404040]"
-                                id="mode-beacon" onclick="setMode('beacon')">Beacon</div>
-                            <div class="flex-1 py-2 bg-app-surface border border-app-border-light rounded text-app-muted cursor-pointer text-[11px] text-center transition-all hover:border-[#404040]"
-                                id="mode-view" onclick="setMode('view')">View</div>
-                        </div>
-
-                        <div class="p-2.5 bg-app-surface border border-dashed border-app-border-light rounded font-mono text-xs mb-3.5 text-[#404040]"
-                            id="beacon-display">No beacon set</div>
-
-                        <div class="text-[11px] text-app-muted mb-2.5" id="route-stats">No points</div>
-                        <div class="max-h-[140px] overflow-y-auto mb-2.5" id="route-points"></div>
-
-                        <button
-                            class="w-full py-2.5 px-3.5 bg-app-surface text-app-text border border-app-border-light rounded cursor-pointer text-xs font-medium transition-all hover:bg-app-border-light disabled:opacity-40 disabled:cursor-not-allowed mb-2"
-                            id="optimize-btn" disabled onclick="optimizeRoute()">Optimize</button>
-                        <button
-                            class="w-full py-2.5 px-3.5 bg-app-surface text-app-text border border-app-border-light rounded cursor-pointer text-xs font-medium transition-all hover:bg-app-border-light disabled:opacity-40 disabled:cursor-not-allowed"
-                            id="clear-btn" disabled onclick="clearRoute()">Clear</button>
-                    </div>
-                </div>
-
-                <div class="border-t border-app-border my-6"></div>
-
-                <!-- Generate -->
-                <div class="mb-8">
-                    <div class="flex items-center justify-between mb-4 cursor-pointer" onclick="toggleSection(this)">
-                        <div class="text-[11px] font-medium text-app-muted uppercase tracking-[0.1em]">Generate</div>
-                        <span class="text-[10px] text-[#404040] transition-transform duration-150">▼</span>
-                    </div>
-                    <div class="transition-all duration-200 overflow-hidden">
-                        <div class="mb-3.5">
-                            <label
-                                class="block text-[11px] font-medium text-app-muted mb-1.5 uppercase tracking-wider">Name</label>
-                            <input type="text" id="state-name" value="my_farmer" placeholder="state_name"
-                                class="w-full py-2.5 px-3 bg-app-surface border border-app-border-light rounded text-app-text text-[13px] focus:outline-none focus:border-app-active placeholder:text-[#404040] transition-colors">
-                        </div>
-
-                        <button
-                            class="w-full py-2.5 px-3.5 bg-app-active text-white border border-app-active rounded cursor-pointer text-xs font-medium transition-all hover:bg-app-active-hover mb-2"
-                            onclick="generateFullState()">Generate JSON</button>
-                    </div>
-                </div>
             </aside>
 
             <main class="flex-1 relative bg-[#0a0a0a]">
@@ -250,26 +324,41 @@
             </main>
 
             <aside
-                class="w-[300px] bg-app-bg p-6 overflow-y-auto overflow-x-visible border-l border-app-border shrink-0 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-app-border-light [&::-webkit-scrollbar-thumb]:rounded-sm">
-                <!-- Realm Encounters -->
-                <div id="realm-encounters-section" class="mb-8" style="display: none;">
+                class="w-[700px] min-w-[700px] max-w-[700px] bg-app-bg p-6 overflow-y-auto overflow-x-hidden border-l border-app-border shrink-0 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-app-border-light [&::-webkit-scrollbar-thumb]:rounded-sm">
+                <!-- Realm Encounters (Unified) -->
+                <div class="mb-8">
                     <div class="flex items-center justify-between mb-4 cursor-pointer" onclick="toggleSection(this)">
                         <div class="text-[11px] font-medium text-app-muted uppercase tracking-[0.1em]">Realm Encounters
                         </div>
-                        <span class="text-[10px] text-[#404040] transition-transform duration-150">▼</span>
+                        <span class="text-[10px] text-[#404040] transition-transform duration-150 rotate-180">▼</span>
                     </div>
-                    <div class="transition-all duration-200 overflow-hidden">
-                        <div class="gap-2" id="realm-encounters-list">
-                            <div class="p-6 text-center text-[#404040] text-xs">Select a biome</div>
+                    <div class="transition-all duration-200 overflow-hidden" style="display: block;">
+                        <!-- Filter Toggle -->
+                        <div class="flex p-1 bg-[#1a1a1a] rounded-lg border border-[#2a2a2a] mb-2 mx-1">
+                            <button onclick="setEventFilterMode('all')"
+                                class="event-filter-tab active flex-1 py-1.5 text-[10px] font-medium text-center rounded text-[#d4d4d4] transition-all"
+                                id="btn-filter-all" style="background: #2a2a2a; border: 1px solid #404040;">All
+                                Events</button>
+                            <button onclick="setEventFilterMode('biome')"
+                                class="event-filter-tab flex-1 py-1.5 text-[10px] font-medium text-center rounded text-[#737373] hover:text-[#d4d4d4] transition-all border border-transparent"
+                                id="btn-filter-biome">Current Biome</button>
+                        </div>
+                        <div class="mb-3.5 relative">
+                            <input type="text" id="all-events-search" placeholder="Search events..."
+                                class="w-full py-2.5 px-3 bg-app-surface border border-app-border-light rounded text-app-text text-[13px] focus:outline-none focus:border-app-active placeholder:text-[#404040] transition-colors"
+                                oninput="filterAllEvents(this.value)">
+                        </div>
+                        <div class="w-full grid grid-cols-2 gap-3 max-h-[600px] overflow-y-auto overflow-x-hidden p-4" id="all-encounters-list">
+                            <div class="p-6 text-center text-[#404040] text-xs">Loading...</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Find Dungeon -->
-                <div class="mb-8">
-                    <div class="flex items-center justify-between mb-4 cursor-pointer" onclick="toggleSection(this)">
-                        <div class="text-[11px] font-medium text-app-muted uppercase tracking-[0.1em]">Find Dungeon
-                        </div>
+                <!-- Find Dungeon (hidden) -->
+                <div class="mb-8 hidden">
+                    <div class="flex items-center justify-between mb-4 cursor-pointer"
+                        onclick="toggleSection(this)">
+                        <div class="text-[11px] font-medium text-app-muted uppercase tracking-[0.1em]">Find Dungeon</div>
                         <span class="text-[10px] text-[#404040] transition-transform duration-150">▼</span>
                     </div>
                     <div class="transition-all duration-200 overflow-hidden">
@@ -287,9 +376,10 @@
                     </div>
                 </div>
 
-                <!-- Find Item -->
-                <div class="mb-8">
-                    <div class="flex items-center justify-between mb-4 cursor-pointer" onclick="toggleSection(this)">
+                <!-- Find Item (hidden) -->
+                <div class="mb-8 hidden">
+                    <div class="flex items-center justify-between mb-4 cursor-pointer"
+                        onclick="toggleSection(this)">
                         <div class="text-[11px] font-medium text-app-muted uppercase tracking-[0.1em]">Find Item</div>
                         <span class="text-[10px] text-[#404040] transition-transform duration-150">▼</span>
                     </div>
@@ -303,7 +393,8 @@
                         <div id="matching-item-info"></div>
                         <button
                             class="w-full py-2.5 px-3.5 bg-app-surface text-app-text border border-app-border-light rounded cursor-pointer text-xs font-medium transition-all hover:bg-app-border-light disabled:opacity-40 disabled:cursor-not-allowed mt-2"
-                            id="reset-item-search-btn" style="display:none;" onclick="resetItemSearch()">Clear</button>
+                            id="reset-item-search-btn" style="display:none;"
+                            onclick="resetItemSearch()">Clear</button>
                     </div>
                 </div>
 
@@ -311,9 +402,9 @@
 
                 <!-- Dungeon Phase -->
                 <div id="dungeon-phase-section" class="mb-8" style="display: none;">
-                    <div class="flex items-center justify-between mb-4 cursor-pointer" onclick="toggleSection(this)">
-                        <div class="text-[11px] font-medium text-app-muted uppercase tracking-[0.1em]">Dungeon Phase
-                        </div>
+                    <div class="flex items-center justify-between mb-4 cursor-pointer"
+                        onclick="toggleSection(this)">
+                        <div class="text-[11px] font-medium text-app-muted uppercase tracking-[0.1em]">Dungeon Phase</div>
                         <span class="text-[10px] text-[#404040] transition-transform duration-150">▼</span>
                     </div>
                     <div class="transition-all duration-200 overflow-visible">
@@ -427,7 +518,10 @@
             dungeonAdditionalEnemies: [], // Array of {id, name}
             // Biome White Bag state
             biomeWhites: {}, // Map of "Item Name" -> ["Biome1", "Biome2"]
-            isBiomeDrop: false
+            isBiomeDrop: false,
+            // Event Filter state
+            eventFilterMode: 'all', // 'all' or 'biome'
+            eventSearchQuery: ''
         };
 
         function toggleSection(header) {
@@ -452,6 +546,7 @@
             await loadLootIndex();
             await loadBiomeWhites();
             await loadEncounterLoot();
+            populateAllRealmEvents(); // Populate global events list
             initMap();
             initEventListeners();
             updateStatus('Ready');
@@ -537,9 +632,9 @@
             state.portalNames = [];
             state.enemyIds = [];
             state.enemyNames = [];
-            state.eventEnemyIds = [];
-            state.eventEnemyNames = [];
-            state.eventEnemyIdsByName = {};
+            // state.eventEnemyIds = []; // PERSISTED GLOBALLY
+            // state.eventEnemyNames = []; // PERSISTED GLOBALLY
+            // state.eventEnemyIdsByName = {}; // PERSISTED GLOBALLY
             state.beaconId = null;
             state.beaconName = null;
             state.selectedDungeons = [];
@@ -553,7 +648,6 @@
             renderSelectedEntities('beacon');
             // Hide dungeon/encounter sections
             document.getElementById('dungeon-section').style.display = 'none';
-            document.getElementById('realm-encounters-section').style.display = 'none';
             document.getElementById('dungeon-phase-section').style.display = 'none';
         }
 
@@ -571,6 +665,9 @@
             infoEl.innerHTML = `
                 <div class="biome-name">${biome.name}<span class="biome-tier ${(biome.tier || 'unknown').toLowerCase()}">${biome.tier || '?'}</span></div>
                 <div class="biome-coords">(${beaconPosition[0]}, ${beaconPosition[1]})</div>
+                <button onclick="farmEntireBiome(event)" class="w-full mt-3 py-1.5 px-2 bg-[#2a2a2a] border border-[#3a3a3a] rounded text-[11px] text-[#d4d4d4] hover:bg-[#3a3a3a] transition-colors flex items-center justify-center gap-1.5">
+                    <i class="fas fa-tractor text-[#4a9eff]"></i> Farm Entire Biome
+                </button>
             `;
 
             // Identify standard dungeons (dropped by monsters/heroes)
@@ -587,12 +684,8 @@
                 populateDungeonList(Array.from(standardDungeons).sort());
             }
 
-            // Populate realm encounters in sidebar-right (replaces old encounter-section)
-            populateRealmEncounters(encounters);
-
             setBeaconPosition(beaconPosition[0], beaconPosition[1]);
 
-            // Set beacon enemy from biome (used for both dungeon and biome farming)
             if (biome.beacon_guardian) {
                 state.beaconName = biome.beacon_guardian.name;
                 state.beaconId = biome.beacon_guardian.id || 0;
@@ -614,6 +707,344 @@
             });
 
             updateStatus(`Selected ${biome.name}`);
+
+            // Switch filter to biome mode and update
+            setEventFilterMode('biome');
+        }
+
+        function farmEntireBiome(e) {
+            if (e) e.stopPropagation();
+            if (!state.selectedBiomeId) return;
+            const biome = state.biomeData[state.selectedBiomeId];
+            if (!biome) return;
+
+            let count = 0;
+            const entitiesToAdd = [...(biome.monsters || []), ...(biome.heroes || [])];
+
+            entitiesToAdd.forEach(e => {
+                if (!state.enemyIds.includes(e.id)) {
+                    state.enemyIds.push(e.id);
+                    state.enemyNames.push(e.name);
+                    count++;
+                }
+            });
+
+            if (count > 0) {
+                renderSelectedEntities('enemies');
+                const toast = document.getElementById('toast');
+                toast.textContent = `Added ${count} entities from ${biome.name}`;
+                toast.dataset.show = 'true';
+                setTimeout(() => toast.dataset.show = 'false', 3000);
+                updateStatus(`Added ${count} entities`);
+            } else {
+                updateStatus('All biome entities already selected');
+            }
+        }
+
+        function populateAllRealmEvents() {
+            const listEl = document.getElementById('all-encounters-list');
+            const allEncounters = [];
+
+            // Aggregate from all biomes
+            Object.values(state.biomeData).forEach(biome => {
+                if (biome.encounters) {
+                    biome.encounters.forEach(e => {
+                        // Avoid duplicates if same encounter is in multiple biomes
+                        if (!allEncounters.some(existing => existing.id === e.id)) {
+                            allEncounters.push({ ...e, _biome: biome.name });
+                        }
+                    });
+                }
+            });
+
+            allEncounters.sort((a, b) => a.name.localeCompare(b.name));
+            state.allEncounters = allEncounters;
+            renderAllEventsList(allEncounters);
+        }
+
+        function setEventFilterMode(mode) {
+            state.eventFilterMode = mode;
+
+            // Update UI
+            const btnAll = document.getElementById('btn-filter-all');
+            const btnBiome = document.getElementById('btn-filter-biome');
+
+            if (mode === 'all') {
+                btnAll.style.background = '#2a2a2a';
+                btnAll.style.borderColor = '#404040';
+                btnAll.classList.remove('text-[#737373]');
+                btnAll.classList.add('text-[#d4d4d4]');
+
+                btnBiome.style.background = 'transparent';
+                btnBiome.style.borderColor = 'transparent';
+                btnBiome.classList.add('text-[#737373]');
+                btnBiome.classList.remove('text-[#d4d4d4]');
+            } else {
+                btnBiome.style.background = '#2a2a2a';
+                btnBiome.style.borderColor = '#404040';
+                btnBiome.classList.remove('text-[#737373]');
+                btnBiome.classList.add('text-[#d4d4d4]');
+
+                btnAll.style.background = 'transparent';
+                btnAll.style.borderColor = 'transparent';
+                btnAll.classList.add('text-[#737373]');
+                btnAll.classList.remove('text-[#d4d4d4]');
+            }
+
+            updateEventList();
+        }
+
+        function filterAllEvents(query) {
+            state.eventSearchQuery = query;
+            updateEventList();
+        }
+
+        function updateEventList() {
+            if (!state.allEncounters) return;
+
+            let filtered = state.allEncounters;
+
+            // 1. Filter by Biome (if mode is 'biome')
+            if (state.eventFilterMode === 'biome') {
+                if (state.selectedBiomeId) {
+                    const currentBiome = state.biomeData[state.selectedBiomeId];
+                    if (currentBiome) {
+                        const biomeEncounterIds = (currentBiome.encounters || []).map(e => e.id);
+                        filtered = filtered.filter(e => biomeEncounterIds.includes(e.id));
+                    }
+                } else {
+                    renderAllEventsList([], "Select a biome to see events");
+                    return;
+                }
+            }
+
+            // 2. Filter by Search Query
+            if (state.eventSearchQuery) {
+                const q = state.eventSearchQuery.toLowerCase();
+                filtered = filtered.filter(e => e.name.toLowerCase().includes(q));
+            }
+
+            renderAllEventsList(filtered, state.eventFilterMode === 'biome' && filtered.length === 0 ? "No events in this biome" : null);
+        }
+
+        function renderAllEventsList(encounters, emptyMessage = "No encounters found") {
+            const listEl = document.getElementById('all-encounters-list');
+            if (encounters.length === 0) {
+                listEl.innerHTML = `<div class="empty-state">${emptyMessage}</div>`;
+                return;
+            }
+
+            listEl.innerHTML = encounters.map(e => {
+                const allIds = e.ids || [e.id];
+                const isSelected = allIds.some(id => state.eventEnemyIds.includes(id));
+                const sprite = getEncounterSpriteWithFallback(allIds, e.name);
+                const hasDungeon = !!e.drops_dungeon;
+
+                // Check loot for all associated IDs
+                let lootItems = [];
+                allIds.forEach(id => {
+                    const items = state.encounterLoot[String(id)] || [];
+                    items.forEach(item => {
+                        if (!lootItems.some(l => l.id === item.id)) {
+                            lootItems.push(item);
+                        }
+                    });
+                });
+
+                // Build loot items HTML
+                let lootHtml = '';
+                if (lootItems.length > 0) {
+                    lootHtml = lootItems.map(item => `
+                        <div class="w-6 h-6 border border-[#333] rounded bg-[#262626] flex items-center justify-center p-0.5" title="${item.name}">
+                            <img src="${getItemSpriteUrl(item.id, item.name)}" alt="${item.name}" class="w-full h-full object-contain image-pixelated">
+                        </div>
+                    `).join('');
+                } else {
+                    lootHtml = '<span class="text-[10px] text-[#404040] italic">No white bags</span>';
+                }
+
+                return `
+                    <div class="relative flex flex-col bg-[#262626] border border-[#404040] rounded-lg overflow-hidden cursor-pointer transform transition-all duration-200 hover:scale-[1.02] hover:shadow-lg hover:shadow-green-500/10 hover:border-green-500/50 group ${isSelected ? 'selected' : ''}"
+                         data-encounter-id="${e.id}"
+                         data-encounter-ids="${JSON.stringify(allIds).replace(/"/g, '&quot;')}"
+                         data-encounter-name="${e.name}"
+                         onclick="toggleEncounterCard(this)">
+                        <div class="flex items-center p-3 gap-3 border-b border-[#404040] bg-[#1a1a1a]">
+                             <div class="w-10 h-10 shrink-0">
+                                <img src="${sprite.url}" data-safe-name="${sprite.safeName}" data-fallback-ids="${sprite.fallbackIds}" alt="${e.name}" class="w-full h-full object-contain image-pixelated" onerror="tryNextSpriteId(this)">
+                             </div>
+                             <div class="flex-1 min-w-0">
+                                <div class="text-sm font-medium text-[#f5f5f5] truncate">${e.name}</div>
+                                ${hasDungeon ? `<div class="text-[10px] text-[#a3a3a3] truncate mt-0.5">Drops: <span class="text-[#fbbf24]">${e.drops_dungeon}</span></div>` : ''}
+                             </div>
+                             <div class="w-2 h-2 rounded-full bg-green-500 opacity-0 transition-opacity group-hover:opacity-50 shrink-0"></div>
+                        </div>
+                        <div class="p-2.5 bg-[#171717] flex items-center gap-2">
+                            <span class="text-[10px] text-[#525252] uppercase tracking-wider font-bold shrink-0">Loot</span>
+                            <div class="flex flex-wrap gap-1.5">${lootHtml}</div>
+                        </div>
+                    </div>
+                 `;
+            }).join('');
+        }
+
+        function switchSidebarTab(tabName) {
+            ['map', 'search', 'templates'].forEach(t => {
+                const btn = document.getElementById(`tab-btn-${t}`);
+                const content = document.getElementById(`tab-content-${t}`);
+                if (t === tabName) {
+                    btn.style.background = '#262626';
+                    btn.classList.add('shadow-md', 'text-white');
+                    btn.classList.remove('text-[#525252]');
+                    content.classList.remove('hidden');
+                } else {
+                    btn.style.background = 'transparent';
+                    btn.classList.remove('shadow-md', 'text-white');
+                    btn.classList.add('text-[#525252]');
+
+                    content.classList.add('hidden');
+                }
+            });
+
+            // Special handling for loading templates
+            if (tabName === 'templates') {
+                loadTemplates();
+            }
+        }
+
+        function performGlobalEntitySearch(query) {
+            const resultsEl = document.getElementById('global-search-results');
+            if (!query || query.length < 2) {
+                resultsEl.innerHTML = '<div class="text-center text-app-muted text-xs mt-4">Type to search...</div>';
+                return;
+            }
+
+            // Client-side search within biomeData
+            const results = [];
+            Object.values(state.biomeData).forEach(biome => {
+                const entities = [...(biome.monsters || []), ...(biome.heroes || [])];
+                entities.forEach(e => {
+                    if (e.name.toLowerCase().includes(query.toLowerCase())) {
+                        if (!results.some(r => r.id === e.id)) {
+                            results.push({ ...e, _biome: biome.name, type: 'Enemy' });
+                        }
+                    }
+                });
+            });
+
+            if (results.length === 0) {
+                resultsEl.innerHTML = '<div class="text-center text-app-muted text-xs mt-4">No results found</div>';
+                return;
+            }
+
+            resultsEl.innerHTML = results.map(e => `
+                <div class="p-3 bg-[#1a1a1a] border border-[#2a2a2a] rounded cursor-pointer hover:border-app-active transition-colors flex justify-between items-center"
+                    onclick="selectEntityFromSearch(${e.id}, '${e.name.replace(/'/g, "\\'")}', '${e._biome}')">
+                    <div>
+                        <div class="text-sm font-medium text-gray-200">${e.name}</div>
+                        <div class="text-[10px] text-app-muted">${e._biome}</div>
+                    </div>
+                    <div class="text-[10px] px-1.5 py-0.5 bg-[#262626] rounded text-[#737373]">+ Add</div>
+                </div>
+             `).join('');
+        }
+
+        function selectEntityFromSearch(id, name, biomeName) {
+            if (!state.enemyIds.includes(id)) {
+                state.enemyIds.push(id);
+                state.enemyNames.push(name);
+                renderSelectedEntities('enemies');
+
+                const toast = document.getElementById('toast');
+                toast.textContent = `Added ${name}`;
+                toast.dataset.show = 'true';
+                setTimeout(() => toast.dataset.show = 'false', 3000);
+            }
+        }
+
+        async function loadTemplates() {
+            const listEl = document.getElementById('templates-list');
+            if (listEl.querySelector('.template-item')) return;
+
+            listEl.innerHTML = '<div class="text-center text-app-muted text-xs mt-4">Loading templates...</div>';
+
+            try {
+                const res = await fetch('data/templates.json');
+                if (!res.ok) throw new Error('Failed to load templates');
+                const templates = await res.json();
+
+                if (templates.length === 0) {
+                    listEl.innerHTML = '<div class="text-center text-app-muted text-xs mt-4">No templates found</div>';
+                    return;
+                }
+
+                listEl.innerHTML = templates.map(t => `
+                    <div class="template-item p-4 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg cursor-pointer hover:border-app-active hover:bg-[#202020] transition-all group"
+                         onclick="applyTemplate('${t.id}')">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-8 h-8 rounded-full bg-[#262626] flex items-center justify-center text-app-active">
+                                <i class="fas fa-${t.icon || 'cogs'}"></i>
+                            </div>
+                            <div class="font-medium text-sm text-gray-200">${t.name}</div>
+                        </div>
+                        <p class="text-[11px] text-[#737373] leading-relaxed">${t.description}</p>
+                    </div>
+                 `).join('');
+
+                state.templates = templates;
+
+            } catch (e) {
+                console.error(e);
+                listEl.innerHTML = '<div class="text-center text-app-muted text-xs mt-4">Error loading templates</div>';
+            }
+        }
+
+        function applyTemplate(templateId) {
+            const template = state.templates.find(t => t.id === templateId);
+            if (!template) return;
+
+            if (confirm(`Apply template "${template.name}"? This will clear current selection.`)) {
+                // Clear existing
+                clearEntities();
+
+                if (template.biomeId) {
+                    const biome = state.biomeData[template.biomeId];
+                    if (biome) {
+                        // Default to beacon pos if available, else 0,0
+                        const pos = biome.beacon || [0, 0];
+                        selectBiome(template.biomeId, pos);
+                    }
+                }
+
+                if (template.enemyIds) {
+                    template.enemyIds.forEach(id => {
+                        if (!state.enemyIds.includes(id)) {
+                            const entity = findEntityById(id);
+                            if (entity) {
+                                state.enemyIds.push(id);
+                                state.enemyNames.push(entity.name);
+                            }
+                        }
+                    });
+                    renderSelectedEntities('enemies');
+                }
+
+                if (template.dungeon) {
+                    selectDungeonByName(template.dungeon);
+                }
+
+                updateStatus(`Applied template: ${template.name}`);
+                switchSidebarTab('map');
+            }
+        }
+
+        function findEntityById(id) {
+            for (const b of Object.values(state.biomeData)) {
+                const all = [...(b.monsters || []), ...(b.heroes || []), ...(b.encounters || [])];
+                const found = all.find(e => e.id === id);
+                if (found) return found;
+            }
+            return null;
         }
 
         function populateDungeonList(dungeonNames) {
@@ -694,80 +1125,9 @@
             return API_BASE + `/data/sprites/items/${itemId}_${safeName}.png`;
         }
 
-        // New Realm Encounters UI (sidebar-right) - Design D Premium Cards
-        function populateRealmEncounters(encounters) {
-            const listEl = document.getElementById('realm-encounters-list');
-            const section = document.getElementById('realm-encounters-section');
-
-            if (!encounters || encounters.length === 0) {
-                listEl.innerHTML = '<div class="empty-state">No encounters in this biome</div>';
-                section.style.display = 'none';
-                return;
-            }
-
-            section.style.display = 'block';
-
-            listEl.innerHTML = encounters.map(e => {
-                // Support both single id and multiple ids array
-                const allIds = e.ids || [e.id];
-                const isSelected = allIds.some(id => state.eventEnemyIds.includes(id));
-                const hasDungeon = !!e.drops_dungeon;
-                // Check loot for all associated IDs
-                let lootItems = [];
-                allIds.forEach(id => {
-                    const items = state.encounterLoot[String(id)] || [];
-                    items.forEach(item => {
-                        if (!lootItems.some(l => l.id === item.id)) {
-                            lootItems.push(item);
-                        }
-                    });
-                });
-                // Get sprite URL with fallback support for multiple IDs
-                const sprite = getEncounterSpriteWithFallback(allIds, e.name);
-
-                // Build loot items HTML
-                let lootHtml = '';
-                if (lootItems.length > 0) {
-                    lootHtml = lootItems.map(item => `
-                        <div class="w-6 h-6 border border-[#333] rounded bg-[#262626] flex items-center justify-center p-0.5" title="${item.name}">
-                            <img src="${getItemSpriteUrl(item.id, item.name)}" alt="${item.name}" class="w-full h-full object-contain image-pixelated">
-                        </div>
-                    `).join('');
-                } else {
-                    lootHtml = '<span class="text-[10px] text-[#404040] italic">No white bags</span>';
-                }
-
-                return `
-                <div class="relative flex flex-col bg-[#262626] border border-[#404040] rounded-lg overflow-hidden cursor-pointer transform transition-all duration-200 hover:scale-[1.02] hover:shadow-lg hover:shadow-app-active/10 hover:border-app-active/50 mb-3 mx-1 group ${isSelected ? 'border-app-active ring-1 ring-app-active bg-[#2a2a2a]' : ''} ${isSelected ? 'selected' : ''}"
-                     data-encounter-id="${e.id}"
-                     data-encounter-ids="${JSON.stringify(allIds).replace(/"/g, '&quot;')}"
-                     data-encounter-name="${e.name}"
-                     data-dungeon-name="${e.drops_dungeon || ''}"
-                     onclick="toggleEncounterCard(this)">
-                    <div class="flex items-center p-3 gap-3 border-b border-[#404040] bg-[#1a1a1a]">
-                        <div class="w-10 h-10 shrink-0">
-                            <img src="${sprite.url}" data-safe-name="${sprite.safeName}" data-fallback-ids="${sprite.fallbackIds}" alt="${e.name}" class="w-full h-full object-contain image-pixelated" onerror="tryNextSpriteId(this)">
-                        </div>
-                        <div class="flex-1 min-w-0">
-                            <div class="text-sm font-medium text-[#f5f5f5] truncate">${e.name}</div>
-                            ${hasDungeon ? `<div class="text-[10px] text-[#a3a3a3] mt-0.5 truncate">Drops: <span class="text-[#fbbf24]">${e.drops_dungeon}</span></div>` : ''}
-                        </div>
-                        <div class="w-2 h-2 rounded-full bg-app-active opacity-0 transition-opacity ${isSelected ? 'opacity-100' : 'group-hover:opacity-50'}"></div>
-                    </div>
-                    <div class="p-2.5 bg-[#171717] flex items-center gap-2">
-                        <span class="text-[10px] text-[#525252] uppercase tracking-wider font-bold shrink-0">Loot</span>
-                        <div class="flex flex-wrap gap-1.5">${lootHtml}</div>
-                    </div>
-                </div>
-                `;
-            }).join('');
-        }
-
-        // Simple toggle for encounter card selection
         function toggleEncounterCard(cardEl) {
             const encounterId = parseInt(cardEl.dataset.encounterId);
             const encounterName = cardEl.dataset.encounterName;
-            // Parse all associated IDs (supports multiple IDs per encounter)
             let allIds = [encounterId];
             try {
                 const idsAttr = cardEl.dataset.encounterIds;
@@ -913,7 +1273,7 @@
                     if (idsAttr) {
                         allIds = JSON.parse(idsAttr);
                     }
-                } catch (e) {}
+                } catch (e) { }
                 const isSelected = allIds.some(id => state.eventEnemyIds.includes(id));
                 card.classList.toggle('selected', isSelected);
             });
@@ -928,7 +1288,7 @@
                     if (idsAttr) {
                         allIds = JSON.parse(idsAttr);
                     }
-                } catch (e) {}
+                } catch (e) { }
             }
 
             // Toggle encounter selection - check if ANY of the IDs are selected
@@ -1711,7 +2071,7 @@
             const pos = biome.beacon_positions[0];
             selectBiome(biomeId, pos);
 
-            // If we have a searched dungeon, auto-select it in the dungeon list
+            // Auto-select searched dungeon if present in biome
             if (state.searchedDungeon && biome.dungeons && biome.dungeons.includes(state.searchedDungeon)) {
                 setTimeout(() => selectDungeonByName(state.searchedDungeon), 100);
             }
@@ -1782,8 +2142,6 @@
 
         function selectItemFromSearch(itemName) {
             const item = state.lootIndex.items[itemName];
-            // Even if not in lootIndex, it might be in biomeWhites (though our search relies on lootIndex currently)
-            // But let's check biomeWhites first to override behavior if needed
 
             // Normalize name for lookup
             const normalizedName = itemName.replace(/[\u2018\u2019\u0091\u0092]/g, "'");
@@ -1804,12 +2162,10 @@
             // Otherwise use lootIndex list.
             let biomesToHighlight = [];
             if (state.isBiomeDrop) {
-                // Map names to IDs. Biome Whites uses display names like "Beach", "Undead Forest"
-                // mapping logic needed if IDs differ from Names slightly, but let's try direct or lookup
+                // Map biome names to IDs
                 const biomeNameMap = {};
                 for (const [id, b] of Object.entries(state.biomeData)) {
                     biomeNameMap[b.name.toLowerCase()] = id;
-                    // Also check aliases if needed, but scraped names usually match display names
                 }
 
                 biomesToHighlight = biomeWhiteBiomes.map(name => {
