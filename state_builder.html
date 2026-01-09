@@ -964,39 +964,17 @@
 
         async function loadTemplates() {
             const listEl = document.getElementById('templates-list');
-            if (listEl.querySelector('.template-item')) return;
-
-            listEl.innerHTML = '<div class="text-center text-app-muted text-xs mt-4">Loading templates...</div>';
-
-            try {
-                const res = await fetch('data/templates.json');
-                if (!res.ok) throw new Error('Failed to load templates');
-                const templates = await res.json();
-
-                if (templates.length === 0) {
-                    listEl.innerHTML = '<div class="text-center text-app-muted text-xs mt-4">No templates found</div>';
-                    return;
-                }
-
-                listEl.innerHTML = templates.map(t => `
-                    <div class="template-item p-4 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg cursor-pointer hover:border-app-active hover:bg-[#202020] transition-all group"
-                         onclick="applyTemplate('${t.id}')">
-                        <div class="flex items-center gap-3 mb-2">
-                            <div class="w-8 h-8 rounded-full bg-[#262626] flex items-center justify-center text-app-active">
-                                <i class="fas fa-${t.icon || 'cogs'}"></i>
-                            </div>
-                            <div class="font-medium text-sm text-gray-200">${t.name}</div>
-                        </div>
-                        <p class="text-[11px] text-[#737373] leading-relaxed">${t.description}</p>
+            listEl.innerHTML = `
+                <div class="flex flex-col items-center justify-center py-8 px-4">
+                    <div class="w-12 h-12 rounded-full bg-[#262626] flex items-center justify-center text-yellow-500 mb-4">
+                        <i class="fas fa-tools text-xl"></i>
                     </div>
-                 `).join('');
-
-                state.templates = templates;
-
-            } catch (e) {
-                console.error(e);
-                listEl.innerHTML = '<div class="text-center text-app-muted text-xs mt-4">Error loading templates</div>';
-            }
+                    <div class="text-sm font-medium text-gray-300 mb-2">Work in Progress</div>
+                    <p class="text-[11px] text-[#737373] text-center leading-relaxed">
+                        Templates are not yet functional.<br>Check back in a future update.
+                    </p>
+                </div>
+            `;
         }
 
         function applyTemplate(templateId) {
