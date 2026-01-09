@@ -1094,8 +1094,7 @@
             if (sprite && atlas) {
                 const atlasUrl = API_BASE + `/data/sprites/atlas/${type}_atlas.png`;
 
-                // Scale down large sprites to fit container, don't scale up small ones
-                const scale = Math.min(1, containerSize / sprite.w, containerSize / sprite.h);
+                const scale = Math.min(containerSize / sprite.w, containerSize / sprite.h);
                 const bgW = atlas.width * scale;
                 const bgH = atlas.height * scale;
                 const bgX = sprite.x * scale;
