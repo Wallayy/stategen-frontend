@@ -11,12 +11,88 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="dist/output.css">
     <style>
+        /* Responsive scaling variables */
+        :root {
+            --sidebar-left-width: clamp(280px, 22vw, 450px);
+            --sidebar-right-width: clamp(350px, 38vw, 700px);
+            --sidebar-padding: clamp(12px, 1.5vw, 24px);
+            --font-size-xs: clamp(9px, 0.7vw, 11px);
+            --font-size-sm: clamp(10px, 0.8vw, 12px);
+            --font-size-base: clamp(11px, 0.85vw, 13px);
+            --spacing-sm: clamp(4px, 0.4vw, 8px);
+            --spacing-md: clamp(8px, 0.8vw, 16px);
+            --spacing-lg: clamp(12px, 1.2vw, 24px);
+            --card-gap: clamp(8px, 0.8vw, 12px);
+        }
+
+        @media (max-width: 1400px) {
+            :root {
+                --sidebar-left-width: clamp(260px, 24vw, 380px);
+                --sidebar-right-width: clamp(320px, 40vw, 550px);
+            }
+        }
+
+        @media (max-width: 1100px) {
+            :root {
+                --sidebar-left-width: 280px;
+                --sidebar-right-width: 350px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            :root {
+                --sidebar-left-width: 260px;
+                --sidebar-right-width: 300px;
+            }
+            .sidebar-right { margin-right: calc(-1 * var(--sidebar-right-width)); }
+            .sidebar-right:not(.collapsed) { margin-right: 0; }
+            #toggle-right { right: 0; }
+            #toggle-right:not(.collapsed-state) { right: calc(var(--sidebar-right-width) - 1px); }
+        }
+
+        @media (max-width: 700px) {
+            .sidebar-left:not(.collapsed) ~ .sidebar-right { margin-right: calc(-1 * var(--sidebar-right-width)); }
+        }
+
+        /* Responsive encounters grid */
+        #all-encounters-list {
+            gap: var(--card-gap);
+            padding: var(--spacing-md);
+        }
+        @media (max-width: 1400px) {
+            #all-encounters-list { grid-template-columns: 1fr; }
+        }
+        @media (min-width: 1401px) {
+            #all-encounters-list { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* Responsive internal elements */
+        .sidebar-left .mb-8, .sidebar-right .mb-8 {
+            margin-bottom: var(--spacing-lg);
+        }
+        .sidebar-left .mb-4, .sidebar-right .mb-4 {
+            margin-bottom: var(--spacing-md);
+        }
+        .sidebar-left .mb-6, .sidebar-right .mb-6 {
+            margin-bottom: var(--spacing-lg);
+        }
+        .sidebar-left input, .sidebar-right input {
+            font-size: var(--font-size-base);
+            padding: var(--spacing-sm) var(--spacing-md);
+        }
+        .sidebar-left .text-\[11px\], .sidebar-right .text-\[11px\] {
+            font-size: var(--font-size-xs);
+        }
+        .sidebar-left .text-\[12px\], .sidebar-right .text-\[12px\] {
+            font-size: var(--font-size-sm);
+        }
+
         /* Additional page-specific styles */
         .empty-state {
-            padding: 1rem;
+            padding: var(--spacing-md);
             text-align: center;
             color: #404040;
-            font-size: 12px;
+            font-size: var(--font-size-sm);
         }
 
         .dungeon-item {
@@ -65,6 +141,80 @@
             image-rendering: pixelated;
             image-rendering: -moz-crisp-edges;
             image-rendering: crisp-edges;
+        }
+
+        /* Sidebar toggle */
+        .sidebar-left {
+            width: var(--sidebar-left-width);
+            min-width: var(--sidebar-left-width);
+            max-width: var(--sidebar-left-width);
+            padding: var(--sidebar-padding);
+            transition: margin-left 0.2s ease, width 0.2s ease;
+        }
+        .sidebar-left.collapsed {
+            margin-left: calc(-1 * var(--sidebar-left-width));
+        }
+        .sidebar-right {
+            width: var(--sidebar-right-width);
+            min-width: var(--sidebar-right-width);
+            max-width: var(--sidebar-right-width);
+            padding: var(--sidebar-padding);
+            transition: margin-right 0.2s ease, width 0.2s ease;
+        }
+        .sidebar-right.collapsed {
+            margin-right: calc(-1 * var(--sidebar-right-width));
+        }
+        .sidebar-toggle {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 48px;
+            background: #1a1a1a;
+            border: 1px solid #404040;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            transition: background 0.15s, left 0.2s ease, right 0.2s ease;
+        }
+        .sidebar-toggle:hover {
+            background: #2a2a2a;
+            border-color: #525252;
+        }
+        .sidebar-toggle-left {
+            left: calc(var(--sidebar-left-width) - 1px);
+            border-radius: 0 6px 6px 0;
+            border-left: none;
+        }
+        .sidebar-toggle-left.collapsed-state {
+            left: 0;
+            border-left: 1px solid #404040;
+        }
+        .sidebar-toggle-right {
+            right: calc(var(--sidebar-right-width) - 1px);
+            border-radius: 6px 0 0 6px;
+            border-right: none;
+        }
+        .sidebar-toggle-right.collapsed-state {
+            right: 0;
+            border-right: 1px solid #404040;
+        }
+        .sidebar-toggle svg {
+            width: 14px;
+            height: 14px;
+            fill: #737373;
+            transition: transform 0.2s;
+        }
+        .sidebar-toggle:hover svg {
+            fill: #a3a3a3;
+        }
+        .sidebar-toggle-left.collapsed-state svg {
+            transform: rotate(180deg);
+        }
+        .sidebar-toggle-right.collapsed-state svg {
+            transform: rotate(180deg);
         }
 
         /* Route point styling */
@@ -138,10 +288,18 @@
             </div>
         </header>
 
-        <div class="flex flex-1 overflow-hidden">
-            <!-- Clean sidebar -->
-            <aside
-                class="w-[450px] min-w-[450px] max-w-[450px] bg-app-bg p-6 overflow-y-auto overflow-x-hidden border-r border-app-border shrink-0 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-app-border-light [&::-webkit-scrollbar-thumb]:rounded-sm">
+        <div class="flex flex-1 overflow-hidden relative" id="main-container">
+            <!-- Sidebar toggles -->
+            <div class="sidebar-toggle sidebar-toggle-left" id="toggle-left" onclick="toggleSidebar('left')">
+                <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+            </div>
+            <div class="sidebar-toggle sidebar-toggle-right" id="toggle-right" onclick="toggleSidebar('right')">
+                <svg viewBox="0 0 24 24"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
+            </div>
+
+            <!-- Left sidebar -->
+            <aside id="sidebar-left"
+                class="sidebar-left bg-app-bg overflow-y-auto overflow-x-hidden border-r border-app-border shrink-0 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-app-border-light [&::-webkit-scrollbar-thumb]:rounded-sm">
 
                 <!-- Sidebar Tabs -->
                 <div class="flex gap-1 p-2 bg-[#0a0a0a] rounded-xl mb-6">
@@ -323,8 +481,9 @@
                 <div id="map" class="h-full w-full bg-[#0a0a0a] z-0"></div>
             </main>
 
-            <aside
-                class="w-[700px] min-w-[700px] max-w-[700px] bg-app-bg p-6 overflow-y-auto overflow-x-hidden border-l border-app-border shrink-0 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-app-border-light [&::-webkit-scrollbar-thumb]:rounded-sm">
+            <!-- Right sidebar -->
+            <aside id="sidebar-right"
+                class="sidebar-right bg-app-bg overflow-y-auto overflow-x-hidden border-l border-app-border shrink-0 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-app-border-light [&::-webkit-scrollbar-thumb]:rounded-sm">
                 <!-- Realm Encounters (Unified) -->
                 <div class="mb-8">
                     <div class="flex items-center justify-between mb-4 cursor-pointer" onclick="toggleSection(this)">
@@ -348,7 +507,7 @@
                                 class="w-full py-2.5 px-3 bg-app-surface border border-app-border-light rounded text-app-text text-[13px] focus:outline-none focus:border-app-active placeholder:text-[#404040] transition-colors"
                                 oninput="filterAllEvents(this.value)">
                         </div>
-                        <div class="w-full grid grid-cols-2 gap-3 max-h-[600px] overflow-y-auto overflow-x-hidden p-4" id="all-encounters-list">
+                        <div class="w-full grid max-h-[600px] overflow-y-auto overflow-x-hidden" id="all-encounters-list">
                             <div class="p-6 text-center text-[#404040] text-xs">Loading...</div>
                         </div>
                     </div>
@@ -528,7 +687,6 @@
             const content = header.nextElementSibling;
             const arrow = header.querySelector('span');
 
-            // Handle both class-based and inline-style toggling
             if (content.style.display === 'none' || content.classList.contains('hidden')) {
                 content.style.display = 'block';
                 content.classList.remove('hidden');
@@ -539,6 +697,25 @@
                 arrow.classList.remove('rotate-180');
             }
         }
+
+        function toggleSidebar(side) {
+            const sidebar = document.getElementById('sidebar-' + side);
+            const toggle = document.getElementById('toggle-' + side);
+            sidebar.classList.toggle('collapsed');
+            toggle.classList.toggle('collapsed-state');
+            if (state.map) {
+                setTimeout(() => state.map.invalidateSize(), 250);
+            }
+        }
+
+        // Update map on window resize
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                if (state.map) state.map.invalidateSize();
+            }, 150);
+        });
 
         async function init() {
             await loadBiomeData();
