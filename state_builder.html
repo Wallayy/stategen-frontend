@@ -873,12 +873,11 @@
                     });
                 });
 
-                // Build loot items HTML using atlas sprites
                 let lootHtml = '';
                 if (lootItems.length > 0) {
                     lootHtml = lootItems.map(item => `
                         <div class="w-6 h-6 border border-[#333] rounded bg-[#262626] flex items-center justify-center p-0.5" title="${item.name}">
-                            ${createSpriteElement('items', item.id, item.name, 'w-full h-full object-contain')}
+                            ${createSpriteElement('items', item.id, item.name, 20)}
                         </div>
                     `).join('');
                 } else {
@@ -893,7 +892,7 @@
                          onclick="toggleEncounterCard(this)">
                         <div class="flex items-center p-3 gap-3 border-b border-[#404040] bg-[#1a1a1a]">
                              <div class="w-10 h-10 shrink-0 flex items-center justify-center">
-                                ${createEncounterSprite(allIds, e.name, 'object-contain')}
+                                ${createEncounterSprite(allIds, e.name, 40)}
                              </div>
                              <div class="flex-1 min-w-0">
                                 <div class="text-sm font-medium text-[#f5f5f5] truncate">${e.name}</div>
@@ -1087,44 +1086,45 @@
             `}).join('');
         }
 
-        // Create sprite element - uses atlas if available, falls back to individual images
-        function createSpriteElement(type, id, name, extraClasses = '') {
+        // Create sprite from atlas or fall back to individual image
+        function createSpriteElement(type, id, name, containerSize = 40) {
             const atlas = state.spriteAtlas?.[type];
             const sprite = atlas?.sprites?.[String(id)];
 
             if (sprite && atlas) {
-                // Atlas mode - use div with background-position
                 const atlasUrl = API_BASE + `/data/sprites/atlas/${type}_atlas.png`;
-                return `<div class="sprite ${extraClasses}" style="
-                    background-image: url('${atlasUrl}');
-                    background-position: -${sprite.x}px -${sprite.y}px;
-                    width: ${sprite.w}px;
-                    height: ${sprite.h}px;
-                    background-repeat: no-repeat;
-                    image-rendering: pixelated;
+
+                // Scale down large sprites to fit container, don't scale up small ones
+                const scale = Math.min(1, containerSize / sprite.w, containerSize / sprite.h);
+                const bgW = atlas.width * scale;
+                const bgH = atlas.height * scale;
+                const bgX = sprite.x * scale;
+                const bgY = sprite.y * scale;
+                const spriteW = sprite.w * scale;
+                const spriteH = sprite.h * scale;
+
+                return `<div class="sprite" style="
+                    width:${spriteW}px; height:${spriteH}px;
+                    background:url('${atlasUrl}') -${bgX}px -${bgY}px / ${bgW}px ${bgH}px no-repeat;
                 " title="${name}"></div>`;
             }
 
-            // Fallback to individual image
             const safeName = name.replace(/'/g, '').replace(/ /g, '_').toLowerCase();
             const url = API_BASE + `/data/sprites/${type}/${id}_${safeName}.png`;
-            return `<img src="${url}" alt="${name}" class="${extraClasses} image-pixelated" onerror="this.style.display='none'">`;
+            return `<img src="${url}" alt="${name}" class="image-pixelated" style="max-width:${containerSize}px;max-height:${containerSize}px;" onerror="this.style.display='none'">`;
         }
 
-        // Create encounter sprite - tries multiple IDs from atlas
-        function createEncounterSprite(allIds, name, extraClasses = '') {
+        // Try multiple IDs until one is found in atlas
+        function createEncounterSprite(allIds, name, containerSize = 40) {
             const atlas = state.spriteAtlas?.encounters;
             if (atlas) {
-                // Try each ID in order until we find one in the atlas
                 for (const id of allIds) {
-                    const sprite = atlas.sprites?.[String(id)];
-                    if (sprite) {
-                        return createSpriteElement('encounters', id, name, extraClasses);
+                    if (atlas.sprites?.[String(id)]) {
+                        return createSpriteElement('encounters', id, name, containerSize);
                     }
                 }
             }
-            // Fallback to first ID
-            return createSpriteElement('encounters', allIds[0], name, extraClasses);
+            return createSpriteElement('encounters', allIds[0], name, containerSize);
         }
 
         // Legacy functions for backward compatibility
