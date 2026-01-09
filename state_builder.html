@@ -67,13 +67,6 @@
             image-rendering: crisp-edges;
         }
 
-        .sprite {
-            display: inline-block;
-            image-rendering: pixelated;
-            image-rendering: -moz-crisp-edges;
-            image-rendering: crisp-edges;
-        }
-
         /* Route point styling */
         .route-point {
             display: flex;
@@ -528,9 +521,7 @@
             isBiomeDrop: false,
             // Event Filter state
             eventFilterMode: 'all', // 'all' or 'biome'
-            eventSearchQuery: '',
-            // Sprite atlas
-            spriteAtlas: null
+            eventSearchQuery: ''
         };
 
         function toggleSection(header) {
@@ -555,24 +546,10 @@
             await loadLootIndex();
             await loadBiomeWhites();
             await loadEncounterLoot();
-            await loadSpriteAtlas();
-            populateAllRealmEvents(); // Populate global events list
+            populateAllRealmEvents();
             initMap();
             initEventListeners();
             updateStatus('Ready');
-        }
-
-        async function loadSpriteAtlas() {
-            try {
-                const response = await fetch(API_BASE + '/api/sprite-atlas');
-                state.spriteAtlas = await response.json();
-                const encCount = Object.keys(state.spriteAtlas?.encounters?.sprites || {}).length;
-                const itemCount = Object.keys(state.spriteAtlas?.items?.sprites || {}).length;
-                console.log(`[Atlas] Loaded: ${encCount} encounters, ${itemCount} items`);
-            } catch (e) {
-                console.warn('[Atlas] Failed to load, using individual sprites:', e);
-                state.spriteAtlas = null;
-            }
         }
 
         async function loadEncounterLoot() {
@@ -877,7 +854,7 @@
                 if (lootItems.length > 0) {
                     lootHtml = lootItems.map(item => `
                         <div class="w-6 h-6 border border-[#333] rounded bg-[#262626] flex items-center justify-center p-0.5" title="${item.name}">
-                            ${createSpriteElement('items', item.id, item.name, 20)}
+                            ${createSpriteElement('items', item.id, item.name)}
                         </div>
                     `).join('');
                 } else {
@@ -892,7 +869,7 @@
                          onclick="toggleEncounterCard(this)">
                         <div class="flex items-center p-3 gap-3 border-b border-[#404040] bg-[#1a1a1a]">
                              <div class="w-10 h-10 shrink-0 flex items-center justify-center">
-                                ${createEncounterSprite(allIds, e.name, 40)}
+                                ${createEncounterSprite(allIds, e.name)}
                              </div>
                              <div class="flex-1 min-w-0">
                                 <div class="text-sm font-medium text-[#f5f5f5] truncate">${e.name}</div>
@@ -1086,57 +1063,17 @@
             `}).join('');
         }
 
-        // Create sprite from atlas or fall back to individual image
-        function createSpriteElement(type, id, name, containerSize = 40) {
-            const atlas = state.spriteAtlas?.[type];
-            const sprite = atlas?.sprites?.[String(id)];
-
-            if (sprite && atlas) {
-                const atlasUrl = API_BASE + `/data/sprites/atlas/${type}_atlas.png`;
-
-                const scale = Math.min(containerSize / sprite.w, containerSize / sprite.h);
-                const bgW = atlas.width * scale;
-                const bgH = atlas.height * scale;
-                const bgX = sprite.x * scale;
-                const bgY = sprite.y * scale;
-                const spriteW = sprite.w * scale;
-                const spriteH = sprite.h * scale;
-
-                return `<div class="sprite" style="
-                    width:${spriteW}px; height:${spriteH}px;
-                    background:url('${atlasUrl}') -${bgX}px -${bgY}px / ${bgW}px ${bgH}px no-repeat;
-                " title="${name}"></div>`;
-            }
-
+        function createSpriteElement(type, id, name) {
             const safeName = name.replace(/'/g, '').replace(/ /g, '_').toLowerCase();
-            const url = API_BASE + `/data/sprites/${type}/${id}_${safeName}.png`;
-            return `<img src="${url}" alt="${name}" class="image-pixelated" style="max-width:${containerSize}px;max-height:${containerSize}px;" onerror="this.style.display='none'">`;
+            const url = `./data/sprites/${type}/${id}_${safeName}.png`;
+            return `<img src="${url}" alt="${name}" class="w-full h-full object-contain image-pixelated" onerror="this.style.display='none'">`;
         }
 
-        // Try multiple IDs until one is found in atlas
-        function createEncounterSprite(allIds, name, containerSize = 40) {
-            const atlas = state.spriteAtlas?.encounters;
-            if (atlas) {
-                for (const id of allIds) {
-                    if (atlas.sprites?.[String(id)]) {
-                        return createSpriteElement('encounters', id, name, containerSize);
-                    }
-                }
-            }
-            return createSpriteElement('encounters', allIds[0], name, containerSize);
-        }
-
-        // Legacy functions for backward compatibility
-        function getEncounterSpriteUrl(encounterId, name) {
+        function createEncounterSprite(allIds, name) {
             const safeName = name.replace(/'/g, '').replace(/ /g, '_').toLowerCase();
-            return API_BASE + `/data/sprites/encounters/${encounterId}_${safeName}.png`;
-        }
-
-        function getEncounterSpriteWithFallback(allIds, name) {
-            const safeName = name.replace(/'/g, '').replace(/ /g, '_').toLowerCase();
-            const primaryUrl = API_BASE + `/data/sprites/encounters/${allIds[0]}_${safeName}.png`;
+            const primaryUrl = `./data/sprites/encounters/${allIds[0]}_${safeName}.png`;
             const fallbackIds = allIds.slice(1).join(',');
-            return { url: primaryUrl, safeName, fallbackIds };
+            return `<img src="${primaryUrl}" data-safe-name="${safeName}" data-fallback-ids="${fallbackIds}" alt="${name}" class="w-full h-full object-contain image-pixelated" onerror="tryNextSpriteId(this)">`;
         }
 
         function tryNextSpriteId(img) {
@@ -1146,15 +1083,10 @@
                 const ids = fallbackIds.split(',');
                 const nextId = ids.shift();
                 img.dataset.fallbackIds = ids.join(',');
-                img.src = API_BASE + `/data/sprites/encounters/${nextId}_${safeName}.png`;
+                img.src = `./data/sprites/encounters/${nextId}_${safeName}.png`;
             } else {
                 img.style.display = 'none';
             }
-        }
-
-        function getItemSpriteUrl(itemId, name) {
-            const safeName = name.replace(/'/g, '').replace(/ /g, '_').toLowerCase();
-            return API_BASE + `/data/sprites/items/${itemId}_${safeName}.png`;
         }
 
         function toggleEncounterCard(cardEl) {
