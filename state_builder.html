@@ -760,9 +760,7 @@
                 for (const entry of data) {
                     // entry = { item: "Name", biomes: ["Biome1"] }
                     state.biomeWhites[entry.item] = entry.biomes;
-                    // Also add normalized version (smart quotes/mojibake -> standard apostrophe)
-                    // \u2019 is smart quote, \u0092 is windows-1252 mojibake typical in RotMG data
-                    const normalized = entry.item.replace(/[\u2018\u2019\u0091\u0092]/g, "'");
+                    const normalized = entry.item.replace(/[\u2018\u2019\u0091']/g, "'");
                     if (normalized !== entry.item) {
                         state.biomeWhites[normalized] = entry.biomes;
                     }
@@ -2285,7 +2283,7 @@
             const item = state.lootIndex.items[itemName];
 
             // Normalize name for lookup
-            const normalizedName = itemName.replace(/[\u2018\u2019\u0091\u0092]/g, "'");
+            const normalizedName = itemName.replace(/[\u2018\u2019\u0091']/g, "'");
             const biomeWhiteBiomes = state.biomeWhites[itemName] || state.biomeWhites[normalizedName];
 
             if (!item && !biomeWhiteBiomes) return;

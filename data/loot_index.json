@@ -16,7 +16,7 @@
         "Unsung Jester",
         "Vagabond Satyr",
         "Wood Construct",
-        "Dragon\u0092s Treasure",
+        "Dragon's Treasure",
         "Insurgent Rebel Commander",
         "Sword in the Stone?"
       ],
@@ -68,7 +68,7 @@
       ],
       "category": "white_bag"
     },
-    "Tablet of the King\u0092s Avatar": {
+    "Tablet of the King's Avatar": {
       "biomes": [
         "abandoned_city",
         "carboniferous",
@@ -92,7 +92,7 @@
       ],
       "category": "white_bag"
     },
-    "Adventurer\u0092s Scarf": {
+    "Adventurer's Scarf": {
       "biomes": [
         "beach"
       ],
@@ -118,7 +118,7 @@
       ],
       "category": "white_bag"
     },
-    "Crystallised Fang\u0092s Venom": {
+    "Crystallised Fang's Venom": {
       "biomes": [
         "carboniferous",
         "deep_sea_abyss",
@@ -168,7 +168,7 @@
       "enemies": [
         "Carp Emperor",
         "Hermit God",
-        "World\u0092s Oyster"
+        "World's Oyster"
       ],
       "category": "white_bag"
     },
@@ -238,7 +238,7 @@
         "Vegetarian Tiger",
         "Alluring Blossom",
         "Elder Ent Ancient",
-        "Hornet\u0092s Nest"
+        "Hornet's Nest"
       ],
       "category": "white_bag"
     },
@@ -302,7 +302,7 @@
       ],
       "category": "white_bag"
     },
-    "Doom\u0092s Emblem": {
+    "Doom's Emblem": {
       "biomes": [
         "risen_hell"
       ],
@@ -372,7 +372,7 @@
       "enemies": [
         "Lord of the Lost Lands",
         "Skeletal Centipede",
-        "Bilgewater\u0092s Galleon"
+        "Bilgewater's Galleon"
       ],
       "category": "white_bag"
     },
@@ -405,7 +405,7 @@
       ],
       "category": "white_bag"
     },
-    "Pirate\u0092s Artillery": {
+    "Pirate's Artillery": {
       "biomes": [
         "shipwreck_cove"
       ],
@@ -565,7 +565,7 @@
       "dungeons": [],
       "category": "monsters"
     },
-    "Dragon\u0092s Treasure": {
+    "Dragon's Treasure": {
       "biomes": [
         "abandoned_city"
       ],
@@ -660,7 +660,7 @@
         "abandoned_city"
       ],
       "items": [
-        "Tablet of the King\u0092s Avatar"
+        "Tablet of the King's Avatar"
       ],
       "dungeons": [],
       "category": "encounters"
@@ -680,7 +680,7 @@
         "beach"
       ],
       "items": [
-        "Adventurer\u0092s Scarf"
+        "Adventurer's Scarf"
       ],
       "dungeons": [],
       "category": "heroes"
@@ -780,7 +780,7 @@
         "carboniferous"
       ],
       "items": [
-        "Crystallised Fang\u0092s Venom"
+        "Crystallised Fang's Venom"
       ],
       "dungeons": [],
       "category": "encounters"
@@ -791,7 +791,7 @@
         "runic_tundra"
       ],
       "items": [
-        "Crystallised Fang\u0092s Venom"
+        "Crystallised Fang's Venom"
       ],
       "dungeons": [],
       "category": "encounters"
@@ -813,7 +813,7 @@
         "carboniferous"
       ],
       "items": [
-        "Tablet of the King\u0092s Avatar"
+        "Tablet of the King's Avatar"
       ],
       "dungeons": [],
       "category": "encounters"
@@ -856,7 +856,7 @@
       "dungeons": [],
       "category": "encounters"
     },
-    "World\u0092s Oyster": {
+    "World's Oyster": {
       "biomes": [
         "coral_reefs"
       ],
@@ -1041,7 +1041,7 @@
         "deep_sea_abyss"
       ],
       "items": [
-        "Crystallised Fang\u0092s Venom"
+        "Crystallised Fang's Venom"
       ],
       "dungeons": [],
       "category": "encounters"
@@ -1146,7 +1146,7 @@
       "dungeons": [],
       "category": "heroes"
     },
-    "Hornet\u0092s Nest": {
+    "Hornet's Nest": {
       "biomes": [
         "floral_escape"
       ],
@@ -1320,7 +1320,7 @@
         "risen_hell"
       ],
       "items": [
-        "Doom\u0092s Emblem"
+        "Doom's Emblem"
       ],
       "dungeons": [],
       "category": "heroes"
@@ -1330,7 +1330,7 @@
         "risen_hell"
       ],
       "items": [
-        "Doom\u0092s Emblem"
+        "Doom's Emblem"
       ],
       "dungeons": [],
       "category": "heroes"
@@ -1340,7 +1340,7 @@
         "risen_hell"
       ],
       "items": [
-        "Doom\u0092s Emblem"
+        "Doom's Emblem"
       ],
       "dungeons": [],
       "category": "heroes"
@@ -1350,7 +1350,7 @@
         "risen_hell"
       ],
       "items": [
-        "Doom\u0092s Emblem"
+        "Doom's Emblem"
       ],
       "dungeons": [],
       "category": "heroes"
@@ -1514,7 +1514,7 @@
         "runic_tundra"
       ],
       "items": [
-        "Crystallised Fang\u0092s Venom"
+        "Crystallised Fang's Venom"
       ],
       "dungeons": [],
       "category": "encounters"
@@ -1614,7 +1614,7 @@
         "sanguine_forest"
       ],
       "items": [
-        "Tablet of the King\u0092s Avatar"
+        "Tablet of the King's Avatar"
       ],
       "dungeons": [],
       "category": "encounters"
@@ -1654,7 +1654,7 @@
         "shipwreck_cove"
       ],
       "items": [
-        "Pirate\u0092s Artillery"
+        "Pirate's Artillery"
       ],
       "dungeons": [],
       "category": "heroes"
@@ -1664,12 +1664,12 @@
         "shipwreck_cove"
       ],
       "items": [
-        "Pirate\u0092s Artillery"
+        "Pirate's Artillery"
       ],
       "dungeons": [],
       "category": "heroes"
     },
-    "Bilgewater\u0092s Galleon": {
+    "Bilgewater's Galleon": {
       "biomes": [
         "shipwreck_cove"
       ],
@@ -1787,7 +1787,7 @@
         "Unsung Jester",
         "Vagabond Satyr",
         "Wood Construct",
-        "Dragon\u0092s Treasure",
+        "Dragon's Treasure",
         "Insurgent Rebel Commander",
         "Mysterious Crystal",
         "Sword in the Stone?",
@@ -1807,7 +1807,7 @@
         "Helm of the Juggernaut",
         "Kageboshi",
         "Ray Katana",
-        "Tablet of the King\u0092s Avatar"
+        "Tablet of the King's Avatar"
       ]
     },
     "beach": {
@@ -1817,7 +1817,7 @@
       ],
       "dungeons": [],
       "items": [
-        "Adventurer\u0092s Scarf"
+        "Adventurer's Scarf"
       ]
     },
     "carboniferous": {
@@ -1839,9 +1839,9 @@
       ],
       "dungeons": [],
       "items": [
-        "Crystallised Fang\u0092s Venom",
+        "Crystallised Fang's Venom",
         "Evolutionary Records",
-        "Tablet of the King\u0092s Avatar",
+        "Tablet of the King's Avatar",
         "Token of Happiness",
         "Token of Warmth"
       ]
@@ -1853,7 +1853,7 @@
         "Maiden of the Sea",
         "Carp Emperor",
         "Hermit God",
-        "World\u0092s Oyster"
+        "World's Oyster"
       ],
       "dungeons": [],
       "items": [
@@ -1897,7 +1897,7 @@
       "dungeons": [],
       "items": [
         "Cloak of the Deep",
-        "Crystallised Fang\u0092s Venom"
+        "Crystallised Fang's Venom"
       ]
     },
     "floral_escape": {
@@ -1913,7 +1913,7 @@
         "Vegetarian Tiger",
         "Alluring Blossom",
         "Elder Ent Ancient",
-        "Hornet\u0092s Nest",
+        "Hornet's Nest",
         "Corrupted Bramblethorn",
         "Killer Bee Nest",
         "Ethereal Shrine",
@@ -2013,7 +2013,7 @@
       ],
       "dungeons": [],
       "items": [
-        "Doom\u0092s Emblem",
+        "Doom's Emblem",
         "Orb of Conflict"
       ]
     },
@@ -2042,7 +2042,7 @@
       "dungeons": [],
       "items": [
         "Cloak of Bloody Surprises",
-        "Crystallised Fang\u0092s Venom",
+        "Crystallised Fang's Venom",
         "Deadly Keg",
         "Greaterhosen",
         "Kogbold Multitool",
@@ -2075,7 +2075,7 @@
         "Bloodbath Blade",
         "Cloak of Bloody Surprises",
         "Shield of Ogmur",
-        "Tablet of the King\u0092s Avatar"
+        "Tablet of the King's Avatar"
       ]
     },
     "shipwreck_cove": {
@@ -2084,7 +2084,7 @@
         "Animal Merchant",
         "Washed-Up Captain",
         "Beer God",
-        "Bilgewater\u0092s Galleon",
+        "Bilgewater's Galleon",
         "Crab Sovereign",
         "Eye of the Storm",
         "Ghost Ship"
@@ -2095,7 +2095,7 @@
         "Greaterhosen",
         "Helm of the Juggernaut",
         "Mighty Stein",
-        "Pirate\u0092s Artillery",
+        "Pirate's Artillery",
         "Quiver of Thunder",
         "Shield of Ogmur",
         "Trap of the Vile Spirit"
@@ -2153,7 +2153,7 @@
         "abandoned_city",
         "haunted_hallows"
       ],
-      "Tablet of the King\u0092s Avatar": [
+      "Tablet of the King's Avatar": [
         "abandoned_city",
         "carboniferous",
         "sanguine_forest"
@@ -2162,13 +2162,13 @@
         "abandoned_city",
         "sprite_forest"
       ],
-      "Adventurer\u0092s Scarf": [
+      "Adventurer's Scarf": [
         "beach"
       ],
       "Evolutionary Records": [
         "carboniferous"
       ],
-      "Crystallised Fang\u0092s Venom": [
+      "Crystallised Fang's Venom": [
         "carboniferous",
         "deep_sea_abyss",
         "runic_tundra"
@@ -2223,7 +2223,7 @@
         "haunted_hallows",
         "risen_hell"
       ],
-      "Doom\u0092s Emblem": [
+      "Doom's Emblem": [
         "risen_hell"
       ],
       "Runes of Knowledge": [
@@ -2253,7 +2253,7 @@
       "Bloodbath Blade": [
         "sanguine_forest"
       ],
-      "Pirate\u0092s Artillery": [
+      "Pirate's Artillery": [
         "shipwreck_cove"
       ],
       "Quiver of Thunder": [
@@ -2304,7 +2304,7 @@
       "Wood Construct": [
         "abandoned_city"
       ],
-      "Dragon\u0092s Treasure": [
+      "Dragon's Treasure": [
         "abandoned_city"
       ],
       "Insurgent Rebel Commander": [
@@ -2394,7 +2394,7 @@
       "Hermit God": [
         "coral_reefs"
       ],
-      "World\u0092s Oyster": [
+      "World's Oyster": [
         "coral_reefs"
       ],
       "Death Knight": [
@@ -2481,7 +2481,7 @@
       "Elder Ent Ancient": [
         "floral_escape"
       ],
-      "Hornet\u0092s Nest": [
+      "Hornet's Nest": [
         "floral_escape"
       ],
       "Corrupted Bramblethorn": [
@@ -2645,7 +2645,7 @@
       "Washed-Up Captain": [
         "shipwreck_cove"
       ],
-      "Bilgewater\u0092s Galleon": [
+      "Bilgewater's Galleon": [
         "shipwreck_cove"
       ],
       "Crab Sovereign": [

@@ -1,10 +1,12 @@
 {
   "_metadata": {
-    "description": "Complete biome data: coordinates + enemies + dungeons",
+    "description": "Complete biome data with XML-authoritative entity IDs",
     "sources": {
-      "coordinates": "User-provided beacon positions via biome_editor.html",
-      "enemies": "Scraped from RealmEye wiki"
+      "structure": "Original biomes_complete.json",
+      "entity_ids": "Objects.xml extraction",
+      "drop_relationships": "RealmEye wiki scraping"
     },
+    "generated": "2026-01-05T00:01:02.344245",
     "map_bounds": {
       "min_x": 270,
       "max_x": 2035,
@@ -16,6 +18,12 @@
     "calibration_formula": {
       "x": "1.020602 * webmap_x + -24.25",
       "y": "1.075963 * webmap_y + -52.67"
+    },
+    "stats": {
+      "biomes": 21,
+      "entities": 243,
+      "id_corrections": 57,
+      "unresolved": 0
     }
   },
   "beach": {
@@ -50,7 +58,7 @@
         "wiki_url": "/wiki/bandit-leader",
         "drops_dungeon": null,
         "guaranteed": false,
-        "id": 2387
+        "id": 21775
       },
       {
         "name": "Little Blue Jelly",
@@ -78,28 +86,28 @@
         "wiki_url": "/wiki/pirate",
         "drops_dungeon": "Pirate Cave",
         "guaranteed": false,
-        "id": 1536
+        "id": 21770
       },
       {
         "name": "Piratess",
         "wiki_url": "/wiki/piratess",
         "drops_dungeon": "Pirate Cave",
         "guaranteed": false,
-        "id": 1537
+        "id": 21771
       },
       {
         "name": "Scorpion Queen",
         "wiki_url": "/wiki/scorpion-queen",
         "drops_dungeon": null,
         "guaranteed": false,
-        "id": 1540
+        "id": 21774
       },
       {
         "name": "Snake",
         "wiki_url": "/wiki/snake",
         "drops_dungeon": null,
         "guaranteed": false,
-        "id": 1538
+        "id": 21772
       },
       {
         "name": "X Treasure Chest",
@@ -113,21 +121,21 @@
         "wiki_url": "/wiki/giant-crab",
         "drops_dungeon": "Pirate Cave",
         "guaranteed": false,
-        "id": 1732
+        "id": 21768
       },
       {
         "name": "Sand Devil",
         "wiki_url": "/wiki/sand-devil",
         "drops_dungeon": "Pirate Cave",
         "guaranteed": false,
-        "id": 1735
+        "id": 21769
       },
       {
         "name": "Sandsman King",
         "wiki_url": "/wiki/sandsman-king",
         "drops_dungeon": "Forest Maze",
         "guaranteed": false,
-        "id": 1549
+        "id": 21767
       }
     ],
     "heroes": [
@@ -166,14 +174,14 @@
         "wiki_url": "/wiki/goblin-mage",
         "drops_dungeon": "Forest Maze",
         "guaranteed": false,
-        "id": 1556
+        "id": 21783
       },
       {
         "name": "Skeleton",
         "wiki_url": "/wiki/skeleton",
         "drops_dungeon": "Forest Maze",
         "guaranteed": false,
-        "id": 1626
+        "id": 21784
       },
       {
         "name": "Sumo Master",
@@ -187,7 +195,7 @@
         "wiki_url": "/wiki/undead-hobbit-mage",
         "drops_dungeon": "Forest Maze",
         "guaranteed": false,
-        "id": 1562
+        "id": 21793
       }
     ],
     "heroes": [],
@@ -377,14 +385,14 @@
         "wiki_url": "/wiki/dwarf-king",
         "drops_dungeon": "Forest Maze",
         "guaranteed": false,
-        "id": 1567
+        "id": 5723
       },
       {
         "name": "Horned Drake",
         "wiki_url": "/wiki/horned-drake",
         "drops_dungeon": null,
         "guaranteed": false,
-        "id": 2373
+        "id": 5724
       },
       {
         "name": "Metal Golem",
@@ -421,7 +429,7 @@
     "beacon_guardian": {
       "name": "Legion Forest Guard",
       "wiki_url": "/wiki/legion-forest-guard",
-      "id": 0
+      "id": 52991
     },
     "dungeons": [
       "Forbidden Jungle",
@@ -450,42 +458,42 @@
         "wiki_url": "/wiki/darkness-golem",
         "drops_dungeon": null,
         "guaranteed": false,
-        "id": 1587
+        "id": 21800
       },
       {
         "name": "Desert Werewolf",
         "wiki_url": "/wiki/desert-werewolf",
         "drops_dungeon": "Spider Den",
         "guaranteed": false,
-        "id": 1571
+        "id": 21798
       },
       {
         "name": "Fire Golem",
         "wiki_url": "/wiki/fire-golem",
         "drops_dungeon": null,
         "guaranteed": false,
-        "id": 1586
+        "id": 21799
       },
       {
         "name": "Great Lizard",
         "wiki_url": "/wiki/great-lizard",
         "drops_dungeon": null,
         "guaranteed": false,
-        "id": 2386
+        "id": 21810
       },
       {
         "name": "Nomadic Shaman",
         "wiki_url": "/wiki/nomadic-shaman",
         "drops_dungeon": null,
         "guaranteed": false,
-        "id": 1734
+        "id": 21809
       },
       {
         "name": "Sand Phantom",
         "wiki_url": "/wiki/sand-phantom",
         "drops_dungeon": null,
         "guaranteed": false,
-        "id": 1733
+        "id": 21807
       }
     ],
     "heroes": [
@@ -596,7 +604,7 @@
         "wiki_url": "/wiki/dark-elf-queen",
         "drops_dungeon": "Ancient Ruins",
         "guaranteed": false,
-        "id": 21887
+        "id": 29839
       },
       {
         "name": "Dragon Egg",
@@ -633,14 +641,14 @@
         "wiki_url": "/wiki/ghost-king",
         "drops_dungeon": null,
         "guaranteed": false,
-        "id": 21914
+        "id": 2344
       }
     ],
     "encounters": [],
     "beacon_guardian": {
       "name": "Legion Forest Guard",
       "wiki_url": "/wiki/legion-forest-guard",
-      "id": 0
+      "id": 52991
     },
     "dungeons": [
       "Ancient Ruins",
@@ -666,21 +674,21 @@
         "wiki_url": "/wiki/flamer-king",
         "drops_dungeon": null,
         "guaranteed": false,
-        "id": 2307
+        "id": 21851
       },
       {
         "name": "Flayer God",
         "wiki_url": "/wiki/flayer-god",
         "drops_dungeon": "Ancient Ruins",
         "guaranteed": false,
-        "id": 1609
+        "id": 21850
       },
       {
         "name": "Minotaur",
         "wiki_url": "/wiki/minotaur",
         "drops_dungeon": "Ancient Ruins",
         "guaranteed": false,
-        "id": 1606
+        "id": 21847
       }
     ],
     "heroes": [],
@@ -737,7 +745,7 @@
         "wiki_url": "/wiki/leviathan",
         "drops_dungeon": "Puppet Master's Theatre",
         "guaranteed": false,
-        "id": 1752
+        "id": 21888
       },
       {
         "name": "Rampant Walrus",
@@ -1024,7 +1032,7 @@
         "wiki_url": "/wiki/ghost-god",
         "drops_dungeon": "Undead Lair",
         "guaranteed": false,
-        "id": 1625
+        "id": 21894
       },
       {
         "name": "Headless Horseman",
@@ -1526,7 +1534,7 @@
         "wiki_url": "/wiki/white-demon",
         "drops_dungeon": "Abyss of Demons",
         "guaranteed": false,
-        "id": 1617
+        "id": 21896
       }
     ],
     "heroes": [
@@ -1615,7 +1623,7 @@
         "wiki_url": "/wiki/candy-gnome",
         "drops_dungeon": "Candyland Hunting Grounds",
         "guaranteed": true,
-        "id": 9168
+        "id": 24137
       },
       {
         "name": "Djinn",
@@ -1657,7 +1665,7 @@
         "wiki_url": "/wiki/rock-construct",
         "drops_dungeon": "The Machine",
         "guaranteed": false,
-        "id": 2309
+        "id": 2490
       },
       {
         "name": "Slime God",
@@ -1671,7 +1679,7 @@
         "wiki_url": "/wiki/steel-construct",
         "drops_dungeon": "The Machine",
         "guaranteed": false,
-        "id": 2311
+        "id": 2492
       },
       {
         "name": "Unsung Jester",
@@ -1692,7 +1700,7 @@
         "wiki_url": "/wiki/wood-construct",
         "drops_dungeon": "The Machine",
         "guaranteed": false,
-        "id": 2310
+        "id": 2491
       }
     ],
     "heroes": [
@@ -1701,7 +1709,7 @@
         "wiki_url": "/wiki/dragon-s-treasure",
         "drops_dungeon": null,
         "guaranteed": false,
-        "id": 0
+        "id": 34599
       },
       {
         "name": "Insurgent Rebel Commander",
@@ -1715,14 +1723,14 @@
         "wiki_url": "/wiki/mysterious-crystal",
         "drops_dungeon": null,
         "guaranteed": false,
-        "id": 2357
+        "id": 2471
       },
       {
         "name": "Sword in the Stone?",
         "wiki_url": "/wiki/sword-in-the-stone",
         "drops_dungeon": "Ancient Ruins",
         "guaranteed": false,
-        "id": 34523
+        "id": 34553
       }
     ],
     "encounters": [
@@ -2192,7 +2200,7 @@
         "wiki_url": "/wiki/hornet-s-nest",
         "drops_dungeon": "Woodland Labyrinth",
         "guaranteed": false,
-        "id": 0
+        "id": 34603
       }
     ],
     "encounters": [
@@ -2246,7 +2254,7 @@
     "beacon_guardian": {
       "name": "Legion Commissioner",
       "wiki_url": "/wiki/legion-commissioner",
-      "id": 53009
+      "id": 53002
     },
     "dungeons": [
       "Infernal Abyss of Demons",
@@ -2348,7 +2356,7 @@
         "wiki_url": "/wiki/scout-colony",
         "drops_dungeon": "Parasite Chambers",
         "guaranteed": true,
-        "id": 1986
+        "id": 52735
       }
     ],
     "encounters": [
@@ -2524,7 +2532,7 @@
         "wiki_url": "/wiki/assembled-giant",
         "drops_dungeon": "The Third Dimension",
         "guaranteed": false,
-        "id": 34480
+        "id": 34485
       },
       {
         "name": "Monstrous Grizzly",
@@ -2644,28 +2652,28 @@
         "wiki_url": "/wiki/easily-enraged-bunny",
         "drops_dungeon": "Forest Maze",
         "guaranteed": false,
-        "id": 1736
+        "id": 21785
       },
       {
         "name": "Elf Wizard",
         "wiki_url": "/wiki/elf-wizard",
         "drops_dungeon": "Forest Maze",
         "guaranteed": false,
-        "id": 1545
+        "id": 21780
       },
       {
         "name": "Hobbit Mage",
         "wiki_url": "/wiki/hobbit-mage",
         "drops_dungeon": "Forest Maze",
         "guaranteed": false,
-        "id": 1559
+        "id": 21790
       },
       {
         "name": "Forest Nymph",
         "wiki_url": "/wiki/forest-nymph",
         "drops_dungeon": "Forest Maze",
         "guaranteed": false,
-        "id": 1745
+        "id": 21787
       }
     ],
     "heroes": [],
@@ -2673,7 +2681,7 @@
     "beacon_guardian": {
       "name": "Legion Forest Guard",
       "wiki_url": "/wiki/legion-forest-guard",
-      "id": 0
+      "id": 52991
     },
     "dungeons": [
       "Forest Maze"
